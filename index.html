@@ -715,12 +715,7 @@
     }
   </style>
 
-  <!-- ============================================================ -->
-  <!-- TRACKING PIXELS — REPLACE PLACEHOLDERS BEFORE LAUNCHING ADS    -->
-  <!-- ============================================================ -->
-
   <!-- Meta Pixel (Facebook + Instagram ads) -->
-  <!-- Replace YOUR_META_PIXEL_ID with the ID from Meta Business Manager → Events Manager -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -730,28 +725,10 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    if (window.location.hostname !== 'localhost' && 'YOUR_META_PIXEL_ID' !== 'YOUR_META_PIXEL_ID') {
-      fbq('init', 'YOUR_META_PIXEL_ID');
-      fbq('track', 'PageView');
-    }
+    fbq('init', '1113978282997787');
+    fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
-
-  <!-- Google tag (GA4 + Google Ads) -->
-  <!-- Replace YOUR_GA4_ID (e.g. G-XXXXXXX) and YOUR_GOOGLE_ADS_ID (e.g. AW-XXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    if (window.location.hostname !== 'localhost' && 'YOUR_GA4_ID' !== 'YOUR_GA4_ID') {
-      gtag('config', 'YOUR_GA4_ID');
-      gtag('config', 'YOUR_GOOGLE_ADS_ID');
-    }
-  </script>
-  <!-- ============================================================ -->
-  <!-- END TRACKING PIXELS                                            -->
-  <!-- ============================================================ -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1113978282997787&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -1198,7 +1175,6 @@
             success.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
           if (typeof fbq !== 'undefined') { try { fbq('track', 'Lead'); } catch (e) {} }
-          if (typeof gtag !== 'undefined') { try { gtag('event', 'generate_lead', { event_category: 'form', event_label: 'lead_form' }); } catch (e) {} }
         })
         .catch(function () {
           if (errorEl) { errorEl.hidden = false; errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
@@ -1210,7 +1186,6 @@
     document.querySelectorAll('a[href*="wa.me/972585577021"]').forEach(function (link) {
       link.addEventListener('click', function () {
         if (typeof fbq !== 'undefined') { try { fbq('track', 'Contact'); } catch (e) {} }
-        if (typeof gtag !== 'undefined') { try { gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'whatsapp_cta' }); } catch (e) {} }
       });
     });
   </script>
