@@ -7,3 +7,11 @@ node_modules/
 .vercel
 .env
 .env.*
+
+# Claude Code / agent tooling
+.claude/
+.agents/
+skills-lock.json
+
+# Local-only archive of earlier designs (do not deploy)
+_archive/

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>תצוגה מקדימה — מצפן הנשמה</title>
+  <style>
+    :root {
+      --bg: #f6f1ec;
+      --ink: #222d35;
+      --muted: #5e6468;
+      --cta: #cec0b0;
+      --sage: #8fa69a;
+      --sage-deep: #6f8479;
+      --line: #e2dbd1;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      background: linear-gradient(180deg, #ece5da 0%, #d4ccbf 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(246, 241, 236, 0.92);
+      backdrop-filter: blur(10px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 22px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .topbar h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .topbar h1 b { color: var(--sage-deep); font-weight: 600; }
+    .topbar__hint {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .open-btn {
+      background: var(--ink); color: var(--bg);
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+
+    .stage {
+      padding: 32px 24px 60px;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 32px;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .device {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .device__label {
+      text-align: center;
+      margin-bottom: 14px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* === Phone frame (mobile) === */
+    .phone {
+      width: 390px;
+      background: #fff;
+      border-radius: 44px;
+      padding: 14px;
+      box-shadow:
+        0 32px 60px -28px rgba(34, 45, 53, 0.4),
+        0 4px 14px -4px rgba(34, 45, 53, 0.12),
+        inset 0 0 0 1.5px rgba(34, 45, 53, 0.08);
+      position: relative;
+    }
+    .phone::before {
+      /* notch */
+      content: "";
+      position: absolute;
+      top: 22px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 28px;
+      background: var(--ink);
+      border-radius: 999px;
+      z-index: 2;
+    }
+    .phone__screen {
+      width: 100%;
+      height: 780px;
+      border: 0;
+      border-radius: 32px;
+      overflow: hidden;
+      background: var(--bg);
+      display: block;
+    }
+
+    /* === Desktop frame === */
+    .desktop {
+      width: 1100px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow:
+        0 32px 60px -28px rgba(34, 45, 53, 0.4),
+        0 4px 14px -4px rgba(34, 45, 53, 0.12),
+        inset 0 0 0 1.5px rgba(34, 45, 53, 0.08);
+      position: relative;
+    }
+    .desktop__bar {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 8px 12px;
+    }
+    .desktop__dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--line);
+    }
+    .desktop__dot:nth-child(1) { background: #ff5f57; }
+    .desktop__dot:nth-child(2) { background: #febc2e; }
+    .desktop__dot:nth-child(3) { background: #28c840; }
+    .desktop__url {
+      margin-inline-start: auto;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 6px;
+      direction: ltr;
+    }
+    .desktop__screen {
+      width: 100%;
+      height: 780px;
+      border: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg);
+      display: block;
+    }
+
+    /* === Responsive: stack on small screens === */
+    @media (max-width: 1600px) {
+      .stage { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 720px) {
+      .stage { padding: 16px 14px 40px; gap: 28px; }
+      .phone { width: 320px; padding: 10px; }
+      .phone::before { width: 92px; height: 20px; top: 16px; }
+      .phone__screen { height: 640px; border-radius: 22px; }
+      .desktop { width: 100%; max-width: 720px; }
+      .desktop__screen { height: 540px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>תצוגה מקדימה · <b>מצפן הנשמה — Sanctuary</b></h1>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <span class="topbar__hint">מובייל ודסקטופ זה לצד זה</span>
+      <a class="open-btn" href="index.html" target="_blank">פתח מסך מלא <span aria-hidden="true">←</span></a>
+    </div>
+  </header>
+
+  <div class="stage">
+
+    <!-- Mobile -->
+    <div class="device">
+      <div class="device__label">מובייל · 390px</div>
+      <div class="phone">
+        <iframe class="phone__screen" src="index.html" title="מצפן הנשמה — מובייל"></iframe>
+      </div>
+    </div>
+
+    <!-- Desktop -->
+    <div class="device">
+      <div class="device__label">דסקטופ · 1100px</div>
+      <div class="desktop">
+        <div class="desktop__bar">
+          <span class="desktop__dot"></span>
+          <span class="desktop__dot"></span>
+          <span class="desktop__dot"></span>
+          <span class="desktop__url">anna-ashkenazi.co.il</span>
+        </div>
+        <iframe class="desktop__screen" src="index.html" title="מצפן הנשמה — דסקטופ"></iframe>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
