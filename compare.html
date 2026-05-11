@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>תצוגה מקדימה — מצפן הנשמה</title>
+  <title>תצוגה מקדימה — אור הנשמה (3 עמודים)</title>
   <style>
     :root {
       --bg: #f6f1ec;
@@ -24,8 +24,8 @@
     }
 
     .topbar {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(246, 241, 236, 0.92);
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(246, 241, 236, 0.94);
       backdrop-filter: blur(10px) saturate(140%);
       border-bottom: 1px solid var(--line);
       padding: 14px 22px;
@@ -39,42 +39,76 @@
       font-weight: 600;
     }
     .topbar h1 b { color: var(--sage-deep); font-weight: 600; }
-    .topbar__hint {
+    .topbar__nav {
+      display: flex; gap: 8px; flex-wrap: wrap;
       font-size: 12.5px;
-      color: var(--muted);
     }
-    .open-btn {
-      background: var(--ink); color: var(--bg);
-      padding: 8px 16px; border-radius: 999px;
-      font-size: 13px; font-weight: 600;
+    .topbar__nav a {
+      color: var(--ink);
       text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.5);
+    }
+    .topbar__nav a:hover { background: var(--bg); }
+
+    .page-section {
+      padding: 36px 24px 12px;
+      border-bottom: 1px solid rgba(34, 45, 53, 0.08);
+    }
+    .page-section:last-of-type { border-bottom: 0; }
+    .page-section__header {
+      max-width: 1700px;
+      margin: 0 auto 22px;
+      display: flex; align-items: baseline; gap: 14px;
+      flex-wrap: wrap;
+    }
+    .page-section__title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .page-section__title b { color: var(--sage-deep); font-weight: 600; }
+    .page-section__path {
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.5);
+      padding: 3px 10px;
+      border-radius: 6px;
+      direction: ltr;
+    }
+    .page-section__open {
+      margin-inline-start: auto;
+      background: var(--ink); color: var(--bg);
+      padding: 7px 14px; border-radius: 999px;
+      font-size: 12.5px; font-weight: 600;
+      text-decoration: none;
     }
 
     .stage {
-      padding: 32px 24px 60px;
       display: grid;
       grid-template-columns: auto auto;
-      gap: 32px;
+      gap: 28px;
       align-items: start;
       justify-content: center;
+      padding-bottom: 36px;
     }
 
-    .device {
-      position: relative;
-      flex-shrink: 0;
-    }
+    .device { position: relative; flex-shrink: 0; }
     .device__label {
       text-align: center;
-      margin-bottom: 14px;
-      font-size: 12px;
+      margin-bottom: 12px;
+      font-size: 11.5px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
       font-weight: 600;
     }
 
-    /* === Phone frame (mobile) === */
+    /* === Phone frame === */
     .phone {
       width: 390px;
       background: #fff;
@@ -87,7 +121,6 @@
       position: relative;
     }
     .phone::before {
-      /* notch */
       content: "";
       position: absolute;
       top: 22px; left: 50%; transform: translateX(-50%);
@@ -150,53 +183,117 @@
       display: block;
     }
 
-    /* === Responsive: stack on small screens === */
     @media (max-width: 1600px) {
-      .stage { grid-template-columns: 1fr; gap: 40px; }
+      .stage { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 720px) {
-      .stage { padding: 16px 14px 40px; gap: 28px; }
+      .stage { padding: 0 4px 28px; gap: 24px; }
       .phone { width: 320px; padding: 10px; }
       .phone::before { width: 92px; height: 20px; top: 16px; }
       .phone__screen { height: 640px; border-radius: 22px; }
       .desktop { width: 100%; max-width: 720px; }
       .desktop__screen { height: 540px; }
+      .page-section { padding: 24px 12px 8px; }
+      .page-section__open { margin-inline-start: 0; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <h1>תצוגה מקדימה · <b>מצפן הנשמה — Sanctuary</b></h1>
-    <div style="display: flex; gap: 10px; align-items: center;">
-      <span class="topbar__hint">מובייל ודסקטופ זה לצד זה</span>
-      <a class="open-btn" href="index.html" target="_blank">פתח מסך מלא <span aria-hidden="true">←</span></a>
-    </div>
+    <h1>תצוגה מקדימה · <b>אור הנשמה</b> · 3 עמודים</h1>
+    <nav class="topbar__nav" aria-label="קישורים מהירים">
+      <a href="#hub">דף הבית</a>
+      <a href="#compass">מצפן הנשמה</a>
+      <a href="#shoresh">שורש הנשמה</a>
+    </nav>
   </header>
 
-  <div class="stage">
-
-    <!-- Mobile -->
-    <div class="device">
-      <div class="device__label">מובייל · 390px</div>
-      <div class="phone">
-        <iframe class="phone__screen" src="index.html" title="מצפן הנשמה — מובייל"></iframe>
-      </div>
+  <!-- Page 1: Hub -->
+  <section class="page-section" id="hub">
+    <div class="page-section__header">
+      <h2 class="page-section__title">דף הבית · <b>אור הנשמה</b></h2>
+      <span class="page-section__path">/</span>
+      <a class="page-section__open" href="index.html" target="_blank">פתח מסך מלא ←</a>
     </div>
-
-    <!-- Desktop -->
-    <div class="device">
-      <div class="device__label">דסקטופ · 1100px</div>
-      <div class="desktop">
-        <div class="desktop__bar">
-          <span class="desktop__dot"></span>
-          <span class="desktop__dot"></span>
-          <span class="desktop__dot"></span>
-          <span class="desktop__url">anna-ashkenazi.co.il</span>
+    <div class="stage">
+      <div class="device">
+        <div class="device__label">מובייל · 390px</div>
+        <div class="phone">
+          <iframe class="phone__screen" src="index.html" title="אור הנשמה — מובייל" loading="lazy"></iframe>
         </div>
-        <iframe class="desktop__screen" src="index.html" title="מצפן הנשמה — דסקטופ"></iframe>
+      </div>
+      <div class="device">
+        <div class="device__label">דסקטופ · 1100px</div>
+        <div class="desktop">
+          <div class="desktop__bar">
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__url">or-haneshama.co.il</span>
+          </div>
+          <iframe class="desktop__screen" src="index.html" title="אור הנשמה — דסקטופ" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- Page 2: Compass / Anna -->
+  <section class="page-section" id="compass">
+    <div class="page-section__header">
+      <h2 class="page-section__title">מצפן הנשמה · <b>אנה אשכנזי</b></h2>
+      <span class="page-section__path">/compass</span>
+      <a class="page-section__open" href="compass.html" target="_blank">פתח מסך מלא ←</a>
+    </div>
+    <div class="stage">
+      <div class="device">
+        <div class="device__label">מובייל · 390px</div>
+        <div class="phone">
+          <iframe class="phone__screen" src="compass.html" title="מצפן הנשמה — מובייל" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="device">
+        <div class="device__label">דסקטופ · 1100px</div>
+        <div class="desktop">
+          <div class="desktop__bar">
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__url">or-haneshama.co.il/compass</span>
+          </div>
+          <iframe class="desktop__screen" src="compass.html" title="מצפן הנשמה — דסקטופ" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: Shoresh / Natalie -->
+  <section class="page-section" id="shoresh">
+    <div class="page-section__header">
+      <h2 class="page-section__title">שורש הנשמה · <b>נטלי בכר</b></h2>
+      <span class="page-section__path">/shoresh</span>
+      <a class="page-section__open" href="shoresh.html" target="_blank">פתח מסך מלא ←</a>
+    </div>
+    <div class="stage">
+      <div class="device">
+        <div class="device__label">מובייל · 390px</div>
+        <div class="phone">
+          <iframe class="phone__screen" src="shoresh.html" title="שורש הנשמה — מובייל" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="device">
+        <div class="device__label">דסקטופ · 1100px</div>
+        <div class="desktop">
+          <div class="desktop__bar">
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__dot"></span>
+            <span class="desktop__url">or-haneshama.co.il/shoresh</span>
+          </div>
+          <iframe class="desktop__screen" src="shoresh.html" title="שורש הנשמה — דסקטופ" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>

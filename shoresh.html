@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#8fa69a" />
+  <title>אור הנשמה · שורש הנשמה · קורס טיפול דרך תת מודע</title>
+  <meta name="description" content="שורש הנשמה · קורס עומק פרונטלי לטיפול דרך תת מודע עם נטלי בכר. 3 ימי לימוד מרוכזים בראשון לציון. ללמוד לרפא חרדות, פחדים ודפוסים מעכבים." />
+  <meta property="og:title" content="שורש הנשמה · קורס טיפול דרך תת מודע" />
+  <meta property="og:description" content="3 ימי לימוד מרוכזים בראשון לציון. ללמוד לרפא חרדות, פחדים ודפוסים מעכבים, דרך חיבור ישיר לבורא ותת המודע שלך." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Meta Pixel (Facebook + Instagram ads) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1113978282997787');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1113978282997787&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+  <!-- Top announcement: urgency + scarcity -->
+  <div class="ann" role="status">
+    <b>מחזור קרוב נפתח להרשמה</b> · פרונטלי בראשון לציון · 3 ימי לימוד מרוכזים
+  </div>
+
+  <!-- Sticky header -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html" aria-label="חזרה לעמוד הראשי של אור הנשמה">
+        <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" />
+        <span class="brand__name">אור הנשמה</span>
+      </a>
+      <a class="topbar__cta" href="#lead">הרשמה <span aria-hidden="true">←</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO with inline mini-form -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero__deco" aria-hidden="true"></div>
+        <p class="hero__eyebrow">קורס עומק פרונטלי · שורש הנשמה</p>
+        <h1 class="hero__title">ללמוד לרפא חרדות,<br/><em>מהשורש.</em></h1>
+        <div class="hero__photo">
+          <img src="assets/natalie-portrait.jpg" alt="פורטרט נטלי בכר" loading="eager" decoding="async" />
+        </div>
+        <p class="hero__sub">קורס עומק לנשים שמוכנות להפסיק להילחם בעצמן. תלמדי לבצע טיפול דרך תת מודע, להתחבר פנימה ולקבל מסרים מבורא עולם — וליצור ריפוי אמיתי מבפנים החוצה.</p>
+
+        <form class="quickform" id="hero-form" onsubmit="return handleHero(event)">
+          <span class="quickform__label">הרשמה למחזור הקרוב</span>
+          <span class="quickform__hint">2 שדות · נחזור אלייך עם פרטי המחזור</span>
+          <div class="quickform__row">
+            <input type="text" name="name" placeholder="השם שלך" autocomplete="name" required minlength="2" />
+            <input type="tel" name="phone" placeholder="050-0000000" autocomplete="tel" inputmode="tel" dir="ltr" required pattern="^[0-9+\-\s()]{9,15}$" />
+            <button type="submit" class="btn-cta btn-cta--lg">
+              <span>אני רוצה פרטים</span>
+              <span aria-hidden="true">←</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="quickform" data-hero-success hidden role="status" aria-live="polite" style="text-align: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--sage); display: flex; align-items: center; justify-content: center; margin: 4px auto 14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#faf6f1" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <strong style="display: block; font-family: var(--serif); font-size: 26px; color: var(--ink); margin-bottom: 8px;">תודה!</strong>
+          <p style="color: var(--muted); margin: 0; font-size: 15px; line-height: 1.6;">הפרטים שלך התקבלו.<br/>נחזור אלייך תוך 24 שעות.</p>
+        </div>
+
+        <div data-hero-error hidden role="alert" style="background: rgba(245, 220, 211, 0.9); color: #7a3520; border: 1px solid #e8b6a3; border-radius: 14px; padding: 12px 14px; font-size: 14px; text-align: center; margin: 0 auto 18px;">
+          משהו השתבש בשליחה. אפשר לנסות שוב או לפנות בוואטסאפ.
+        </div>
+
+        <div class="micro" aria-label="הבטחות מהירות">
+          <span><span class="dot"></span>ללא התחייבות</span>
+          <span><span class="dot"></span>שיחת התאמה אישית</span>
+          <span><span class="dot"></span>מענה תוך 24 שעות</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <div class="trust">
+      <div class="trust__grid">
+        <div>
+          <span class="trust__num">3</span>
+          <span class="trust__lbl">ימי לימוד מרוכזים</span>
+        </div>
+        <div>
+          <span class="trust__num trust__num--text">ראשון לציון<br/>עזריאלי ראשונים</span>
+          <span class="trust__lbl">פרונטלי</span>
+        </div>
+        <div>
+          <span class="trust__num trust__num--text">ליווי אישי<br/>בתהליך</span>
+          <span class="trust__lbl">לאורך הקורס</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUE PROPS / Why this course -->
+    <section class="sec" id="about-course">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 01 · על הקורס</p>
+        <h2 class="sec__title">למה דווקא <em>הקורס הזה</em></h2>
+        <p class="sec__lede">לא עוד תיאוריה. קורס שמלמד אותך לגשת לשורש שבתת מודע, לפרק את מה שיצר חרדות ופחדים, וליצור ריפוי עמוק מבפנים, בלי תלות באף אחד.</p>
+        <div class="props">
+          <article class="prop">
+            <div class="prop__icon">✦</div>
+            <h3 class="prop__title">את לא תלויה באף אחד</h3>
+            <p class="prop__body">תלמדי לבצע טיפול דרך תת מודע בעצמך, לזהות חרדות ופחדים, להבין את השורש שלהם ולשחרר אותם מבפנים — לא תלויה במטפל, לא תלויה בזמן.</p>
+          </article>
+          <article class="prop">
+            <div class="prop__icon">◐</div>
+            <h3 class="prop__title">חיבור אמיתי לבורא</h3>
+            <p class="prop__body">לא אמונה תיאורטית, אלא חיבור חי. צינור ישיר לקבל מסרים מבורא עולם שמכוון אותך בתוך התהליך — בכל רגע, בכל החלטה.</p>
+          </article>
+          <article class="prop">
+            <div class="prop__icon">○</div>
+            <h3 class="prop__title">עובדות עם השורש</h3>
+            <p class="prop__body">אנחנו לא מטפלות בסימפטומים. חוזרות לרגעים שיצרו את הדפוסים, מפרקות אותם בתת מודע, ומטמיעות דפוסים חדשים שמחזקים את הייעוד והערך העצמי.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT NATALIE -->
+    <section class="sec sec--alt" id="about-natalie">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 02 · המורה</p>
+        <h2 class="sec__title">היכרות עם <em>נטלי</em></h2>
+        <div class="about">
+          <div class="about__photo">
+            <img src="assets/natalie-side.jpg" alt="פורטרט נטלי בכר" loading="lazy" decoding="async" style="object-position: center 25%;" />
+          </div>
+          <div class="about__copy">
+            <p>הקורס הזה לא נולד מתוך תאוריה, הוא נולד מתוך החיים שלי. היו תקופות שהתעוררתי בלילות עם חרדות ופחדים שלא הצלחתי להסביר. חוסר שקט פנימי, חיפוש בלתי נגמר אחרי תשובות — מי אני בכלל? מה המשמעות שלי? מה באתי לעשות כאן?</p>
+            <p>ידעתי שיש בי משהו אבל לא הצלחתי להגיע אליו. התחלתי ללמוד NLP מתוך רצון לרפא את עצמי, המשכתי לקורס מאסטר, חיפשתי עוד עומק — ועדיין הרגשתי שיש משהו עמוק יותר שלא נגעתי בו. ואז הגעתי לעולם של טיפול דרך תת מודע.</p>
+            <p>שם הבנתי: השינוי האמיתי קורה רק כשאני מחוברת לשורש. כשאני מחוברת לבורא עולם. ממקום שלא היה לנו כסף למטרנה לילד, למקום שבו אני פותחת עסק, מובילה נשים, יוצרת השפעה. ריפאתי את החרדות, שחררתי את הפחדים, פירקתי את הדפוסים — והתחלתי להניע את החיים שלי לעבר מי שאני באמת.</p>
+            <p class="signature">שינוי אמיתי קורה רק כשאני מחוברת לשורש.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section class="sec" id="curriculum">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 03 · תכנית הלימודים</p>
+        <h2 class="sec__title">מה <em>לומדים</em></h2>
+        <p class="sec__lede">3 ימי לימוד מרוכזים בראשון לציון, עזריאלי ראשונים · תרגול מעשי וליווי בתהליך. בסיום הקורס: כלים פרקטיים לעבודה עם תת מודע וריפוי עצמי.</p>
+        <ol class="modules">
+          <li class="module">
+            <span class="module__num">01</span>
+            <div>
+              <h3 class="module__title">הבנת השורש</h3>
+              <p class="module__desc">היכרות עם תת המודע ואיך נוצרים חרדות, פחדים ודפוסים מעכבים. לומדים לזהות מה מנהל אותך מבפנים ואיך חוויה הופכת לדפוס.<br/><strong style="color: var(--sage-deep);">תוצאה:</strong> תזהי מה מנהל אותך באמת — ואיפה זה התחיל.</p>
+              <span class="module__meta">יום 1</span>
+            </div>
+          </li>
+          <li class="module">
+            <span class="module__num">02</span>
+            <div>
+              <h3 class="module__title">חיבור ובירור</h3>
+              <p class="module__desc">לומדים לשאול שאלות מדויקות, להתחבר פנימה ולהיות בצינור ישיר לקבל מסרים מבורא עולם. מתחילים לחזור לעבר ולזהות את השורש שיצר את הדפוסים.<br/><strong style="color: var(--sage-deep);">תוצאה:</strong> חיבור פנימי קבוע, יכולת לקבל מסרים בכל רגע.</p>
+              <span class="module__meta">יום 2</span>
+            </div>
+          </li>
+          <li class="module">
+            <span class="module__num">03</span>
+            <div>
+              <h3 class="module__title">ריפוי והטמעה</h3>
+              <p class="module__desc">מבצעים טיפול דרך תת מודע בפועל — פירוק הדפוסים המעכבים, שחרור פחדים והטמעת שינוי. יוצאות עם תרגול מעשי להמשך עבודה וחיבור יומיומי.<br/><strong style="color: var(--sage-deep);">תוצאה:</strong> להניע את החיים שלך לעבר מי שאת באמת.</p>
+              <span class="module__meta">יום 3</span>
+            </div>
+          </li>
+        </ol>
+
+        <div style="text-align:center; margin-top: 28px;">
+          <a href="#lead" class="btn-cta btn-cta--soft" style="width:auto; display:inline-flex; padding: 14px 26px;">
+            <span>אני רוצה לשמוע עוד</span>
+            <span aria-hidden="true">←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSFORMATION CALLOUT -->
+    <section class="sec" style="background: var(--sage); color: var(--cream-soft); padding: 64px 0; text-align: center;">
+      <div class="wrap">
+        <p style="font-family: var(--serif); font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cta); margin: 0 0 18px;">בסוף הקורס</p>
+        <p style="font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 6vw, 34px); line-height: 1.4; margin: 0; max-width: 32ch; margin-inline: auto;">
+          את לא רק תביני את הדפוסים שלך — את תדעי <em style="color: var(--cta); font-style: italic;">איך לפרק אותם בעצמך</em>, איך להתחבר ולקבל מסרים, ואיך ליצור ריפוי אמיתי מבפנים החוצה.
+        </p>
+      </div>
+    </section>
+
+    <!-- INVESTMENT / PRICE -->
+    <section class="sec sec--alt" id="investment">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 04 · השקעה</p>
+        <h2 class="sec__title">מה <em>כלול</em> בקורס</h2>
+        <p class="sec__lede">הקורס המלא, הליווי, ההקלטות והכלים הפרקטיים. הכל במחיר אחד, ללא תוספות נסתרות.</p>
+
+        <article class="invest">
+          <ul class="invest__list">
+            <li>3 ימי לימוד פרונטליים מרוכזים</li>
+            <li>ראשון לציון · עזריאלי ראשונים</li>
+            <li>תרגול מעשי בין הימים</li>
+            <li>כלים פרקטיים לעבודה עם תת מודע</li>
+            <li>ליווי בתהליך לאורך כל הקורס</li>
+            <li>חיבור ישיר וצינור לקבל מסרים</li>
+          </ul>
+          <div class="invest__price">
+            <span class="invest__amount">2,000₪</span>
+            <span class="invest__terms">תשלום אחד או פריסה · אשראי, העברה או ביט</span>
+          </div>
+          <a href="#lead" class="btn-cta btn-cta--lg">
+            <span>שריינו לי מקום</span>
+            <span aria-hidden="true">←</span>
+          </a>
+          <p class="invest__note">המקומות מוגבלים · מחזור קרוב נפתח להרשמה</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sec" id="faq">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 05 · שאלות נפוצות</p>
+        <h2 class="sec__title">שאלות לפני <em>שמתחילים</em></h2>
+        <div class="faq">
+          <details class="faq-item">
+            <summary>למי הקורס מתאים? <span class="faq-item__plus" aria-hidden="true">+</span></summary>
+            <div class="faq-item__answer">לנשים שמתמודדות עם חרדות, פחדים או דפוסים מעכבים — ומרגישות שהגיע הזמן להפסיק רק להבין ולהתחיל לשנות באמת. לנשים שמבינות שיש בהן עומק, אבל לא יודעות איך לגשת אליו.</div>
+          </details>
+          <details class="faq-item">
+            <summary>מה הפורמט של הקורס? <span class="faq-item__plus" aria-hidden="true">+</span></summary>
+            <div class="faq-item__answer">קורס פרונטלי בראשון לציון, עזריאלי ראשונים: 3 ימי לימוד מרוכזים, בקבוצה קטנה ואינטימית. בין הימים תרגול מעשי וליווי אישי בתהליך.</div>
+          </details>
+          <details class="faq-item">
+            <summary>מה כוללת ההשקעה? <span class="faq-item__plus" aria-hidden="true">+</span></summary>
+            <div class="faq-item__answer">2,000₪ הכוללים השתתפות מלאה ב־3 ימי הלימוד הפרונטליים, תרגולים מעשיים, כלים פרקטיים לעבודה עם תת מודע, וליווי אישי בתהליך. אפשרויות תשלום: העברה בנקאית, אשראי או ביט.</div>
+          </details>
+          <details class="faq-item">
+            <summary>האם צריך ניסיון קודם? <span class="faq-item__plus" aria-hidden="true">+</span></summary>
+            <div class="faq-item__answer">לא. הקורס מלמד מהבסיס איך לבצע טיפול דרך תת מודע ואיך להתחבר ולקבל מסרים מבורא עולם.</div>
+          </details>
+          <details class="faq-item">
+            <summary>איך נרשמים? <span class="faq-item__plus" aria-hidden="true">+</span></summary>
+            <div class="faq-item__answer">השאירי פרטים בטופס שבתחתית העמוד (או כתבי לי בוואטסאפ) ואחזור אלייך לשיחת התאמה אישית להבטחת המקום שלך.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEAD FORM -->
+    <section class="lead" id="lead">
+      <div class="wrap">
+        <p class="sec__kicker">פרק 06 · הרשמה</p>
+        <h2 class="sec__title">בואי <em>נתחיל</em></h2>
+        <p class="sec__lede">השאירי פרטים ואחזור אלייך לשיחת התאמה אישית. נבדוק יחד שהקורס מתאים לך, נסקור את התוכן ונענה על כל שאלה.</p>
+
+        <a href="https://wa.me/972542957766?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%98%D7%9C%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%A9%D7%95%D7%A8%D7%A9%20%D7%94%D7%A0%D7%A9%D7%9E%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 14px; background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; padding: 18px 22px; border-radius: 999px; text-decoration: none; box-shadow: 0 16px 32px -10px rgba(37, 211, 102, 0.55); max-width: 460px; margin: 0 auto 12px; transition: transform .15s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink: 0;"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+          <span style="flex: 1; line-height: 1.3; min-width: 0;">
+            <strong style="display: block; font-size: 16px; font-weight: 700;">כתבי לי בוואטסאפ עכשיו</strong>
+            <span style="font-size: 13px; opacity: 0.92;">תשובה ישירה · בלי טופס</span>
+          </span>
+          <span aria-hidden="true" style="font-size: 20px; flex-shrink: 0; opacity: 0.85;">←</span>
+        </a>
+        <div style="text-align: center; margin: 6px auto 14px; font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.6; color: inherit; max-width: 460px;">או השאירי פרטים בטופס</div>
+
+        <form class="leadform" action="https://formspree.io/f/xrejodol" method="POST" novalidate>
+          <div class="leadform__check">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f8479" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>שיחה אישית קצרה · הצגת תוכן הקורס · תשובות לשאלות שלך, בלי לחץ.</span>
+          </div>
+          <input type="hidden" name="course" value="שורש הנשמה" />
+          <div class="field">
+            <label for="ld-name">שם מלא</label>
+            <input type="text" id="ld-name" name="name" autocomplete="name" required minlength="2" />
+          </div>
+          <div class="field">
+            <label for="ld-email">דוא״ל <span style="opacity:0.65; font-size:12px;">(אופציונלי)</span></label>
+            <input type="email" id="ld-email" name="email" autocomplete="email" dir="ltr" />
+          </div>
+          <div class="field">
+            <label for="ld-phone">טלפון</label>
+            <input type="tel" id="ld-phone" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required pattern="^[0-9+\-\s()]{9,15}$" placeholder="050-1234567" />
+          </div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+          <button type="submit" class="btn-cta btn-cta--lg">
+            <span>שלחו פרטים</span>
+            <span aria-hidden="true">←</span>
+          </button>
+          <p class="leadform__note">בלחיצה על שליחה את/ה מסכים/ה שניצור איתך קשר לגבי הקורס.</p>
+        </form>
+
+        <div class="leadform" data-form-success hidden role="status" aria-live="polite" style="text-align: center;">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--sage); display: flex; align-items: center; justify-content: center; margin: 4px auto 16px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#faf6f1" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <strong style="display: block; font-family: var(--serif); font-size: 28px; color: var(--ink); margin-bottom: 8px;">תודה!</strong>
+          <p style="color: var(--muted); margin: 0 0 4px; font-size: 15.5px; line-height: 1.6;">הפרטים שלך התקבלו.<br/>נחזור אלייך תוך 24 שעות לשיחת התאמה אישית.</p>
+        </div>
+
+        <div data-form-error hidden role="alert" style="max-width: 460px; margin: 14px auto 0; background: rgba(245, 220, 211, 0.9); color: #7a3520; border: 1px solid #e8b6a3; border-radius: 14px; padding: 14px 16px; font-size: 14px; text-align: center;">
+          משהו השתבש בשליחה. אפשר לנסות שוב או לפנות ישירות בדוא״ל.
+        </div>
+
+        <p class="footer__tag" style="text-align: center; margin: 22px auto 0; color: rgba(246, 241, 236, 0.85); font-family: var(--serif); font-size: 17px; max-width: 30ch;">ריפוי אמיתי מתחיל כשאת חוזרת לשורש — ומתחברת למה שתמיד היה שם.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <div class="brand" style="justify-content:center;">
+          <span class="brand__name" style="color:var(--cream-soft);">אור הנשמה · שורש הנשמה</span>
+        </div>
+        <p class="footer__tag">ריפוי אמיתי מתחיל כשאת חוזרת לשורש.</p>
+      </div>
+      <div class="footer__contacts">
+        <a href="https://wa.me/972542957766" target="_blank" rel="noopener" dir="ltr">WhatsApp · 054-295-7766</a>
+        <a href="tel:+972542957766" dir="ltr">054-295-7766</a>
+      </div>
+      <div class="footer__base">
+        © <span id="year"></span> אור הנשמה · נטלי בכר · כל הזכויות שמורות
+        <span aria-hidden="true" style="margin: 0 6px; opacity: 0.4;">·</span>
+        <a href="privacy.html" style="color: var(--cta); text-decoration: underline; text-underline-offset: 3px;">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <a class="sticky-cta" href="https://wa.me/972542957766?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%98%D7%9C%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%AA%20%D7%91%D7%A7%D7%95%D7%A8%D7%A1%20%D7%A9%D7%95%D7%A8%D7%A9%20%D7%94%D7%A0%D7%A9%D7%9E%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." target="_blank" rel="noopener" aria-label="כתבי לי בוואטסאפ" style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;">
+    <span style="display:flex; align-items:center; gap:10px;">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink: 0;"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+      בוואטסאפ עכשיו
+    </span>
+    <span aria-hidden="true">←</span>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Inline field validation =====
+    (function () {
+      var rules = {
+        name: {
+          test: function (v) { return v.trim().length >= 2; },
+          msg: 'נא להזין שם מלא (לפחות 2 תווים)'
+        },
+        email: {
+          test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+          msg: 'נא להזין כתובת אימייל תקינה'
+        },
+        phone: {
+          test: function (v) {
+            var d = v.replace(/[^0-9]/g, '');
+            return d.length >= 9 && d.length <= 15;
+          },
+          msg: 'נא להזין מספר טלפון תקין'
+        }
+      };
+
+      function ruleFor(input) {
+        if (input.type === 'email') return rules.email;
+        if (input.type === 'tel') return rules.phone;
+        if (input.name === 'name') return rules.name;
+        return null;
+      }
+
+      function ensureErrorEl(input) {
+        if (!input.id) input.id = 'fld-' + Math.random().toString(36).slice(2, 8);
+        var sel = '[data-err-for="' + input.id + '"]';
+        var el = document.querySelector(sel);
+        if (el) return el;
+        el = document.createElement('span');
+        el.className = 'field-error';
+        el.setAttribute('data-err-for', input.id);
+        el.setAttribute('role', 'alert');
+        el.setAttribute('aria-live', 'polite');
+        el.hidden = true;
+        input.insertAdjacentElement('afterend', el);
+        return el;
+      }
+
+      function setError(input, msg) {
+        var el = ensureErrorEl(input);
+        el.textContent = msg || '';
+        el.hidden = !msg;
+        if (msg) {
+          input.classList.add('input-error');
+          input.setAttribute('aria-invalid', 'true');
+        } else {
+          input.classList.remove('input-error');
+          input.removeAttribute('aria-invalid');
+        }
+      }
+
+      function validateInput(input) {
+        var rule = ruleFor(input);
+        if (!rule) return true;
+        var v = input.value;
+        if (input.required && !v.trim()) {
+          setError(input, rule.msg);
+          return false;
+        }
+        if (!input.required && !v.trim()) {
+          setError(input, '');
+          return true;
+        }
+        if (!rule.test(v)) {
+          setError(input, rule.msg);
+          return false;
+        }
+        setError(input, '');
+        return true;
+      }
+
+      function attach(form) {
+        form.setAttribute('novalidate', '');
+        var inputs = form.querySelectorAll('input[type="text"][name="name"], input[type="email"], input[type="tel"]');
+        inputs.forEach(function (input) {
+          var touched = false;
+          input.addEventListener('blur', function () {
+            touched = true;
+            validateInput(input);
+          });
+          input.addEventListener('input', function () {
+            if (touched) validateInput(input);
+          });
+        });
+
+        form.addEventListener('submit', function (e) {
+          var firstInvalid = null;
+          inputs.forEach(function (input) {
+            if (!validateInput(input) && !firstInvalid) firstInvalid = input;
+          });
+          if (firstInvalid) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            firstInvalid.focus({ preventScroll: true });
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, true);
+      }
+
+      document.querySelectorAll('form').forEach(attach);
+    })();
+
+    function handleHero(e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      var success = document.querySelector('[data-hero-success]');
+      var errorEl = document.querySelector('[data-hero-error]');
+      if (success) success.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+      var originalHTML = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span>שולח…</span>'; }
+      var data = new FormData(form);
+      data.append('course', 'שורש הנשמה');
+      fetch('https://formspree.io/f/xrejodol', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('submit_failed');
+        form.reset();
+        form.style.display = 'none';
+        if (success) {
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (typeof fbq !== 'undefined') { try { fbq('track', 'Lead'); } catch (e) {} }
+      })
+      .catch(function () {
+        if (errorEl) errorEl.hidden = false;
+        if (btn) { btn.disabled = false; btn.innerHTML = originalHTML; }
+      });
+      return false;
+    }
+
+    (function () {
+      var form = document.querySelector('form[action*="formspree.io"]');
+      if (!form) return;
+      var section = form.closest('section') || form.parentElement;
+      var success = section.querySelector('[data-form-success]');
+      var errorEl = section.querySelector('[data-form-error]');
+      var btn = form.querySelector('button[type="submit"]');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (success) success.hidden = true;
+        if (errorEl) errorEl.hidden = true;
+        var originalHTML = btn ? btn.innerHTML : '';
+        if (btn) { btn.disabled = true; btn.innerHTML = '<span>שולח…</span>'; }
+        fetch(form.action, {
+          method: 'POST', body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('submit_failed');
+          form.reset();
+          form.style.display = 'none';
+          if (success) {
+            success.hidden = false;
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          if (typeof fbq !== 'undefined') { try { fbq('track', 'Lead'); } catch (e) {} }
+        })
+        .catch(function () {
+          if (errorEl) { errorEl.hidden = false; errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+          if (btn) { btn.disabled = false; btn.innerHTML = originalHTML; }
+        });
+      });
+    })();
+
+    document.querySelectorAll('a[href*="wa.me/972542957766"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof fbq !== 'undefined') { try { fbq('track', 'Contact'); } catch (e) {} }
+      });
+    });
+  </script>
+</body>
+</html>
