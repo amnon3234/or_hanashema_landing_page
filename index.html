@@ -673,6 +673,24 @@
       border-top: 1px solid rgba(246, 241, 236, 0.15);
     }
 
+    /* ===== Inline field validation ===== */
+    .input-error,
+    input.input-error,
+    .quickform input.input-error,
+    .leadform input.input-error {
+      border-color: #c0584a;
+      background: rgba(245, 220, 211, 0.35);
+    }
+    .field-error {
+      display: block;
+      margin-top: 6px;
+      font-size: 12.5px;
+      line-height: 1.4;
+      color: #7a3520;
+      text-align: right;
+    }
+    .field-error[hidden] { display: none; }
+
     /* ===== Sticky mobile CTA ===== */
     .sticky-cta {
       position: fixed;
@@ -773,6 +791,18 @@
             </button>
           </div>
         </form>
+
+        <div class="quickform" data-hero-success hidden role="status" aria-live="polite" style="text-align: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--sage); display: flex; align-items: center; justify-content: center; margin: 4px auto 14px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#faf6f1" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <strong style="display: block; font-family: var(--serif); font-size: 26px; color: var(--ink); margin-bottom: 8px;">תודה!</strong>
+          <p style="color: var(--muted); margin: 0; font-size: 15px; line-height: 1.6;">הפרטים שלך התקבלו.<br/>אחזור אלייך תוך 24 שעות.</p>
+        </div>
+
+        <div data-hero-error hidden role="alert" style="background: rgba(245, 220, 211, 0.9); color: #7a3520; border: 1px solid #e8b6a3; border-radius: 14px; padding: 12px 14px; font-size: 14px; text-align: center; margin: 0 auto 18px;">
+          משהו השתבש בשליחה. אפשר לנסות שוב או לפנות בוואטסאפ.
+        </div>
 
         <div class="micro" aria-label="הבטחות מהירות">
           <span><span class="dot"></span>ללא התחייבות</span>
@@ -1063,6 +1093,7 @@
         </a>
         <div style="text-align: center; margin: 6px auto 14px; font-size: 12.5px; letter-spacing: 0.1em; opacity: 0.6; color: inherit; max-width: 460px;">או השאירי פרטים בטופס</div>
 
+        <!-- Test Formspree endpoint (swap action to enable): https://formspree.io/f/mwvyalla -->
         <form class="leadform" action="https://formspree.io/f/xrejodol" method="POST" novalidate>
           <div class="leadform__check">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f8479" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1073,8 +1104,8 @@
             <input type="text" id="ld-name" name="name" autocomplete="name" required minlength="2" />
           </div>
           <div class="field">
-            <label for="ld-email">דוא״ל</label>
-            <input type="email" id="ld-email" name="email" autocomplete="email" required dir="ltr" />
+            <label for="ld-email">דוא״ל <span style="opacity:0.65; font-size:12px;">(אופציונלי)</span></label>
+            <input type="email" id="ld-email" name="email" autocomplete="email" dir="ltr" />
           </div>
           <div class="field">
             <label for="ld-phone">טלפון</label>
@@ -1136,16 +1167,143 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Inline field validation =====
+    (function () {
+      var rules = {
+        name: {
+          test: function (v) { return v.trim().length >= 2; },
+          msg: 'נא להזין שם מלא (לפחות 2 תווים)'
+        },
+        email: {
+          test: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+          msg: 'נא להזין כתובת אימייל תקינה'
+        },
+        phone: {
+          test: function (v) {
+            var d = v.replace(/[^0-9]/g, '');
+            return d.length >= 9 && d.length <= 15;
+          },
+          msg: 'נא להזין מספר טלפון תקין'
+        }
+      };
+
+      function ruleFor(input) {
+        if (input.type === 'email') return rules.email;
+        if (input.type === 'tel') return rules.phone;
+        if (input.name === 'name') return rules.name;
+        return null;
+      }
+
+      function ensureErrorEl(input) {
+        if (!input.id) input.id = 'fld-' + Math.random().toString(36).slice(2, 8);
+        var sel = '[data-err-for="' + input.id + '"]';
+        var el = document.querySelector(sel);
+        if (el) return el;
+        el = document.createElement('span');
+        el.className = 'field-error';
+        el.setAttribute('data-err-for', input.id);
+        el.setAttribute('role', 'alert');
+        el.setAttribute('aria-live', 'polite');
+        el.hidden = true;
+        input.insertAdjacentElement('afterend', el);
+        return el;
+      }
+
+      function setError(input, msg) {
+        var el = ensureErrorEl(input);
+        el.textContent = msg || '';
+        el.hidden = !msg;
+        if (msg) {
+          input.classList.add('input-error');
+          input.setAttribute('aria-invalid', 'true');
+        } else {
+          input.classList.remove('input-error');
+          input.removeAttribute('aria-invalid');
+        }
+      }
+
+      function validateInput(input) {
+        var rule = ruleFor(input);
+        if (!rule) return true;
+        var v = input.value;
+        if (input.required && !v.trim()) {
+          setError(input, rule.msg);
+          return false;
+        }
+        if (!input.required && !v.trim()) {
+          setError(input, '');
+          return true;
+        }
+        if (!rule.test(v)) {
+          setError(input, rule.msg);
+          return false;
+        }
+        setError(input, '');
+        return true;
+      }
+
+      function attach(form) {
+        form.setAttribute('novalidate', '');
+        var inputs = form.querySelectorAll('input[type="text"][name="name"], input[type="email"], input[type="tel"]');
+        inputs.forEach(function (input) {
+          var touched = false;
+          input.addEventListener('blur', function () {
+            touched = true;
+            validateInput(input);
+          });
+          input.addEventListener('input', function () {
+            if (touched) validateInput(input);
+          });
+        });
+
+        form.addEventListener('submit', function (e) {
+          var firstInvalid = null;
+          inputs.forEach(function (input) {
+            if (!validateInput(input) && !firstInvalid) firstInvalid = input;
+          });
+          if (firstInvalid) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            firstInvalid.focus({ preventScroll: true });
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, true);
+      }
+
+      document.querySelectorAll('form').forEach(attach);
+    })();
+
     function handleHero(e) {
       e.preventDefault();
-      const f = e.target;
-      const data = new FormData(f);
-      const target = document.getElementById('lead');
-      const ldName = document.getElementById('ld-name');
-      const ldPhone = document.getElementById('ld-phone');
-      if (ldName) ldName.value = data.get('name') || '';
-      if (ldPhone) ldPhone.value = data.get('phone') || '';
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var form = e.target;
+      var btn = form.querySelector('button[type="submit"]');
+      var success = document.querySelector('[data-hero-success]');
+      var errorEl = document.querySelector('[data-hero-error]');
+      if (success) success.hidden = true;
+      if (errorEl) errorEl.hidden = true;
+      var originalHTML = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span>שולח…</span>'; }
+      // Test endpoint (swap to enable): 'https://formspree.io/f/mwvyalla'
+      fetch('https://formspree.io/f/xrejodol', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('submit_failed');
+        form.reset();
+        form.style.display = 'none';
+        if (success) {
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (typeof fbq !== 'undefined') { try { fbq('track', 'Lead'); } catch (e) {} }
+      })
+      .catch(function () {
+        if (errorEl) errorEl.hidden = false;
+        if (btn) { btn.disabled = false; btn.innerHTML = originalHTML; }
+      });
       return false;
     }
 
