@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#8fa69a" />
   <title>הבושם של המספר שלך · אור הנשמה</title>
-  <meta name="description" content="הריח שמושך אליך אנשים — לפי המספר שקיבלת באינסטגרם. מהיוצרות של אור הנשמה ושיטת מצפן הנשמה®." />
+  <meta name="description" content="הריח שמושך אליך אנשים, לפי המספר שקיבלת באינסטגרם. מהיוצרות של אור הנשמה ושיטת מצפן הנשמה®." />
   <meta property="og:title" content="הבושם של המספר שלך · אור הנשמה" />
   <meta property="og:description" content="לכל אנרגיה יש שפת ריחות משלה. גלי איזה ריח באמת מסתדר איתך." />
   <meta property="og:type" content="website" />
@@ -212,21 +212,29 @@
       margin: 0 0 12px;
     }
     .scent__notes {
-      display: inline-block;
+      display: block;
       background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 13.5px;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14.5px;
       color: var(--ink);
       margin: 0 0 18px;
-      line-height: 1.4;
+      line-height: 1.55;
+      border-right: 3px solid var(--scent-accent, var(--sage));
     }
     .scent__notes b {
       font-family: var(--serif);
       font-weight: 400;
       color: var(--scent-accent, var(--sage-deep));
       margin-inline-end: 4px;
+    }
+    .scent__ex-lbl {
+      font-family: var(--serif);
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--scent-accent, var(--sage-deep));
+      margin: 0 0 10px;
     }
     .scent__sig {
       margin: 14px 0 0;
@@ -461,7 +469,7 @@
             <circle cx="178" cy="170" r="2" fill="#cec0b0"/>
           </svg>
         </div>
-        <p class="hero__sub">לכל אנרגיה יש שפת ריחות משלה. בחרי את המספר שקיבלת באינסטגרם וגלי איזה ריח באמת מסתדר איתך — ולמה אנשים נמשכים אלייך בלי להבין למה.</p>
+        <p class="hero__sub">לכל אנרגיה יש שפת ריחות משלה. בחרי את המספר שקיבלת באינסטגרם וגלי איזה ריח באמת מסתדר איתך, ולמה אנשים נמשכים אלייך בלי להבין למה.</p>
       </div>
 
       <!-- BIG PICKER -->
@@ -521,8 +529,9 @@
               <h2 class="scent__title">ביטחון שאי אפשר להתעלם ממנו ✨</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך היא של מנהיגה. מה שממגנט אצלך זה ביטחון ונוכחות שאי אפשר להתעלם ממנה. בשבילך עובדים הכי טוב ריחות דומיננטיים, עמוקים ויוקרתיים — כאלה שנשארים באוויר גם אחרי שאת הולכת.</p>
-          <p class="scent__notes"><b>תווים:</b> אמבר · עצים · תבלינים · נגיעות אוד</p>
+          <p class="scent__body">האנרגיה שלך היא של מנהיגה. מה שממגנט אצלך זה ביטחון ונוכחות שאי אפשר להתעלם ממנה.<br/>בשבילך עובדים הכי טוב ריחות דומיננטיים, עמוקים ויוקרתיים, כאלה שנשארים באוויר גם אחרי שאת הולכת.</p>
+          <p class="scent__notes">חפשי בשמים עם תווים של אמבר, עצים, תבלינים או נגיעות אוד.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -534,7 +543,7 @@
                   <rect x="20" y="38" width="20" height="28" rx="2" fill="#1a1208" opacity="0.45"/>
                 </svg>
               </div>
-              <span class="bottle__brand">YSL</span>
+              <span class="bottle__brand">Yves Saint Laurent</span>
               <span class="bottle__name">Libre Intense</span>
             </div>
             <div class="bottle">
@@ -560,7 +569,7 @@
                   <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="9" fill="#fff" opacity="0.7">Sì</text>
                 </svg>
               </div>
-              <span class="bottle__brand">Armani</span>
+              <span class="bottle__brand">Giorgio Armani</span>
               <span class="bottle__name">Sì Intense</span>
             </div>
           </div>
@@ -576,8 +585,9 @@
               <h2 class="scent__title">רכות שמושכת לבבות 💫</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך עדינה, רגשית ומקרבת. מה שממגנט אצלך זה הרכות והנשיות הטבעית. ריחות פרחוניים נקיים עם נגיעה של מאסק עובדים עלייך מושלם וגורמים לאנשים להרגיש בנוח לידך.</p>
-          <p class="scent__notes"><b>תווים:</b> יסמין · ורדים · פרחים לבנים · מאסק עדין</p>
+          <p class="scent__body">האנרגיה שלך עדינה, רגשית ומקרבת. מה שממגנט אצלך זה הרכות והנשיות הטבעית.<br/>ריחות פרחוניים נקיים עם נגיעה של מאסק עובדים עלייך מושלם וגורמים לאנשים להרגיש בנוח לידך.</p>
+          <p class="scent__notes">חפשי תווים של יסמין, ורדים, פרחים לבנים ומאסק עדין.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -602,7 +612,7 @@
                 </svg>
               </div>
               <span class="bottle__brand">Dior</span>
-              <span class="bottle__name">J'adore EDP</span>
+              <span class="bottle__name">J'adore Eau de Parfum</span>
             </div>
             <div class="bottle">
               <div class="bottle__art">
@@ -631,8 +641,9 @@
               <h2 class="scent__title">הווייב שמושך בלי לחשוב פעמיים 🍓</h2>
             </div>
           </div>
-          <p class="scent__body">יש לך אנרגיה שמחה, קלילה וסופר כריזמטית. מה שממגנט אצלך זה הווייב הפלרטטני והכיפי. בשמים מתוקים עם נגיעות פירותיות או וניל מדגישים בדיוק את זה.</p>
-          <p class="scent__notes"><b>תווים:</b> פירות · קרמל · וניל · פרחים מתוקים</p>
+          <p class="scent__body">יש לך אנרגיה שמחה, קלילה וסופר כריזמטית. מה שממגנט אצלך זה הווייב הפלרטטני והכיפי.<br/>בשמים מתוקים עם נגיעות פירותיות או וניל מדגישים בדיוק את זה.</p>
+          <p class="scent__notes">חפשי תווים של פירות, קרמל, וניל או פרחים מתוקים.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -643,7 +654,7 @@
                   <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="8" fill="#fff" opacity="0.85" letter-spacing="1">MON PARIS</text>
                 </svg>
               </div>
-              <span class="bottle__brand">YSL</span>
+              <span class="bottle__brand">Yves Saint Laurent</span>
               <span class="bottle__name">Mon Paris</span>
             </div>
             <div class="bottle">
@@ -654,7 +665,7 @@
                   <path d="M10 32 Q 30 12 50 32 L 50 76 Q 50 86 40 86 L 20 86 Q 10 86 10 76 Z" fill="url(#b3b)"/>
                 </svg>
               </div>
-              <span class="bottle__brand">V&amp;R</span>
+              <span class="bottle__brand">Viktor &amp; Rolf</span>
               <span class="bottle__name">Flowerbomb</span>
             </div>
             <div class="bottle">
@@ -665,11 +676,11 @@
                   <path d="M16 16 Q 16 12 20 12 L 40 12 Q 44 12 44 16 L 48 86 L 12 86 Z" fill="url(#b3c)"/>
                 </svg>
               </div>
-              <span class="bottle__brand">Ariana G.</span>
+              <span class="bottle__brand">Ariana Grande</span>
               <span class="bottle__name">Cloud</span>
             </div>
           </div>
-          <p class="scent__sig">אנשים פשוט נמשכים אליו בלי לחשוב פעמיים 🍓</p>
+          <p class="scent__sig">זה ריח שאנשים פשוט נמשכים אליו בלי לחשוב פעמיים 🍓</p>
         </article>
 
         <!-- ============ 4 ============ -->
@@ -681,8 +692,9 @@
               <h2 class="scent__title">השקט הטוב שאת משאירה אחרייך 🌱</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך יציבה, רגועה ואמינה. מה שממגנט אצלך זה תחושת הביטחון והקרקוע. ריחות נקיים, ירוקים או עציים עדינים עובדים עלייך הכי טוב.</p>
-          <p class="scent__notes"><b>תווים:</b> תה · עשבים · עצים רכים · מאסק נקי</p>
+          <p class="scent__body">האנרגיה שלך יציבה, רגועה ואמינה. מה שממגנט אצלך זה תחושת הביטחון והקרקוע.<br/>ריחות נקיים, ירוקים או עציים עדינים עובדים עלייך הכי טוב.</p>
+          <p class="scent__notes">חפשי תווים של תה, עשבים, עצים רכים ומאסק נקי.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -723,7 +735,7 @@
               <span class="bottle__name">Blanche</span>
             </div>
           </div>
-          <p class="scent__sig">"שקט טוב" — זה מה שאנשים מרגישים לידך 🌱</p>
+          <p class="scent__sig">זה ריח שגורם לאנשים להרגיש "שקט טוב" לידך 🌱</p>
         </article>
 
         <!-- ============ 5 ============ -->
@@ -735,8 +747,9 @@
               <h2 class="scent__title">חוסר הצפיות הוא הקסם שלך 🔥</h2>
             </div>
           </div>
-          <p class="scent__body">מה שממגנט אצלך זה דווקא חוסר הצפיות. אי אפשר לדעת איזה וייב תביאי היום וזה מה שמושך. לא נכון לך להיצמד לבושם אחד — את צריכה כמה ריחות שונים לפי מצב רוח.</p>
-          <p class="scent__notes"><b>המלצה:</b> 2–3 בשמים שונים: אחד קליל · אחד מתוק · אחד עמוק</p>
+          <p class="scent__body">מה שממגנט אצלך זה דווקא חוסר הצפיות. אי אפשר לדעת איזה וייב תביאי היום וזה מה שמושך.<br/>לא נכון לך להיצמד לבושם אחד. את צריכה כמה ריחות שונים לפי מצב רוח.</p>
+          <p class="scent__notes"><b>המלצה:</b><br/>להחזיק 2–3 בשמים שונים: אחד קליל, אחד מתוק ואחד עמוק יותר.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -748,8 +761,8 @@
                   <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="6" fill="#2a4a5a">Beach Walk</text>
                 </svg>
               </div>
-              <span class="bottle__brand">Margiela</span>
-              <span class="bottle__name">Beach Walk · קליל</span>
+              <span class="bottle__brand">Maison Margiela</span>
+              <span class="bottle__name">Replica Beach Walk (קליל)</span>
             </div>
             <div class="bottle">
               <div class="bottle__art">
@@ -761,7 +774,7 @@
                 </svg>
               </div>
               <span class="bottle__brand">Lancôme</span>
-              <span class="bottle__name">La Vie Est Belle · מתוק</span>
+              <span class="bottle__name">La Vie Est Belle (מתוק)</span>
             </div>
             <div class="bottle">
               <div class="bottle__art">
@@ -772,11 +785,11 @@
                   <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="7" fill="#caa055" letter-spacing="1">BLACK OPIUM</text>
                 </svg>
               </div>
-              <span class="bottle__brand">YSL</span>
-              <span class="bottle__name">Black Opium · עמוק</span>
+              <span class="bottle__brand">Yves Saint Laurent</span>
+              <span class="bottle__name">Black Opium (עמוק)</span>
             </div>
           </div>
-          <p class="scent__sig">הקסם שלך הוא בגיוון — וזה מה שממגנט הכי חזק 🔥</p>
+          <p class="scent__sig">הקסם שלך הוא בגיוון וזה מה שממגנט הכי חזק אצלך 🔥</p>
         </article>
 
         <!-- ============ 6 ============ -->
@@ -788,8 +801,9 @@
               <h2 class="scent__title">החום שגורם לאנשים להישאר 🤍</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך אוהבת, עוטפת ומחברת. מה שממגנט אצלך זה תחושת החום והביטחון. ריחות של וניל, אבקה ומושק רך עובדים עלייך מושלם.</p>
-          <p class="scent__notes"><b>תווים:</b> וניל · טונקה · פרחים רכים · פודרה</p>
+          <p class="scent__body">האנרגיה שלך אוהבת, עוטפת ומחברת. מה שממגנט אצלך זה תחושת החום והביטחון.<br/>ריחות של וניל, אבקה ומושק רך עובדים עלייך מושלם.</p>
+          <p class="scent__notes">חפשי תווים של וניל, טונקה, פרחים רכים ופודרה.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -826,11 +840,11 @@
                   <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="6" fill="#6a4a2a">rodriguez</text>
                 </svg>
               </div>
-              <span class="bottle__brand">Narciso R.</span>
+              <span class="bottle__brand">Narciso Rodriguez</span>
               <span class="bottle__name">Poudrée</span>
             </div>
           </div>
-          <p class="scent__sig">ריח שגורם לאנשים לרצות להתקרב — ולהישאר 🤍</p>
+          <p class="scent__sig">זה ריח שגורם לאנשים לרצות להתקרב ולהישאר 🤍</p>
         </article>
 
         <!-- ============ 7 ============ -->
@@ -842,8 +856,9 @@
               <h2 class="scent__title">האנרגיה שלא יוצאת מהראש 🌙</h2>
             </div>
           </div>
-          <p class="scent__body">יש לך עומק ומסתורין טבעי. מה שממגנט אצלך זה האנרגיה שלא כולם מצליחים לפענח. ריחות עציים, קטורת וסנדלווד מדגישים בדיוק את זה.</p>
-          <p class="scent__notes"><b>תווים:</b> Sandalwood · ענבר כהה · מאסק עמוק</p>
+          <p class="scent__body">יש לך עומק ומסתורין טבעי. מה שממגנט אצלך זה האנרגיה שלא כולם מצליחים לפענח.<br/>ריחות עציים, קטורת וסנדלווד מדגישים בדיוק את זה.</p>
+          <p class="scent__notes">חפשי תווים של sandalwood, ענבר כהה, מאסק עמוק.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -881,11 +896,11 @@
                   <text x="30" y="46" text-anchor="middle" font-family="serif" font-size="5" fill="#2a2a2a" letter-spacing="0.5">Not a Perfume</text>
                 </svg>
               </div>
-              <span class="bottle__brand">Juliette HG</span>
+              <span class="bottle__brand">Juliette Has a Gun</span>
               <span class="bottle__name">Not a Perfume</span>
             </div>
           </div>
-          <p class="scent__sig">ריח שמשאיר סקרנות — ולא יוצא מהראש 🌙</p>
+          <p class="scent__sig">זה ריח שמשאיר סקרנות ולא יוצא מהראש 🌙</p>
         </article>
 
         <!-- ============ 8 ============ -->
@@ -897,8 +912,9 @@
               <h2 class="scent__title">הריח שלא שוכחים 👑</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך חזקה ודומיננטית. מה שממגנט אצלך זה כוח ונוכחות. בשמים עמוקים, עשירים וקצת 'נועזים' עובדים עלייך הכי טוב.</p>
-          <p class="scent__notes"><b>תווים:</b> עור · אמבר · פצ׳ולי · תבלינים</p>
+          <p class="scent__body">האנרגיה שלך חזקה ודומיננטית. מה שממגנט אצלך זה כוח ונוכחות.<br/>בשמים עמוקים, עשירים וקצת 'נועזים' עובדים עלייך הכי טוב.</p>
+          <p class="scent__notes">חפשי תווים של עור, אמבר, פצ׳ולי ותבלינים.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -922,7 +938,7 @@
                   <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="7" fill="#caa055" letter-spacing="1">BLACK OPIUM</text>
                 </svg>
               </div>
-              <span class="bottle__brand">YSL</span>
+              <span class="bottle__brand">Yves Saint Laurent</span>
               <span class="bottle__name">Black Opium</span>
             </div>
             <div class="bottle">
@@ -934,11 +950,11 @@
                   <text x="30" y="54" text-anchor="middle" font-family="serif" font-size="6" fill="#3a1a0a">GOOD GIRL</text>
                 </svg>
               </div>
-              <span class="bottle__brand">C. Herrera</span>
+              <span class="bottle__brand">Carolina Herrera</span>
               <span class="bottle__name">Good Girl</span>
             </div>
           </div>
-          <p class="scent__sig">זה הריח שפשוט לא שוכחים 👑</p>
+          <p class="scent__sig">זה ריח שלא שוכחים 👑</p>
         </article>
 
         <!-- ============ 9 ============ -->
@@ -947,11 +963,12 @@
             <span class="scent__num">9</span>
             <div>
               <p class="scent__kicker">האוניברסלית · חיבור רחב</p>
-              <h2 class="scent__title">ריח שמרגיש אחר — וזה הקסם 🌍</h2>
+              <h2 class="scent__title">ריח שמרגיש אחר, וזה הקסם 🌍</h2>
             </div>
           </div>
-          <p class="scent__body">האנרגיה שלך אוניברסלית, רחבה ומחברת. מה שממגנט אצלך זה משהו לא צפוי וקצת שונה. ריחות יוניסקס עם שילוב של הדרים, עצים ומאסק עובדים עלייך מדהים.</p>
-          <p class="scent__notes"><b>תווים:</b> הדרים · עצים · מאסק · יוניסקס מיוחד</p>
+          <p class="scent__body">האנרגיה שלך אוניברסלית, רחבה ומחברת. מה שממגנט אצלך זה משהו לא צפוי וקצת שונה.<br/>ריחות יוניסקס עם שילוב של הדרים, עצים ומאסק עובדים עלייך מדהים.</p>
+          <p class="scent__notes">חפשי בשמים מיוחדים וכאלה שהם לא 'רק נשיים'.</p>
+          <p class="scent__ex-lbl">דוגמאות</p>
           <div class="bottles">
             <div class="bottle">
               <div class="bottle__art">
@@ -963,7 +980,7 @@
                   <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="9" fill="#5a1a1a">540</text>
                 </svg>
               </div>
-              <span class="bottle__brand">MFK</span>
+              <span class="bottle__brand">Maison Francis Kurkdjian</span>
               <span class="bottle__name">Baccarat Rouge 540</span>
             </div>
             <div class="bottle">
@@ -975,7 +992,7 @@
                   <text x="30" y="54" text-anchor="middle" font-family="serif" font-size="9" fill="#5a6878">01</text>
                 </svg>
               </div>
-              <span class="bottle__brand">Molecules</span>
+              <span class="bottle__brand">Escentric Molecules</span>
               <span class="bottle__name">Molecule 01</span>
             </div>
             <div class="bottle">
@@ -992,7 +1009,7 @@
               <span class="bottle__name">Mojave Ghost</span>
             </div>
           </div>
-          <p class="scent__sig">ריח שמרגיש אחר — וזה בדיוק מה שמושך אלייך אנשים 🌍</p>
+          <p class="scent__sig">זה ריח שמרגיש אחר וזה בדיוק מה שמושך אלייך אנשים 🌍</p>
         </article>
 
       </div>
@@ -1004,14 +1021,14 @@
         <div class="scent-bridge__avatar">
           <img src="assets/anna-portrait.jpg" alt="אנה אשכנזי · אור הנשמה" loading="lazy" />
         </div>
-        <p class="sec__kicker">הנתון הזה — הוא רק התחלה</p>
+        <p class="sec__kicker">הנתון הזה הוא רק התחלה</p>
         <h2>הנתון שלך מספר<br/><em>הרבה יותר מבושם.</em></h2>
         <p>במפה הנומרולוגית שלך, אפשר לראות הרבה יותר מאיזה בושם הכי נכון לך. מה האופי שלך, החוזקות שלך, החולשות שלך, איך את אוהבת, איך את עובדת, מה את מסתירה ומה מניע אותך באמת. זה מה שאני מלמדת בקורס מצפן הנשמה ועוד הרבה מעבר.</p>
         <a href="compass.html" class="btn-cta">
           <span>קורס מצפן הנשמה®</span>
           <span aria-hidden="true">←</span>
         </a>
-        <p class="scent-bridge__more">או <a href="index.html">חזרה לאור הנשמה</a> — שני הקורסים שלנו</p>
+        <p class="scent-bridge__more">או <a href="index.html">חזרה לאור הנשמה</a> · שני הקורסים שלנו</p>
       </div>
     </section>
 
@@ -1038,7 +1055,7 @@
           <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;" />
           <span class="brand__name" style="color:var(--cream-soft);">אור הנשמה</span>
         </div>
-        <p class="footer__tag">המספר שלך — מספר עליך הרבה יותר ממה שאת חושבת.</p>
+        <p class="footer__tag">המספר שלך מספר עליך הרבה יותר ממה שאת חושבת.</p>
       </div>
       <div class="footer__contacts">
         <a href="index.html">אור הנשמה</a>
