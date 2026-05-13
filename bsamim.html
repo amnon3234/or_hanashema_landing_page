@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#8fa69a" />
+  <title>הבושם של המספר שלך · אור הנשמה</title>
+  <meta name="description" content="הריח שמושך אליך אנשים — לפי המספר שקיבלת באינסטגרם. מהיוצרות של אור הנשמה ושיטת מצפן הנשמה®." />
+  <meta property="og:title" content="הבושם של המספר שלך · אור הנשמה" />
+  <meta property="og:description" content="לכל אנרגיה יש שפת ריחות משלה. גלי איזה ריח באמת מסתדר איתך." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1113978282997787');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1113978282997787&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    section { scroll-margin-top: 132px; }
+
+    /* ===== Hero override ===== */
+    .scent-hero { padding: 36px 0 18px; }
+    .scent-hero .hero__title { font-size: clamp(36px, 9.5vw, 56px); margin-bottom: 14px; }
+    .scent-hero .hero__sub { max-width: 30ch; }
+    .scent-hero__deco {
+      width: 200px; height: 200px;
+      margin: 4px auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .scent-hero__deco svg { width: 100%; height: 100%; }
+
+    /* ===== Sticky number ribbon ===== */
+    .num-ribbon {
+      position: sticky;
+      top: 64px;
+      z-index: 30;
+      background: rgba(246, 241, 236, 0.96);
+      backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+    .num-ribbon__inner {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+      padding: 0 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .num-ribbon__inner::-webkit-scrollbar { display: none; }
+    .num-ribbon__inner { scrollbar-width: none; }
+    .num-ribbon a {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      text-decoration: none;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .num-ribbon a:hover {
+      background: var(--sage);
+      color: var(--cream-soft);
+      transform: translateY(-1px);
+    }
+    .num-ribbon__lbl {
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin-inline-end: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Big picker (hero) ===== */
+    .big-picker {
+      padding: 14px 0 36px;
+    }
+    .big-picker__lede {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14.5px;
+      margin: 0 0 18px;
+    }
+    .big-picker__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .pick {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      transition: transform .15s ease, border-color .15s ease;
+      overflow: hidden;
+    }
+    .pick::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--pick-tint, transparent);
+      opacity: 0.22;
+      transition: opacity .15s ease;
+    }
+    .pick:hover {
+      transform: translateY(-2px);
+      border-color: var(--sage);
+    }
+    .pick:hover::before { opacity: 0.4; }
+    .pick__num {
+      position: relative;
+      font-family: var(--serif);
+      font-size: 38px;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .pick__lbl {
+      position: relative;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    /* ===== Scent sections ===== */
+    .scents { padding: 8px 0 12px; }
+    .scent {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      padding: 28px 22px 24px;
+      box-shadow: var(--shadow-soft);
+      margin: 0 auto 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .scent::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; left: 0;
+      height: 4px;
+      background: var(--scent-accent, var(--sage));
+    }
+    .scent__head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .scent__num {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-size: 30px;
+      color: var(--cream-soft);
+      background: var(--scent-accent, var(--sage));
+      box-shadow: 0 8px 18px -8px var(--scent-accent, var(--sage));
+    }
+    .scent__kicker {
+      font-family: var(--serif);
+      font-size: 11.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--scent-accent, var(--sage-deep));
+      margin: 0 0 4px;
+    }
+    .scent__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(22px, 5.5vw, 26px);
+      line-height: 1.15;
+      margin: 0;
+      color: var(--ink);
+    }
+    .scent__body {
+      color: var(--ink);
+      font-size: 15.5px;
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+    .scent__notes {
+      display: inline-block;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13.5px;
+      color: var(--ink);
+      margin: 0 0 18px;
+      line-height: 1.4;
+    }
+    .scent__notes b {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--scent-accent, var(--sage-deep));
+      margin-inline-end: 4px;
+    }
+    .scent__sig {
+      margin: 14px 0 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--scent-accent, var(--sage-deep));
+      text-align: center;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line);
+    }
+
+    /* ===== Bottle cards ===== */
+    .bottles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 0 0 6px;
+    }
+    .bottle {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 10px 12px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      gap: 8px;
+      transition: transform .2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .bottle:hover { transform: translateY(-3px); }
+    .bottle__art {
+      width: 56px; height: 78px;
+      position: relative;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .bottle__art svg { width: 100%; height: 100%; }
+    .bottle__brand {
+      font-family: var(--serif);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--scent-accent, var(--sage-deep));
+      line-height: 1.1;
+    }
+    .bottle__name {
+      font-size: 12px;
+      color: var(--ink);
+      line-height: 1.3;
+      min-height: 30px;
+    }
+
+    /* ===== Bridge to Anna ===== */
+    .scent-bridge {
+      background: linear-gradient(180deg, var(--cream-soft) 0%, #efe6d8 100%);
+      padding: 48px 0 44px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 28px;
+    }
+    .scent-bridge h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(26px, 6vw, 34px);
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .scent-bridge h2 em { color: var(--sage-deep); font-style: italic; }
+    .scent-bridge p {
+      max-width: 36ch;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .scent-bridge__avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      border: 3px solid #fff;
+      box-shadow: var(--shadow-soft);
+    }
+    .scent-bridge__avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .scent-bridge .btn-cta {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .scent-bridge__more {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .scent-bridge__more a {
+      color: var(--sage-deep);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ===== WhatsApp section ===== */
+    .wa-section {
+      background: var(--ink);
+      color: var(--cream-soft);
+      padding: 48px 0 44px;
+      text-align: center;
+    }
+    .wa-section .sec__kicker { color: var(--cta); }
+    .wa-section h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(26px, 6vw, 32px);
+      margin: 0 0 12px;
+      color: var(--cream-soft);
+    }
+    .wa-section p {
+      max-width: 34ch;
+      margin: 0 auto 24px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 16px 32px -10px rgba(37, 211, 102, 0.55);
+      transition: transform .15s ease;
+    }
+    .wa-btn:hover { transform: translateY(-2px); }
+    .wa-btn svg { flex-shrink: 0; }
+
+    /* ===== Tablet + ===== */
+    @media (min-width: 720px) {
+      .scent-hero { padding: 64px 0 32px; }
+      .big-picker__grid { gap: 14px; }
+      .pick__num { font-size: 46px; }
+      .scent { padding: 36px 32px 30px; max-width: 720px; }
+      .scent__head { grid-template-columns: auto 1fr auto; }
+      .scent__num { width: 80px; height: 80px; font-size: 38px; }
+      .bottles { gap: 14px; }
+      .bottle { padding: 18px 12px 14px; }
+      .bottle__art { width: 64px; height: 90px; }
+      .num-ribbon { top: 68px; }
+      section { scroll-margin-top: 140px; }
+    }
+
+    /* Hide sticky CTA on >= tablet (handled in shared styles too) */
+    @media (min-width: 720px) {
+      body { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top thin announcement -->
+  <div class="ann" role="status">
+    <b>קיבלת את המספר שלך באינסטגרם?</b> · גוללי לסעיף שלך למטה
+  </div>
+
+  <!-- Sticky header -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html" aria-label="חזרה לאור הנשמה">
+        <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" />
+        <span class="brand__name">אור הנשמה</span>
+      </a>
+      <a class="topbar__cta" href="#anna-bridge">עוד על אנה <span aria-hidden="true">←</span></a>
+    </div>
+  </header>
+
+  <!-- Sticky number ribbon -->
+  <nav class="num-ribbon" aria-label="קפצי למספר שלך">
+    <div class="num-ribbon__inner">
+      <span class="num-ribbon__lbl">המספר שלי ←</span>
+      <a href="#n1" aria-label="עברי למספר 1">1</a>
+      <a href="#n2" aria-label="עברי למספר 2">2</a>
+      <a href="#n3" aria-label="עברי למספר 3">3</a>
+      <a href="#n4" aria-label="עברי למספר 4">4</a>
+      <a href="#n5" aria-label="עברי למספר 5">5</a>
+      <a href="#n6" aria-label="עברי למספר 6">6</a>
+      <a href="#n7" aria-label="עברי למספר 7">7</a>
+      <a href="#n8" aria-label="עברי למספר 8">8</a>
+      <a href="#n9" aria-label="עברי למספר 9">9</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero scent-hero">
+      <div class="wrap">
+        <div class="hero__deco" aria-hidden="true"></div>
+        <p class="hero__eyebrow">המספר שגילית · אור הנשמה</p>
+        <h1 class="hero__title">הבושם שמושך<br/><em>אנשים אלייך</em></h1>
+        <div class="scent-hero__deco" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#cec0b0" />
+                <stop offset="100%" stop-color="#8fa69a" />
+              </linearGradient>
+              <radialGradient id="aura" cx="50%" cy="55%" r="55%">
+                <stop offset="0%" stop-color="#faf6f1" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#faf6f1" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="105" r="92" fill="url(#aura)"/>
+            <!-- Bottle cap -->
+            <rect x="80" y="38" width="40" height="22" rx="3" fill="url(#heroGrad)"/>
+            <rect x="88" y="60" width="24" height="12" fill="#6f8479"/>
+            <!-- Bottle body -->
+            <path d="M58 78 Q 58 72 64 72 L 136 72 Q 142 72 142 78 L 142 168 Q 142 184 124 184 L 76 184 Q 58 184 58 168 Z" fill="url(#heroGrad)"/>
+            <!-- Label -->
+            <rect x="74" y="108" width="52" height="50" rx="3" fill="#faf6f1" opacity="0.6"/>
+            <text x="100" y="136" text-anchor="middle" font-family="Bellefair, serif" font-size="14" fill="#6f8479" letter-spacing="2">OR</text>
+            <text x="100" y="152" text-anchor="middle" font-family="Bellefair, serif" font-size="9" fill="#6f8479" letter-spacing="3">HANESHAMA</text>
+            <!-- Sparkles -->
+            <circle cx="38" cy="62" r="3" fill="#cec0b0"/>
+            <circle cx="166" cy="50" r="2.5" fill="#8fa69a"/>
+            <circle cx="170" cy="120" r="3" fill="#cec0b0"/>
+            <circle cx="32" cy="140" r="2.5" fill="#8fa69a"/>
+            <circle cx="178" cy="170" r="2" fill="#cec0b0"/>
+          </svg>
+        </div>
+        <p class="hero__sub">לכל אנרגיה יש שפת ריחות משלה. בחרי את המספר שקיבלת באינסטגרם וגלי איזה ריח באמת מסתדר איתך — ולמה אנשים נמשכים אלייך בלי להבין למה.</p>
+      </div>
+
+      <!-- BIG PICKER -->
+      <div class="wrap big-picker">
+        <p class="big-picker__lede">לחצי על המספר שלך כדי לקפוץ אליו ↓</p>
+        <div class="big-picker__grid">
+          <a class="pick" href="#n1" style="--pick-tint: #c9a96a;">
+            <span class="pick__num">1</span>
+            <span class="pick__lbl">המנהיגה</span>
+          </a>
+          <a class="pick" href="#n2" style="--pick-tint: #e8b8c4;">
+            <span class="pick__num">2</span>
+            <span class="pick__lbl">הרומנטית</span>
+          </a>
+          <a class="pick" href="#n3" style="--pick-tint: #f0a878;">
+            <span class="pick__num">3</span>
+            <span class="pick__lbl">הכריזמטית</span>
+          </a>
+          <a class="pick" href="#n4" style="--pick-tint: #8fa69a;">
+            <span class="pick__num">4</span>
+            <span class="pick__lbl">המקורקעת</span>
+          </a>
+          <a class="pick" href="#n5" style="--pick-tint: #b89cd1;">
+            <span class="pick__num">5</span>
+            <span class="pick__lbl">המגוונת</span>
+          </a>
+          <a class="pick" href="#n6" style="--pick-tint: #e8d3b8;">
+            <span class="pick__num">6</span>
+            <span class="pick__lbl">העוטפת</span>
+          </a>
+          <a class="pick" href="#n7" style="--pick-tint: #6e6478;">
+            <span class="pick__num">7</span>
+            <span class="pick__lbl">המסתורית</span>
+          </a>
+          <a class="pick" href="#n8" style="--pick-tint: #8b3a3a;">
+            <span class="pick__num">8</span>
+            <span class="pick__lbl">הנועזת</span>
+          </a>
+          <a class="pick" href="#n9" style="--pick-tint: #6ba4a8;">
+            <span class="pick__num">9</span>
+            <span class="pick__lbl">האוניברסלית</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENT SECTIONS -->
+    <section class="scents">
+      <div class="wrap">
+
+        <!-- ============ 1 ============ -->
+        <article class="scent" id="n1" style="--scent-accent: #b08542;">
+          <div class="scent__head">
+            <span class="scent__num">1</span>
+            <div>
+              <p class="scent__kicker">המנהיגה · נוכחות מגנטית</p>
+              <h2 class="scent__title">ביטחון שאי אפשר להתעלם ממנו ✨</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך היא של מנהיגה. מה שממגנט אצלך זה ביטחון ונוכחות שאי אפשר להתעלם ממנה. בשבילך עובדים הכי טוב ריחות דומיננטיים, עמוקים ויוקרתיים — כאלה שנשארים באוויר גם אחרי שאת הולכת.</p>
+          <p class="scent__notes"><b>תווים:</b> אמבר · עצים · תבלינים · נגיעות אוד</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a55b"/><stop offset="100%" stop-color="#8b5e2a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" rx="1.5" fill="#3a2410"/>
+                  <rect x="25" y="12" width="10" height="6" fill="#3a2410"/>
+                  <path d="M14 22 Q 14 18 18 18 L 42 18 Q 46 18 46 22 L 46 78 Q 46 86 38 86 L 22 86 Q 14 86 14 78 Z" fill="url(#b1a)"/>
+                  <rect x="20" y="38" width="20" height="28" rx="2" fill="#1a1208" opacity="0.45"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">YSL</span>
+              <span class="bottle__name">Libre Intense</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a3920"/><stop offset="100%" stop-color="#2a1a0c"/></linearGradient></defs>
+                  <rect x="20" y="2" width="20" height="14" rx="1.5" fill="#d4a55b"/>
+                  <rect x="26" y="16" width="8" height="4" fill="#2a1a0c"/>
+                  <rect x="14" y="20" width="32" height="66" rx="2" fill="url(#b1b)"/>
+                  <rect x="22" y="40" width="16" height="26" fill="#d4a55b" opacity="0.3"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Tom Ford</span>
+              <span class="bottle__name">Black Orchid</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b1c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c89060"/><stop offset="100%" stop-color="#7d4b1f"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="8" rx="1" fill="#3a2410"/>
+                  <rect x="26" y="10" width="8" height="6" fill="#3a2410"/>
+                  <ellipse cx="30" cy="52" rx="20" ry="34" fill="url(#b1c)"/>
+                  <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="9" fill="#fff" opacity="0.7">Sì</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Armani</span>
+              <span class="bottle__name">Sì Intense</span>
+            </div>
+          </div>
+          <p class="scent__sig">זה הריח שגורם לאנשים להרגיש אותך עוד לפני שדיברת ✨</p>
+        </article>
+
+        <!-- ============ 2 ============ -->
+        <article class="scent" id="n2" style="--scent-accent: #c9889a;">
+          <div class="scent__head">
+            <span class="scent__num">2</span>
+            <div>
+              <p class="scent__kicker">הרומנטית · עדינות וחיבור</p>
+              <h2 class="scent__title">רכות שמושכת לבבות 💫</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך עדינה, רגשית ומקרבת. מה שממגנט אצלך זה הרכות והנשיות הטבעית. ריחות פרחוניים נקיים עם נגיעה של מאסק עובדים עלייך מושלם וגורמים לאנשים להרגיש בנוח לידך.</p>
+          <p class="scent__notes"><b>תווים:</b> יסמין · ורדים · פרחים לבנים · מאסק עדין</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b2a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fce6ec"/><stop offset="100%" stop-color="#e8b8c4"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="10" rx="1" fill="#a8616f"/>
+                  <rect x="27" y="12" width="6" height="6" fill="#a8616f"/>
+                  <path d="M14 22 Q 14 18 18 18 L 42 18 Q 46 18 46 22 L 46 78 Q 46 86 38 86 L 22 86 Q 14 86 14 78 Z" fill="url(#b2a)"/>
+                  <rect x="20" y="46" width="20" height="22" rx="1" fill="#fff" opacity="0.6"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Chanel</span>
+              <span class="bottle__name">Chance Eau Tendre</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b2b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d59c"/><stop offset="100%" stop-color="#d4a45e"/></linearGradient></defs>
+                  <circle cx="30" cy="8" r="6" fill="#8a6a32"/>
+                  <rect x="27" y="14" width="6" height="6" fill="#8a6a32"/>
+                  <path d="M16 22 Q 30 18 44 22 L 44 78 Q 44 86 36 86 L 24 86 Q 16 86 16 78 Z" fill="url(#b2b)"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Dior</span>
+              <span class="bottle__name">J'adore EDP</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b2c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fde8e8"/><stop offset="100%" stop-color="#e8b8c4"/></linearGradient></defs>
+                  <rect x="20" y="2" width="20" height="12" rx="1.5" fill="#a8616f"/>
+                  <rect x="14" y="14" width="32" height="72" rx="3" fill="url(#b2c)"/>
+                  <circle cx="22" cy="40" r="2" fill="#a8616f"/>
+                  <circle cx="38" cy="46" r="2" fill="#a8616f"/>
+                  <circle cx="30" cy="58" r="2" fill="#a8616f"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Gucci</span>
+              <span class="bottle__name">Bloom</span>
+            </div>
+          </div>
+          <p class="scent__sig">זה ריח שמושך דרך עדינות וחיבור רגשי 💫</p>
+        </article>
+
+        <!-- ============ 3 ============ -->
+        <article class="scent" id="n3" style="--scent-accent: #d77c4a;">
+          <div class="scent__head">
+            <span class="scent__num">3</span>
+            <div>
+              <p class="scent__kicker">הכריזמטית · שמחה וקלילות</p>
+              <h2 class="scent__title">הווייב שמושך בלי לחשוב פעמיים 🍓</h2>
+            </div>
+          </div>
+          <p class="scent__body">יש לך אנרגיה שמחה, קלילה וסופר כריזמטית. מה שממגנט אצלך זה הווייב הפלרטטני והכיפי. בשמים מתוקים עם נגיעות פירותיות או וניל מדגישים בדיוק את זה.</p>
+          <p class="scent__notes"><b>תווים:</b> פירות · קרמל · וניל · פרחים מתוקים</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b3a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7c89c"/><stop offset="100%" stop-color="#d77c4a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" rx="1" fill="#a04020"/>
+                  <rect x="14" y="12" width="32" height="74" rx="2" fill="url(#b3a)"/>
+                  <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="8" fill="#fff" opacity="0.85" letter-spacing="1">MON PARIS</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">YSL</span>
+              <span class="bottle__name">Mon Paris</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b3b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fde0e8"/><stop offset="100%" stop-color="#e890a8"/></linearGradient></defs>
+                  <circle cx="30" cy="8" r="6" fill="#a04060"/>
+                  <path d="M10 32 Q 30 12 50 32 L 50 76 Q 50 86 40 86 L 20 86 Q 10 86 10 76 Z" fill="url(#b3b)"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">V&amp;R</span>
+              <span class="bottle__name">Flowerbomb</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b3c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0eaff"/><stop offset="100%" stop-color="#a8bce8"/></linearGradient></defs>
+                  <rect x="20" y="2" width="20" height="14" rx="2" fill="#fff"/>
+                  <path d="M16 16 Q 16 12 20 12 L 40 12 Q 44 12 44 16 L 48 86 L 12 86 Z" fill="url(#b3c)"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Ariana G.</span>
+              <span class="bottle__name">Cloud</span>
+            </div>
+          </div>
+          <p class="scent__sig">אנשים פשוט נמשכים אליו בלי לחשוב פעמיים 🍓</p>
+        </article>
+
+        <!-- ============ 4 ============ -->
+        <article class="scent" id="n4" style="--scent-accent: #6f8479;">
+          <div class="scent__head">
+            <span class="scent__num">4</span>
+            <div>
+              <p class="scent__kicker">המקורקעת · יציבות ושקט</p>
+              <h2 class="scent__title">השקט הטוב שאת משאירה אחרייך 🌱</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך יציבה, רגועה ואמינה. מה שממגנט אצלך זה תחושת הביטחון והקרקוע. ריחות נקיים, ירוקים או עציים עדינים עובדים עלייך הכי טוב.</p>
+          <p class="scent__notes"><b>תווים:</b> תה · עשבים · עצים רכים · מאסק נקי</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b4a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0e8dc"/><stop offset="100%" stop-color="#c8b89a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="14" rx="1.5" fill="#8a7a5a"/>
+                  <rect x="14" y="16" width="32" height="70" rx="3" fill="url(#b4a)"/>
+                  <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="9" fill="#6a5a3a" letter-spacing="1.5">Chloé</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Chloé</span>
+              <span class="bottle__name">Eau de Parfum</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b4b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8e8d4"/><stop offset="100%" stop-color="#8fa69a"/></linearGradient></defs>
+                  <rect x="26" y="2" width="8" height="10" fill="#5a6a5a"/>
+                  <rect x="12" y="12" width="36" height="74" rx="2" fill="url(#b4b)"/>
+                  <line x1="20" y1="40" x2="40" y2="40" stroke="#3a4a3a" stroke-width="0.5"/>
+                  <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="7" fill="#3a4a3a">Hermès</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Hermès</span>
+              <span class="bottle__name">Un Jardin Sur Le Nil</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b4c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf6f1"/><stop offset="100%" stop-color="#e2dbd1"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="8" fill="#222"/>
+                  <rect x="10" y="10" width="40" height="76" fill="url(#b4c)"/>
+                  <text x="30" y="50" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#222" letter-spacing="2">BYREDO</text>
+                  <text x="30" y="60" text-anchor="middle" font-family="serif" font-size="7" fill="#222">Blanche</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Byredo</span>
+              <span class="bottle__name">Blanche</span>
+            </div>
+          </div>
+          <p class="scent__sig">"שקט טוב" — זה מה שאנשים מרגישים לידך 🌱</p>
+        </article>
+
+        <!-- ============ 5 ============ -->
+        <article class="scent" id="n5" style="--scent-accent: #a07ec1;">
+          <div class="scent__head">
+            <span class="scent__num">5</span>
+            <div>
+              <p class="scent__kicker">המגוונת · הקסם שבשינוי</p>
+              <h2 class="scent__title">חוסר הצפיות הוא הקסם שלך 🔥</h2>
+            </div>
+          </div>
+          <p class="scent__body">מה שממגנט אצלך זה דווקא חוסר הצפיות. אי אפשר לדעת איזה וייב תביאי היום וזה מה שמושך. לא נכון לך להיצמד לבושם אחד — את צריכה כמה ריחות שונים לפי מצב רוח.</p>
+          <p class="scent__notes"><b>המלצה:</b> 2–3 בשמים שונים: אחד קליל · אחד מתוק · אחד עמוק</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b5a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8e8f0"/><stop offset="100%" stop-color="#8eb8d4"/></linearGradient></defs>
+                  <rect x="20" y="2" width="20" height="10" rx="1" fill="#5a7a8a"/>
+                  <rect x="12" y="12" width="36" height="74" rx="2" fill="url(#b5a)"/>
+                  <text x="30" y="44" text-anchor="middle" font-family="serif" font-size="5" fill="#2a4a5a">REPLICA</text>
+                  <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="6" fill="#2a4a5a">Beach Walk</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Margiela</span>
+              <span class="bottle__name">Beach Walk · קליל</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b5b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5b8c4"/><stop offset="100%" stop-color="#d47898"/></linearGradient></defs>
+                  <rect x="26" y="2" width="8" height="12" fill="#fff"/>
+                  <path d="M14 14 Q 14 14 18 16 L 42 16 Q 46 14 46 14 L 46 80 Q 46 86 40 86 L 20 86 Q 14 86 14 80 Z" fill="url(#b5b)"/>
+                  <rect x="22" y="38" width="16" height="26" rx="1" fill="#fff" opacity="0.5"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Lancôme</span>
+              <span class="bottle__name">La Vie Est Belle · מתוק</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b5c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a2a4a"/><stop offset="100%" stop-color="#1a0a1a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" fill="#caa055"/>
+                  <rect x="12" y="12" width="36" height="74" rx="2" fill="url(#b5c)"/>
+                  <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="7" fill="#caa055" letter-spacing="1">BLACK OPIUM</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">YSL</span>
+              <span class="bottle__name">Black Opium · עמוק</span>
+            </div>
+          </div>
+          <p class="scent__sig">הקסם שלך הוא בגיוון — וזה מה שממגנט הכי חזק 🔥</p>
+        </article>
+
+        <!-- ============ 6 ============ -->
+        <article class="scent" id="n6" style="--scent-accent: #c9a47e;">
+          <div class="scent__head">
+            <span class="scent__num">6</span>
+            <div>
+              <p class="scent__kicker">העוטפת · חום ואהבה</p>
+              <h2 class="scent__title">החום שגורם לאנשים להישאר 🤍</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך אוהבת, עוטפת ומחברת. מה שממגנט אצלך זה תחושת החום והביטחון. ריחות של וניל, אבקה ומושק רך עובדים עלייך מושלם.</p>
+          <p class="scent__notes"><b>תווים:</b> וניל · טונקה · פרחים רכים · פודרה</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b6a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d4dc"/><stop offset="100%" stop-color="#d49bb0"/></linearGradient></defs>
+                  <rect x="26" y="2" width="8" height="14" fill="#fff"/>
+                  <path d="M14 16 L 46 16 L 46 80 Q 46 86 40 86 L 20 86 Q 14 86 14 80 Z" fill="url(#b6a)"/>
+                  <rect x="22" y="38" width="16" height="26" rx="1" fill="#fff" opacity="0.5"/>
+                </svg>
+              </div>
+              <span class="bottle__brand">Lancôme</span>
+              <span class="bottle__name">La Vie Est Belle</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b6b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a1a2a"/><stop offset="100%" stop-color="#1a0a14"/></linearGradient></defs>
+                  <path d="M22 4 Q 30 0 38 4 L 38 14 L 22 14 Z" fill="#caa055"/>
+                  <path d="M14 14 L 46 14 L 50 86 L 10 86 Z" fill="url(#b6b)"/>
+                  <text x="30" y="48" text-anchor="middle" font-family="serif" font-size="6" fill="#caa055">Hypnotic</text>
+                  <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="6" fill="#caa055">Poison</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Dior</span>
+              <span class="bottle__name">Hypnotic Poison</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b6c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fde8d4"/><stop offset="100%" stop-color="#e8c4a0"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="10" fill="#a08060"/>
+                  <rect x="10" y="12" width="40" height="74" rx="3" fill="url(#b6c)"/>
+                  <text x="30" y="48" text-anchor="middle" font-family="serif" font-size="6" fill="#6a4a2a">narciso</text>
+                  <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="6" fill="#6a4a2a">rodriguez</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Narciso R.</span>
+              <span class="bottle__name">Poudrée</span>
+            </div>
+          </div>
+          <p class="scent__sig">ריח שגורם לאנשים לרצות להתקרב — ולהישאר 🤍</p>
+        </article>
+
+        <!-- ============ 7 ============ -->
+        <article class="scent" id="n7" style="--scent-accent: #5a5066;">
+          <div class="scent__head">
+            <span class="scent__num">7</span>
+            <div>
+              <p class="scent__kicker">המסתורית · עומק וסקרנות</p>
+              <h2 class="scent__title">האנרגיה שלא יוצאת מהראש 🌙</h2>
+            </div>
+          </div>
+          <p class="scent__body">יש לך עומק ומסתורין טבעי. מה שממגנט אצלך זה האנרגיה שלא כולם מצליחים לפענח. ריחות עציים, קטורת וסנדלווד מדגישים בדיוק את זה.</p>
+          <p class="scent__notes"><b>תווים:</b> Sandalwood · ענבר כהה · מאסק עמוק</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b7a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf6f1"/><stop offset="100%" stop-color="#e2dbd1"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="8" fill="#222"/>
+                  <rect x="10" y="10" width="40" height="76" fill="url(#b7a)"/>
+                  <text x="30" y="38" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#222" letter-spacing="2">LE LABO</text>
+                  <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="11" fill="#222">SANTAL</text>
+                  <text x="30" y="64" text-anchor="middle" font-family="serif" font-size="11" fill="#222">33</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Le Labo</span>
+              <span class="bottle__name">Santal 33</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b7b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a89878"/><stop offset="100%" stop-color="#6a5a3a"/></linearGradient></defs>
+                  <rect x="24" y="2" width="12" height="8" fill="#222"/>
+                  <rect x="10" y="10" width="40" height="76" fill="url(#b7b)"/>
+                  <text x="30" y="48" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#fff" letter-spacing="2">BYREDO</text>
+                  <text x="30" y="60" text-anchor="middle" font-family="serif" font-size="7" fill="#fff">Gypsy Water</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Byredo</span>
+              <span class="bottle__name">Gypsy Water</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b7c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5e8d4"/><stop offset="100%" stop-color="#c8a878"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="14" rx="1" fill="#2a2a2a"/>
+                  <rect x="12" y="16" width="36" height="70" rx="2" fill="url(#b7c)"/>
+                  <text x="30" y="46" text-anchor="middle" font-family="serif" font-size="5" fill="#2a2a2a" letter-spacing="0.5">Not a Perfume</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Juliette HG</span>
+              <span class="bottle__name">Not a Perfume</span>
+            </div>
+          </div>
+          <p class="scent__sig">ריח שמשאיר סקרנות — ולא יוצא מהראש 🌙</p>
+        </article>
+
+        <!-- ============ 8 ============ -->
+        <article class="scent" id="n8" style="--scent-accent: #7a2a3a;">
+          <div class="scent__head">
+            <span class="scent__num">8</span>
+            <div>
+              <p class="scent__kicker">הנועזת · כוח ודומיננטיות</p>
+              <h2 class="scent__title">הריח שלא שוכחים 👑</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך חזקה ודומיננטית. מה שממגנט אצלך זה כוח ונוכחות. בשמים עמוקים, עשירים וקצת 'נועזים' עובדים עלייך הכי טוב.</p>
+          <p class="scent__notes"><b>תווים:</b> עור · אמבר · פצ׳ולי · תבלינים</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b8a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6a2a4a"/><stop offset="100%" stop-color="#2a0a1a"/></linearGradient></defs>
+                  <rect x="20" y="2" width="20" height="14" rx="1.5" fill="#caa055"/>
+                  <rect x="12" y="16" width="36" height="70" rx="2" fill="url(#b8a)"/>
+                  <text x="30" y="48" text-anchor="middle" font-family="serif" font-size="5" fill="#caa055" letter-spacing="1">VELVET</text>
+                  <text x="30" y="58" text-anchor="middle" font-family="serif" font-size="6" fill="#caa055">ORCHID</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Tom Ford</span>
+              <span class="bottle__name">Velvet Orchid</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b8b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a2a4a"/><stop offset="100%" stop-color="#1a0a1a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" fill="#caa055"/>
+                  <rect x="12" y="12" width="36" height="74" rx="2" fill="url(#b8b)"/>
+                  <text x="30" y="52" text-anchor="middle" font-family="serif" font-size="7" fill="#caa055" letter-spacing="1">BLACK OPIUM</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">YSL</span>
+              <span class="bottle__name">Black Opium</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b8c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a878"/><stop offset="100%" stop-color="#8a5a2a"/></linearGradient></defs>
+                  <path d="M30 4 L 38 14 L 22 14 Z" fill="#5a3a2a"/>
+                  <ellipse cx="30" cy="50" rx="22" ry="36" fill="url(#b8c)"/>
+                  <text x="30" y="54" text-anchor="middle" font-family="serif" font-size="6" fill="#3a1a0a">GOOD GIRL</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">C. Herrera</span>
+              <span class="bottle__name">Good Girl</span>
+            </div>
+          </div>
+          <p class="scent__sig">זה הריח שפשוט לא שוכחים 👑</p>
+        </article>
+
+        <!-- ============ 9 ============ -->
+        <article class="scent" id="n9" style="--scent-accent: #5a8e94;">
+          <div class="scent__head">
+            <span class="scent__num">9</span>
+            <div>
+              <p class="scent__kicker">האוניברסלית · חיבור רחב</p>
+              <h2 class="scent__title">ריח שמרגיש אחר — וזה הקסם 🌍</h2>
+            </div>
+          </div>
+          <p class="scent__body">האנרגיה שלך אוניברסלית, רחבה ומחברת. מה שממגנט אצלך זה משהו לא צפוי וקצת שונה. ריחות יוניסקס עם שילוב של הדרים, עצים ומאסק עובדים עלייך מדהים.</p>
+          <p class="scent__notes"><b>תווים:</b> הדרים · עצים · מאסק · יוניסקס מיוחד</p>
+          <div class="bottles">
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b9a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5d4d4"/><stop offset="100%" stop-color="#c87878"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" fill="#caa055"/>
+                  <rect x="12" y="12" width="36" height="74" fill="url(#b9a)"/>
+                  <text x="30" y="46" text-anchor="middle" font-family="serif" font-size="5" fill="#5a1a1a">BACCARAT</text>
+                  <text x="30" y="56" text-anchor="middle" font-family="serif" font-size="9" fill="#5a1a1a">540</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">MFK</span>
+              <span class="bottle__name">Baccarat Rouge 540</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b9b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf6f1" stop-opacity="0.8"/><stop offset="100%" stop-color="#c8d4e0" stop-opacity="0.9"/></linearGradient></defs>
+                  <circle cx="30" cy="48" r="22" fill="url(#b9b)" stroke="#8a98a8" stroke-width="0.5"/>
+                  <text x="30" y="44" text-anchor="middle" font-family="sans-serif" font-size="4" fill="#5a6878">ESCENTRIC</text>
+                  <text x="30" y="54" text-anchor="middle" font-family="serif" font-size="9" fill="#5a6878">01</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Molecules</span>
+              <span class="bottle__name">Molecule 01</span>
+            </div>
+            <div class="bottle">
+              <div class="bottle__art">
+                <svg viewBox="0 0 60 90" aria-hidden="true">
+                  <defs><linearGradient id="b9c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8d4b8"/><stop offset="100%" stop-color="#a88a5a"/></linearGradient></defs>
+                  <rect x="22" y="2" width="16" height="10" fill="#222"/>
+                  <rect x="10" y="12" width="40" height="74" rx="1" fill="url(#b9c)"/>
+                  <text x="30" y="46" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#222" letter-spacing="2">BYREDO</text>
+                  <text x="30" y="60" text-anchor="middle" font-family="serif" font-size="6" fill="#222">Mojave Ghost</text>
+                </svg>
+              </div>
+              <span class="bottle__brand">Byredo</span>
+              <span class="bottle__name">Mojave Ghost</span>
+            </div>
+          </div>
+          <p class="scent__sig">ריח שמרגיש אחר — וזה בדיוק מה שמושך אלייך אנשים 🌍</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BRIDGE TO ANNA -->
+    <section class="scent-bridge" id="anna-bridge">
+      <div class="wrap">
+        <div class="scent-bridge__avatar">
+          <img src="assets/anna-portrait.jpg" alt="אנה אשכנזי · אור הנשמה" loading="lazy" />
+        </div>
+        <p class="sec__kicker">הנתון הזה — הוא רק התחלה</p>
+        <h2>הנתון שלך מספר<br/><em>הרבה יותר מבושם.</em></h2>
+        <p>במפה הנומרולוגית שלך, אפשר לראות הרבה יותר מאיזה בושם הכי נכון לך. מה האופי שלך, החוזקות שלך, החולשות שלך, איך את אוהבת, איך את עובדת, מה את מסתירה ומה מניע אותך באמת. זה מה שאני מלמדת בקורס מצפן הנשמה ועוד הרבה מעבר.</p>
+        <a href="compass.html" class="btn-cta">
+          <span>קורס מצפן הנשמה®</span>
+          <span aria-hidden="true">←</span>
+        </a>
+        <p class="scent-bridge__more">או <a href="index.html">חזרה לאור הנשמה</a> — שני הקורסים שלנו</p>
+      </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <section class="wa-section">
+      <div class="wrap">
+        <p class="sec__kicker">יש לך שאלה?</p>
+        <h2>כתבי לי בוואטסאפ</h2>
+        <p>בא לך לשאול עוד על הקורס, על המספר שלך או על משהו אחר לגמרי? אני פה.</p>
+        <a class="wa-btn" href="https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20%D7%94%D7%91%D7%A9%D7%9E%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93." target="_blank" rel="noopener" aria-label="כתבי לי בוואטסאפ">
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+          <span>058-557-7021 · WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <div class="brand" style="justify-content:center;">
+          <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;" />
+          <span class="brand__name" style="color:var(--cream-soft);">אור הנשמה</span>
+        </div>
+        <p class="footer__tag">המספר שלך — מספר עליך הרבה יותר ממה שאת חושבת.</p>
+      </div>
+      <div class="footer__contacts">
+        <a href="index.html">אור הנשמה</a>
+        <a href="compass.html">מצפן הנשמה</a>
+        <a href="shoresh.html">שורש הנשמה</a>
+        <a href="https://wa.me/972585577021" target="_blank" rel="noopener" dir="ltr">WhatsApp · 058-557-7021</a>
+      </div>
+      <div class="footer__base">
+        © <span id="year"></span> אור הנשמה · כל הזכויות שמורות
+        <span aria-hidden="true" style="margin: 0 6px; opacity: 0.4;">·</span>
+        <a href="privacy.html" style="color: var(--cta); text-decoration: underline; text-underline-offset: 3px;">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <a class="sticky-cta" href="https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20%D7%94%D7%91%D7%A9%D7%9E%D7%99%D7%9D." target="_blank" rel="noopener" aria-label="כתבי לי בוואטסאפ" style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;">
+    <span style="display:flex; align-items:center; gap:10px;">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink: 0;"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+      בוואטסאפ עכשיו
+    </span>
+    <span aria-hidden="true">←</span>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Highlight the active number in the sticky ribbon as you scroll
+    (function () {
+      var sections = Array.prototype.slice.call(document.querySelectorAll('.scent[id]'));
+      var links = {};
+      document.querySelectorAll('.num-ribbon a').forEach(function (a) {
+        var id = a.getAttribute('href').slice(1);
+        links[id] = a;
+      });
+
+      function clearActive() {
+        Object.keys(links).forEach(function (id) {
+          links[id].style.background = '';
+          links[id].style.color = '';
+          links[id].style.borderColor = '';
+        });
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            clearActive();
+            if (links[id]) {
+              var accent = getComputedStyle(entry.target).getPropertyValue('--scent-accent').trim();
+              links[id].style.background = accent || '#8fa69a';
+              links[id].style.color = '#faf6f1';
+              links[id].style.borderColor = accent || '#8fa69a';
+            }
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+
+      sections.forEach(function (s) { io.observe(s); });
+    })();
+  </script>
+</body>
+</html>
