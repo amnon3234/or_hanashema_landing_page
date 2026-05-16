@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#8fa69a" />
+  <title>מסר השבוע · אור הנשמה</title>
+  <meta name="description" content="שלושה קלפים. מסר אחד. בחרי את הקלף שמושך אותך השבוע וקבלי את ההכוונה שמחכה לך." />
+  <meta property="og:title" content="מסר השבוע · אור הנשמה" />
+  <meta property="og:description" content="המסר השבועי שלך מחכה. בחרי קלף ותגלי." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1113978282997787');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1113978282997787&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    body { background: radial-gradient(ellipse at top, #ece5da 0%, var(--bg) 55%, var(--cream-soft) 100%); }
+
+    /* ===== Hero ===== */
+    .klafim-hero {
+      padding: 48px 0 22px;
+      text-align: center;
+    }
+    .klafim-hero__sparkles {
+      display: flex; justify-content: center; gap: 18px;
+      margin: 6px 0 14px;
+      font-size: 14px;
+      color: var(--sage);
+      opacity: 0.75;
+      letter-spacing: 0.3em;
+    }
+    .klafim-hero__hint {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--sage-deep);
+      font-family: var(--serif);
+      letter-spacing: 0.2em;
+      animation: hintPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes hintPulse {
+      0%, 100% { opacity: 0.55; transform: translateY(0); }
+      50%      { opacity: 1;    transform: translateY(3px); }
+    }
+
+    /* ===== Cards arena ===== */
+    .arena {
+      padding: 18px 0 36px;
+      perspective: 1400px;
+    }
+    .arena__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: end;
+      justify-items: center;
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 158px;
+      aspect-ratio: 5/8;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition:
+        transform 0.95s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.6s ease,
+        filter 0.6s ease;
+      will-change: transform;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      animation: cardFloat 4.4s ease-in-out infinite;
+    }
+    .card:nth-child(1) { animation-delay: 0s; }
+    .card:nth-child(2) { animation-delay: 0.6s; }
+    .card:nth-child(3) { animation-delay: 1.2s; }
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0) rotateY(0) rotate(-1.5deg); }
+      50%      { transform: translateY(-8px) rotateY(0) rotate(1.5deg); }
+    }
+    .card:nth-child(2) { animation-name: cardFloatMid; }
+    @keyframes cardFloatMid {
+      0%, 100% { transform: translateY(-6px) rotateY(0) rotate(0deg); }
+      50%      { transform: translateY(-14px) rotateY(0) rotate(0deg); }
+    }
+    .card:hover:not(.flipped):not(.disabled) {
+      animation-play-state: paused;
+      transform: translateY(-14px) rotateY(0) rotate(0) scale(1.06);
+    }
+    .card.flipped {
+      animation: none;
+      transform: rotateY(180deg) translateY(-6px) scale(1.04);
+      cursor: default;
+    }
+    .card.disabled {
+      animation: none;
+      pointer-events: none;
+      opacity: 0.22;
+      filter: grayscale(0.6) blur(0.4px);
+      transform: translateY(4px) rotateY(0) rotate(0) scale(0.92);
+    }
+    .card__face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow:
+        0 22px 40px -16px rgba(34, 45, 53, 0.4),
+        0 4px 12px -4px rgba(34, 45, 53, 0.18);
+    }
+    .card__face--back svg {
+      width: 100%; height: 100%; display: block;
+    }
+    .card__face--front {
+      transform: rotateY(180deg);
+      background: var(--cream-soft);
+    }
+    .card__front-frame {
+      position: absolute; inset: 7px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 14px 10px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, rgba(143, 166, 154, 0.08), transparent 70%),
+        var(--cream-soft);
+    }
+    .card__num {
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.4em;
+      color: var(--sage-deep);
+      margin-bottom: 10px;
+    }
+    .card__name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(20px, 5vw, 26px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .card__divider {
+      width: 28px; height: 1px;
+      background: var(--sage);
+      margin: 0 auto 10px;
+      opacity: 0.6;
+    }
+    .card__hl {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ===== Reveal section ===== */
+    .reveal {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        max-height 1.1s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.7s ease 0.15s,
+        padding 0.5s ease;
+      padding: 0;
+    }
+    .reveal.open {
+      max-height: 1600px;
+      opacity: 1;
+      padding: 18px 0 50px;
+    }
+    .reveal__inner {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 30px 22px 26px;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .reveal__inner::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; left: 0;
+      height: 4px;
+      background: var(--reveal-accent, var(--sage));
+    }
+    .reveal__kicker {
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin: 0 0 10px;
+    }
+    .reveal__num {
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.5em;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    .reveal__name {
+      text-align: center;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(34px, 9vw, 44px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .reveal__divider {
+      width: 56px; height: 1px;
+      background: var(--reveal-accent, var(--sage));
+      margin: 0 auto 18px;
+      opacity: 0.6;
+    }
+    .reveal__hl {
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(19px, 4.8vw, 22px);
+      line-height: 1.35;
+      color: var(--reveal-accent, var(--sage-deep));
+      margin: 0 0 18px;
+    }
+    .reveal__body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin: 0 0 20px;
+    }
+    .reveal__intention {
+      background: var(--bg);
+      border-radius: 14px;
+      padding: 16px 18px;
+      border-right: 3px solid var(--reveal-accent, var(--sage));
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 0;
+    }
+    .reveal__intention b {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--reveal-accent, var(--sage-deep));
+      letter-spacing: 0.06em;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .reveal__footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .reveal__footer b { color: var(--sage-deep); font-style: normal; font-weight: 600; }
+
+    .anna-bridge {
+      background: linear-gradient(180deg, var(--cream-soft) 0%, #efe6d8 100%);
+      padding: 48px 0 44px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .anna-bridge h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(26px, 6vw, 34px);
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .anna-bridge h2 em { color: var(--sage-deep); font-style: italic; }
+    .anna-bridge p {
+      max-width: 36ch;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .anna-bridge__avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      border: 3px solid #fff;
+      box-shadow: var(--shadow-soft);
+    }
+    .anna-bridge__avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .anna-bridge .btn-cta {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .wa-section {
+      background: var(--ink);
+      color: var(--cream-soft);
+      padding: 48px 0 44px;
+      text-align: center;
+    }
+    .wa-section .sec__kicker { color: var(--cta); }
+    .wa-section h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(26px, 6vw, 32px);
+      margin: 0 0 12px;
+      color: var(--cream-soft);
+    }
+    .wa-section p {
+      max-width: 34ch;
+      margin: 0 auto 24px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 16px 32px -10px rgba(37, 211, 102, 0.55);
+      transition: transform .15s ease;
+    }
+    .wa-btn:hover { transform: translateY(-2px); }
+
+    /* Sticky CTA is hidden until pick */
+    .sticky-cta { opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0s linear 0.6s; }
+    .sticky-cta.show { opacity: 1; visibility: visible; transition: opacity 0.6s ease, visibility 0s linear 0s; }
+
+    /* Tablet+ */
+    @media (min-width: 720px) {
+      .klafim-hero { padding: 72px 0 28px; }
+      .arena__inner { gap: 32px; max-width: 760px; }
+      .card { max-width: 200px; }
+      .card__num { font-size: 14px; }
+      .card__hl { font-size: 13px; }
+      .reveal__inner { padding: 44px 36px 36px; max-width: 600px; }
+    }
+
+    @media (max-width: 420px) {
+      .arena__inner { gap: 8px; padding: 0 10px; }
+      .card { max-width: 108px; }
+      .card__num { font-size: 11px; margin-bottom: 8px; letter-spacing: 0.3em; }
+      .card__name { font-size: 19px; margin-bottom: 8px; }
+      .card__divider { margin-bottom: 8px; }
+      .card__hl { font-size: 10.5px; line-height: 1.4; }
+      .card__front-frame { padding: 10px 6px; inset: 5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top thin announcement -->
+  <div class="ann" role="status">
+    <b>מסר השבוע</b> · בחרי קלף וגלי את המסר שלך
+  </div>
+
+  <!-- Sticky header -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="index.html" aria-label="חזרה לאור הנשמה">
+        <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" />
+        <span class="brand__name">אור הנשמה</span>
+      </a>
+      <a class="topbar__cta" href="#anna-bridge">עוד על אנה <span aria-hidden="true">←</span></a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero klafim-hero">
+      <div class="wrap">
+        <div class="hero__deco" aria-hidden="true"></div>
+        <p class="hero__eyebrow">המסר השבועי שלך</p>
+        <p class="klafim-hero__sparkles" aria-hidden="true">✦ &nbsp; ✦ &nbsp; ✦</p>
+        <h1 class="hero__title">סמכי על<br/><em>האינטואיציה שלך</em></h1>
+        <p class="hero__sub">אל תחשבי, בחרי את הקלף שמושך אותך.</p>
+        <p class="klafim-hero__hint">↓ &nbsp; בחרי אחד &nbsp; ↓</p>
+      </div>
+    </section>
+
+    <!-- CARDS ARENA -->
+    <section class="arena" aria-label="בחרי קלף">
+      <div class="arena__inner">
+
+        <!-- Card 1: שחרור -->
+        <button class="card" type="button" data-card="1" aria-label="בחרי קלף ראשון">
+          <div class="card__face card__face--back" aria-hidden="true">
+            <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="cb-grad-1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#8fa69a"/>
+                  <stop offset="100%" stop-color="#5e7268"/>
+                </linearGradient>
+                <radialGradient id="cb-glow-1" cx="50%" cy="42%" r="55%">
+                  <stop offset="0%" stop-color="#faf6f1" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#faf6f1" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="200" height="320" fill="url(#cb-grad-1)"/>
+              <rect width="200" height="320" fill="url(#cb-glow-1)"/>
+              <rect x="10" y="10" width="180" height="300" rx="4" fill="none" stroke="#faf6f1" stroke-width="0.6" opacity="0.55"/>
+              <rect x="16" y="16" width="168" height="288" rx="2" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+              <g opacity="0.6">
+                <circle cx="100" cy="38" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="38" x2="92" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="38" x2="140" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <g transform="translate(100, 160)">
+                <circle r="58" fill="none" stroke="#faf6f1" stroke-width="0.8" opacity="0.45"/>
+                <circle r="48" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+                <g opacity="0.55" stroke="#faf6f1" stroke-width="0.8">
+                  <line x1="0" y1="-70" x2="0" y2="-62"/>
+                  <line x1="0" y1="62" x2="0" y2="70"/>
+                  <line x1="-70" y1="0" x2="-62" y2="0"/>
+                  <line x1="62" y1="0" x2="70" y2="0"/>
+                  <line x1="49" y1="-49" x2="44" y2="-44"/>
+                  <line x1="-49" y1="-49" x2="-44" y2="-44"/>
+                  <line x1="49" y1="49" x2="44" y2="44"/>
+                  <line x1="-49" y1="49" x2="-44" y2="44"/>
+                </g>
+                <circle r="36" fill="none" stroke="#faf6f1" stroke-width="0.5" opacity="0.4"/>
+                <circle r="28" fill="rgba(250,246,241,0.06)" stroke="#cec0b0" stroke-width="0.4" opacity="0.5"/>
+                <text y="13" text-anchor="middle" font-family="Bellefair, serif" font-size="42" fill="#faf6f1" opacity="0.88">1</text>
+              </g>
+              <g opacity="0.6">
+                <circle cx="100" cy="282" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="282" x2="92" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="282" x2="140" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <text x="100" y="302" text-anchor="middle" font-family="Bellefair, serif" font-size="8" fill="#faf6f1" opacity="0.7" letter-spacing="3">אור הנשמה</text>
+              <circle cx="36" cy="80" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="164" cy="100" r="1" fill="#cec0b0" opacity="0.6"/>
+              <circle cx="32" cy="200" r="1" fill="#cec0b0" opacity="0.4"/>
+              <circle cx="168" cy="220" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="48" cy="260" r="1" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="152" cy="60" r="1" fill="#faf6f1" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card__face card__face--front">
+            <div class="card__front-frame">
+              <span class="card__num">I</span>
+              <h3 class="card__name">קצב</h3>
+              <span class="card__divider"></span>
+              <p class="card__hl">את לא מאחרת לשום מקום</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 2: גבול -->
+        <button class="card" type="button" data-card="2" aria-label="בחרי קלף שני">
+          <div class="card__face card__face--back" aria-hidden="true">
+            <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="cb-grad-2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#8fa69a"/>
+                  <stop offset="100%" stop-color="#5e7268"/>
+                </linearGradient>
+                <radialGradient id="cb-glow-2" cx="50%" cy="42%" r="55%">
+                  <stop offset="0%" stop-color="#faf6f1" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#faf6f1" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="200" height="320" fill="url(#cb-grad-2)"/>
+              <rect width="200" height="320" fill="url(#cb-glow-2)"/>
+              <rect x="10" y="10" width="180" height="300" rx="4" fill="none" stroke="#faf6f1" stroke-width="0.6" opacity="0.55"/>
+              <rect x="16" y="16" width="168" height="288" rx="2" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+              <g opacity="0.6">
+                <circle cx="100" cy="38" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="38" x2="92" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="38" x2="140" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <g transform="translate(100, 160)">
+                <circle r="58" fill="none" stroke="#faf6f1" stroke-width="0.8" opacity="0.45"/>
+                <circle r="48" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+                <g opacity="0.55" stroke="#faf6f1" stroke-width="0.8">
+                  <line x1="0" y1="-70" x2="0" y2="-62"/>
+                  <line x1="0" y1="62" x2="0" y2="70"/>
+                  <line x1="-70" y1="0" x2="-62" y2="0"/>
+                  <line x1="62" y1="0" x2="70" y2="0"/>
+                  <line x1="49" y1="-49" x2="44" y2="-44"/>
+                  <line x1="-49" y1="-49" x2="-44" y2="-44"/>
+                  <line x1="49" y1="49" x2="44" y2="44"/>
+                  <line x1="-49" y1="49" x2="-44" y2="44"/>
+                </g>
+                <circle r="36" fill="none" stroke="#faf6f1" stroke-width="0.5" opacity="0.4"/>
+                <circle r="28" fill="rgba(250,246,241,0.06)" stroke="#cec0b0" stroke-width="0.4" opacity="0.5"/>
+                <text y="13" text-anchor="middle" font-family="Bellefair, serif" font-size="42" fill="#faf6f1" opacity="0.88">2</text>
+              </g>
+              <g opacity="0.6">
+                <circle cx="100" cy="282" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="282" x2="92" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="282" x2="140" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <text x="100" y="302" text-anchor="middle" font-family="Bellefair, serif" font-size="8" fill="#faf6f1" opacity="0.7" letter-spacing="3">אור הנשמה</text>
+              <circle cx="36" cy="80" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="164" cy="100" r="1" fill="#cec0b0" opacity="0.6"/>
+              <circle cx="32" cy="200" r="1" fill="#cec0b0" opacity="0.4"/>
+              <circle cx="168" cy="220" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="48" cy="260" r="1" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="152" cy="60" r="1" fill="#faf6f1" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card__face card__face--front">
+            <div class="card__front-frame">
+              <span class="card__num">II</span>
+              <h3 class="card__name">גבול</h3>
+              <span class="card__divider"></span>
+              <p class="card__hl">הגבול הוא לא חומה</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Card 3: צמיחה -->
+        <button class="card" type="button" data-card="3" aria-label="בחרי קלף שלישי">
+          <div class="card__face card__face--back" aria-hidden="true">
+            <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="cb-grad-3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#8fa69a"/>
+                  <stop offset="100%" stop-color="#5e7268"/>
+                </linearGradient>
+                <radialGradient id="cb-glow-3" cx="50%" cy="42%" r="55%">
+                  <stop offset="0%" stop-color="#faf6f1" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#faf6f1" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="200" height="320" fill="url(#cb-grad-3)"/>
+              <rect width="200" height="320" fill="url(#cb-glow-3)"/>
+              <rect x="10" y="10" width="180" height="300" rx="4" fill="none" stroke="#faf6f1" stroke-width="0.6" opacity="0.55"/>
+              <rect x="16" y="16" width="168" height="288" rx="2" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+              <g opacity="0.6">
+                <circle cx="100" cy="38" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="38" x2="92" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="38" x2="140" y2="38" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <g transform="translate(100, 160)">
+                <circle r="58" fill="none" stroke="#faf6f1" stroke-width="0.8" opacity="0.45"/>
+                <circle r="48" fill="none" stroke="#cec0b0" stroke-width="0.5" opacity="0.4"/>
+                <g opacity="0.55" stroke="#faf6f1" stroke-width="0.8">
+                  <line x1="0" y1="-70" x2="0" y2="-62"/>
+                  <line x1="0" y1="62" x2="0" y2="70"/>
+                  <line x1="-70" y1="0" x2="-62" y2="0"/>
+                  <line x1="62" y1="0" x2="70" y2="0"/>
+                  <line x1="49" y1="-49" x2="44" y2="-44"/>
+                  <line x1="-49" y1="-49" x2="-44" y2="-44"/>
+                  <line x1="49" y1="49" x2="44" y2="44"/>
+                  <line x1="-49" y1="49" x2="-44" y2="44"/>
+                </g>
+                <circle r="36" fill="none" stroke="#faf6f1" stroke-width="0.5" opacity="0.4"/>
+                <circle r="28" fill="rgba(250,246,241,0.06)" stroke="#cec0b0" stroke-width="0.4" opacity="0.5"/>
+                <text y="13" text-anchor="middle" font-family="Bellefair, serif" font-size="42" fill="#faf6f1" opacity="0.88">3</text>
+              </g>
+              <g opacity="0.6">
+                <circle cx="100" cy="282" r="1.8" fill="#cec0b0"/>
+                <line x1="60" y1="282" x2="92" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+                <line x1="108" y1="282" x2="140" y2="282" stroke="#cec0b0" stroke-width="0.6"/>
+              </g>
+              <text x="100" y="302" text-anchor="middle" font-family="Bellefair, serif" font-size="8" fill="#faf6f1" opacity="0.7" letter-spacing="3">אור הנשמה</text>
+              <circle cx="36" cy="80" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="164" cy="100" r="1" fill="#cec0b0" opacity="0.6"/>
+              <circle cx="32" cy="200" r="1" fill="#cec0b0" opacity="0.4"/>
+              <circle cx="168" cy="220" r="1.2" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="48" cy="260" r="1" fill="#faf6f1" opacity="0.5"/>
+              <circle cx="152" cy="60" r="1" fill="#faf6f1" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card__face card__face--front">
+            <div class="card__front-frame">
+              <span class="card__num">III</span>
+              <h3 class="card__name">צמיחה</h3>
+              <span class="card__divider"></span>
+              <p class="card__hl">משהו בתוכך כבר מוכן</p>
+            </div>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- REVEAL: Card 1 - קצב -->
+    <section class="reveal" id="reveal-1" style="--reveal-accent: #6f8479;">
+      <div class="wrap">
+        <div class="reveal__inner">
+          <p class="reveal__kicker">המסר שלך</p>
+          <p class="reveal__num">I</p>
+          <h2 class="reveal__name">קצב</h2>
+          <div class="reveal__divider"></div>
+          <p class="reveal__hl">את לא מאחרת לשום מקום.</p>
+          <p class="reveal__body">השבוע הזה מזכיר לך שלא כל דבר צריך לקרות עכשיו כדי להיות נכון עבורך. יש דברים שמתבשלים מאחורי הקלעים, גם אם עדיין אין לך הוכחה חיצונית. במקום למדוד את עצמך לפי קצב של אנשים אחרים, תבדקי מה באמת נכון לקצב הפנימי שלך. יכול להיות שהעיכוב שאת מרגישה הוא לא עצירה אלא דיוק.</p>
+          <p class="reveal__intention">השבוע תנסי פחות "לדחוף על עיוור", ויותר להקשיב לאן החיים מנסים לכוון אותך.</p>
+          <p class="reveal__footer"><b>מסר חדש בכל מוצ״ש.</b><br/>שמרי את העמוד הזה ותחזרי בשבוע הבא 🌙</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVEAL: Card 2 - גבול -->
+    <section class="reveal" id="reveal-2" style="--reveal-accent: #c9a96a;">
+      <div class="wrap">
+        <div class="reveal__inner">
+          <p class="reveal__kicker">המסר שלך</p>
+          <p class="reveal__num">II</p>
+          <h2 class="reveal__name">גבול</h2>
+          <div class="reveal__divider"></div>
+          <p class="reveal__hl">הגבול שלך הוא לא חומה.</p>
+          <p class="reveal__body">השבוע את מתבקשת לשים לב איפה את אומרת "כן" כשבפנים יש לך "לא". לא מתוך כעס. לא מתוך ריחוק. נטו מתוך כבוד לעצמך. גבול לא נועד להרחיק אנשים ממך, הוא נועד לשמור אותך קרובה לעצמך. יכול להיות שינסו לבדוק עד כמה את באמת עומדת מאחורי הבחירה שלך.</p>
+          <p class="reveal__intention">השבוע הזה ילמד אותך שאפשר להיות רגישה, אוהבת ונעימה ועדיין לא לוותר על עצמך.</p>
+          <p class="reveal__footer"><b>מסר חדש בכל מוצ״ש.</b><br/>שמרי את העמוד הזה ותחזרי בשבוע הבא 🌙</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVEAL: Card 3 - צמיחה -->
+    <section class="reveal" id="reveal-3" style="--reveal-accent: #a07ec1;">
+      <div class="wrap">
+        <div class="reveal__inner">
+          <p class="reveal__kicker">המסר שלך</p>
+          <p class="reveal__num">III</p>
+          <h2 class="reveal__name">צמיחה</h2>
+          <div class="reveal__divider"></div>
+          <p class="reveal__hl">משהו בתוכך כבר מוכן לשלב הבא.</p>
+          <p class="reveal__body">השבוע יכול לעלות בך רצון לעשות שינוי, גם אם עדיין אין לך את כל התשובות. אל תיבהלי מזה שאת כבר לא מתחברת למה שפעם הרגיש נכון. זה לא אומר שהתבלבלת. זה אומר שגדלת. לפעמים הנשמה זזה לפני שהראש מבין לאן בדיוק הולכים.</p>
+          <p class="reveal__intention">השבוע תני לעצמך רשות לבחור צעד קטן קדימה, גם בלי לראות את כל הדרך.</p>
+          <p class="reveal__footer"><b>מסר חדש בכל מוצ״ש.</b><br/>שמרי את העמוד הזה ותחזרי בשבוע הבא 🌙</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bridge to courses (always visible) -->
+    <section class="anna-bridge" id="anna-bridge">
+      <div class="wrap">
+        <div class="anna-bridge__avatar">
+          <img src="assets/anna-portrait.jpg" alt="אנה אשכנזי · אור הנשמה" loading="lazy" />
+        </div>
+        <p class="sec__kicker">מרחב לעומק</p>
+        <h2>אם המסר נגע בך,<br/><em>סימן שאת מוכנה להעמיק.</em></h2>
+        <p>התשובות שאת מחפשת בחוץ כבר נמצאות בתוכך, רק צריך לדעת איך להגיע אליהן. זה מה שאני מלמדת בקורסים שלנו.</p>
+        <a href="index.html" class="btn-cta">
+          <span>לקורסים שלנו</span>
+          <span aria-hidden="true">←</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="wa-section">
+        <div class="wrap">
+          <p class="sec__kicker">יש לך שאלה?</p>
+          <h2>כתבי לי בוואטסאפ</h2>
+          <p>בא לך לשאול עוד על הקורסים, על המסר שקיבלת או על משהו אחר?</p>
+          <a class="wa-btn" href="https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%9C%D7%A4%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93." target="_blank" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+            <span>058-557-7021 · WhatsApp</span>
+          </a>
+        </div>
+      </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <div class="brand" style="justify-content:center;">
+          <img class="brand__mark" src="assets/logo-or-haneshama.png" alt="" aria-hidden="true" style="width: 32px; height: 32px;" />
+          <span class="brand__name" style="color:var(--cream-soft);">אור הנשמה</span>
+        </div>
+      </div>
+      <div class="footer__contacts">
+        <a href="index.html">אור הנשמה</a>
+        <a href="compass.html">מצפן הנשמה</a>
+        <a href="shoresh.html">שורש הנשמה</a>
+        <a href="https://wa.me/972585577021" target="_blank" rel="noopener" dir="ltr">WhatsApp · 058-557-7021</a>
+      </div>
+      <div class="footer__base">
+        © <span id="year"></span> אור הנשמה · כל הזכויות שמורות
+        <span aria-hidden="true" style="margin: 0 6px; opacity: 0.4;">·</span>
+        <a href="privacy.html" style="color: var(--cta); text-decoration: underline; text-underline-offset: 3px;">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA (hidden until pick) -->
+  <a class="sticky-cta" href="https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A9%D7%9C%20%D7%94%D7%A7%D7%9C%D7%A4%D7%99%D7%9D." target="_blank" rel="noopener" aria-label="כתבי לי בוואטסאפ" style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff;">
+    <span style="display:flex; align-items:center; gap:10px;">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="flex-shrink: 0;"><path d="M16.04 6.32c-5.36 0-9.7 4.34-9.7 9.7 0 1.71.45 3.38 1.3 4.85L6.3 25.7l4.95-1.3a9.7 9.7 0 0 0 4.79 1.22h.01c5.36 0 9.7-4.34 9.7-9.7 0-2.59-1.01-5.03-2.84-6.86a9.65 9.65 0 0 0-6.87-2.84zm0 17.83a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.06.8.82-2.98-.2-.3a8.07 8.07 0 0 1-1.23-4.27c0-4.46 3.62-8.07 8.07-8.07 2.16 0 4.18.84 5.71 2.36a8.04 8.04 0 0 1 2.36 5.7c-.01 4.45-3.63 8.06-8.07 8.06zm4.43-6.04c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01a.89.89 0 0 0-.65.3c-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.71 2.6 4.13 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+      בוואטסאפ עכשיו
+    </span>
+    <span aria-hidden="true">←</span>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      var cards = document.querySelectorAll('.card');
+      var picked = false;
+      var sticky = document.querySelector('.sticky-cta');
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          if (picked) return;
+          picked = true;
+          var which = this.getAttribute('data-card');
+
+          this.classList.add('flipped');
+
+          cards.forEach(function (c) {
+            if (c !== card) c.classList.add('disabled');
+          });
+
+          setTimeout(function () {
+            var reveal = document.getElementById('reveal-' + which);
+            reveal.classList.add('open');
+            if (sticky) sticky.classList.add('show');
+          }, 650);
+
+          setTimeout(function () {
+            var reveal = document.getElementById('reveal-' + which);
+            reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 1200);
+
+          if (typeof fbq === 'function') {
+            try { fbq('trackCustom', 'CardPicked', { card: which }); } catch (e) {}
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
