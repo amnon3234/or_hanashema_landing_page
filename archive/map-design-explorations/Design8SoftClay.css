@@ -1,0 +1,818 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@400;700&display=swap');
+
+:root {
+  --bg: #efeaf6;
+  --bg-2: #e7e0f2;
+  --clay: #f6f2fb;
+  --lav: #9b7fd4;
+  --lav-deep: #6f54ad;
+  --blush: #e8a0b8;
+  --peach: #f3c08a;
+  --ink: #3a3247;
+  --ink-soft: #6f6680;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.d8-wrap {
+  position: relative;
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  background: linear-gradient(160deg, var(--bg), var(--bg-2));
+  color: var(--ink);
+  font-family: 'Assistant', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.d8-wrap * {
+  box-sizing: border-box;
+}
+
+.d8-wrap :focus-visible {
+  outline: 3px solid var(--lav);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Scroll progress bar */
+.d8-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--lav);
+  z-index: 200;
+  transform-origin: right;
+}
+
+/* Ambient background */
+.d8-ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.d8-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+}
+
+.d8-blob-1 {
+  width: 320px;
+  height: 320px;
+  top: 4%;
+  inset-inline-start: -80px;
+  background: var(--lav);
+}
+
+.d8-blob-2 {
+  width: 380px;
+  height: 380px;
+  top: 38%;
+  inset-inline-end: -120px;
+  background: var(--blush);
+}
+
+.d8-blob-3 {
+  width: 260px;
+  height: 260px;
+  top: 66%;
+  inset-inline-start: -60px;
+  background: var(--peach);
+}
+
+.d8-blob-4 {
+  width: 300px;
+  height: 300px;
+  top: 90%;
+  inset-inline-end: -80px;
+  background: var(--lav-deep);
+  opacity: 0.4;
+}
+
+.d8-bubble {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--lav-deep);
+  background: var(--clay);
+  box-shadow: 5px 5px 12px rgba(111, 84, 173, 0.18), -5px -5px 12px rgba(255, 255, 255, 0.9);
+  opacity: 0.7;
+}
+
+/* Layout / sections */
+.d8-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+.d8-h2 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.d8-h2 em {
+  font-style: normal;
+  color: var(--lav-deep);
+}
+
+.d8-kicker {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--lav-deep);
+  margin-bottom: 10px;
+}
+
+.d8-lede {
+  font-size: 18px;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 0 28px;
+}
+
+.d8-body {
+  font-size: 16px;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+/* Buttons */
+.d8-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.d8-btn-primary {
+  background: linear-gradient(135deg, var(--lav), var(--lav-deep));
+  color: #fff;
+  box-shadow: 6px 6px 14px rgba(111, 84, 173, 0.3), -6px -6px 14px rgba(255, 255, 255, 0.7);
+}
+
+.d8-btn-ghost {
+  background: var(--clay);
+  color: var(--lav-deep);
+  box-shadow: 6px 6px 14px rgba(111, 84, 173, 0.18), -6px -6px 14px rgba(255, 255, 255, 0.9);
+}
+
+.d8-btn-wa {
+  background: #25d366;
+  color: #fff;
+  box-shadow: 6px 6px 14px rgba(37, 211, 102, 0.3), -6px -6px 14px rgba(255, 255, 255, 0.6);
+}
+
+.d8-center-btn {
+  display: flex;
+  margin: 32px auto 0;
+  width: fit-content;
+}
+
+/* S1 — Announcement */
+.d8-announce {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: var(--ink);
+  background: linear-gradient(90deg, rgba(155, 127, 212, 0.25), rgba(232, 160, 184, 0.25));
+}
+
+.d8-announce strong {
+  color: var(--lav-deep);
+}
+
+/* S2 — Header */
+.d8-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--clay);
+  box-shadow: 0 6px 18px rgba(111, 84, 173, 0.12);
+}
+
+.d8-header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.d8-brand {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.d8-brand img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.d8-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--lav-deep);
+  background: var(--clay);
+  box-shadow: 4px 4px 10px rgba(111, 84, 173, 0.16), -4px -4px 10px rgba(255, 255, 255, 0.9);
+}
+
+/* S3 — Hero */
+.d8-hero {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 20px 24px;
+}
+
+.d8-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.d8-eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--lav-deep);
+  margin-bottom: 14px;
+}
+
+.d8-hero-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.d8-hero-title em {
+  font-style: normal;
+  color: var(--lav-deep);
+}
+
+.d8-hero-sub {
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+}
+
+.d8-hero-photo {
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+}
+
+.d8-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 42% 58% 56% 44% / 48% 44% 56% 52%;
+  box-shadow: 12px 12px 28px rgba(111, 84, 173, 0.25), -12px -12px 28px rgba(255, 255, 255, 0.85);
+}
+
+/* S4 — Trust */
+.d8-trust {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 8px;
+}
+
+.d8-trust-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.d8-trust-card {
+  text-align: center;
+  padding: 22px 18px;
+  border-radius: 28px;
+  background: var(--clay);
+  box-shadow: 8px 8px 18px rgba(111, 84, 173, 0.18), -8px -8px 18px rgba(255, 255, 255, 0.9);
+}
+
+.d8-trust-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 38px;
+  color: var(--lav-deep);
+  line-height: 1;
+}
+
+.d8-trust-num-small {
+  font-size: 24px;
+}
+
+.d8-trust-label {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* S5 — Why checklist */
+.d8-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.d8-check-item {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 24px;
+  background: var(--clay);
+  box-shadow: 6px 6px 14px rgba(111, 84, 173, 0.15), -6px -6px 14px rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.d8-check-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* S6 — Story */
+.d8-story-card {
+  padding: 32px 24px;
+  border-radius: 28px;
+  background: var(--clay);
+  box-shadow: 8px 8px 18px rgba(111, 84, 173, 0.18), -8px -8px 18px rgba(255, 255, 255, 0.9);
+}
+
+/* S7 — Pricing */
+.d8-pricing {
+  text-align: center;
+}
+
+.d8-pricing .d8-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.d8-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 12px;
+  text-align: right;
+}
+
+.d8-tier {
+  position: relative;
+  padding: 28px 24px;
+  border-radius: 28px;
+  background: var(--clay);
+  box-shadow: 8px 8px 18px rgba(111, 84, 173, 0.18), -8px -8px 18px rgba(255, 255, 255, 0.9);
+}
+
+.d8-tier-featured {
+  box-shadow: 14px 14px 32px rgba(111, 84, 173, 0.3), -14px -14px 32px rgba(255, 255, 255, 0.95);
+}
+
+.d8-ribbon {
+  position: absolute;
+  top: 18px;
+  inset-inline-end: -6px;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, var(--blush), #d98aa6);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 999px 0 0 999px;
+  box-shadow: 4px 4px 10px rgba(232, 160, 184, 0.4);
+}
+
+.d8-tier-name {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.d8-tier-sub {
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+.d8-tier-amount {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: var(--lav-deep);
+  line-height: 1;
+}
+
+.d8-tier-terms {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 6px 0 18px;
+}
+
+.d8-tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.d8-tier-features li {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.d8-tier-features svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.d8-tier-btn {
+  width: 100%;
+}
+
+.d8-wa-block {
+  margin-top: 36px;
+}
+
+.d8-wa-lede {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+/* S8 — MidCta */
+.d8-midcta {
+  text-align: center;
+  padding: 40px 28px;
+  border-radius: 28px;
+  background: linear-gradient(140deg, var(--clay), #efe6f8);
+  box-shadow: 10px 10px 24px rgba(111, 84, 173, 0.2), -10px -10px 24px rgba(255, 255, 255, 0.92);
+}
+
+.d8-midcta .d8-body {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--ink-soft);
+}
+
+/* S9 — Benefits */
+.d8-benefits {
+  text-align: center;
+}
+
+.d8-benefits .d8-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.d8-benefit-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+}
+
+.d8-benefit-card {
+  padding: 26px 22px;
+  border-radius: 28px;
+  background: var(--clay);
+  box-shadow: 8px 8px 18px rgba(111, 84, 173, 0.18), -8px -8px 18px rgba(255, 255, 255, 0.9);
+}
+
+.d8-benefit-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--blush);
+  margin-bottom: 8px;
+}
+
+.d8-benefit-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+/* S10 — About */
+.d8-about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  padding: 32px 24px;
+  border-radius: 28px;
+  background: var(--clay);
+  box-shadow: 8px 8px 18px rgba(111, 84, 173, 0.18), -8px -8px 18px rgba(255, 255, 255, 0.9);
+}
+
+.d8-about-photo {
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.d8-about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 42% 58% 56% 44% / 48% 44% 56% 52%;
+  box-shadow: 10px 10px 24px rgba(111, 84, 173, 0.22), -10px -10px 24px rgba(255, 255, 255, 0.85);
+}
+
+.d8-signature {
+  font-style: italic;
+  font-size: 17px;
+  color: var(--lav-deep);
+  margin: 18px 0 0;
+}
+
+/* S11 — FAQ */
+.d8-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.d8-faq-item {
+  border-radius: 24px;
+  background: var(--clay);
+  box-shadow: 6px 6px 14px rgba(111, 84, 173, 0.15), -6px -6px 14px rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+.d8-faq-q {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  padding: 16px 20px;
+  border: none;
+  background: transparent;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  text-align: right;
+  cursor: pointer;
+}
+
+.d8-faq-chevron {
+  display: inline-flex;
+  color: var(--lav-deep);
+  flex-shrink: 0;
+}
+
+.d8-faq-a-wrap {
+  overflow: hidden;
+}
+
+.d8-faq-a {
+  margin: 0;
+  padding: 0 20px 18px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* S12 — Lead */
+.d8-lead {
+  text-align: center;
+}
+
+.d8-lead-card {
+  padding: 40px 28px;
+  border-radius: 28px;
+  background: linear-gradient(140deg, var(--clay), #efe6f8);
+  box-shadow: 12px 12px 28px rgba(111, 84, 173, 0.22), -12px -12px 28px rgba(255, 255, 255, 0.92);
+}
+
+.d8-lead-title {
+  text-align: center;
+}
+
+.d8-lead .d8-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.d8-lead-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+/* S13 — Footer */
+.d8-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 20px 110px;
+}
+
+.d8-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.d8-footer-nav a {
+  color: var(--lav-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.d8-footer-nav span {
+  color: var(--ink-soft);
+}
+
+.d8-footer-small {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* S14 — Sticky mobile CTA */
+.d8-sticky-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  padding: 12px 16px;
+  background: var(--clay);
+  box-shadow: 0 -6px 18px rgba(111, 84, 173, 0.18);
+}
+
+.d8-sticky-btn {
+  width: 100%;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .d8-h2 {
+    font-size: 36px;
+  }
+
+  .d8-hero-title {
+    font-size: 56px;
+  }
+
+  .d8-hero-inner {
+    flex-direction: row-reverse;
+    text-align: right;
+    justify-content: space-between;
+  }
+
+  .d8-hero-text {
+    flex: 1;
+  }
+
+  .d8-hero-photo {
+    width: 320px;
+    height: 320px;
+  }
+
+  .d8-trust-row {
+    flex-direction: row-reverse;
+  }
+
+  .d8-trust-card {
+    flex: 1;
+  }
+
+  .d8-tiers {
+    flex-direction: row-reverse;
+    align-items: stretch;
+  }
+
+  .d8-tier {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .d8-tier-btn {
+    margin-top: auto;
+  }
+
+  .d8-benefit-grid {
+    flex-direction: row-reverse;
+  }
+
+  .d8-benefit-card {
+    flex: 1;
+  }
+
+  .d8-about-inner {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
+  .d8-about-text {
+    flex: 1;
+  }
+
+  .d8-lead-btns {
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+
+  .d8-sticky-mobile {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .d8-section {
+    padding: 72px 20px;
+  }
+
+  .d8-hero-title {
+    font-size: 64px;
+  }
+
+  .d8-hero-photo {
+    width: 380px;
+    height: 380px;
+  }
+}

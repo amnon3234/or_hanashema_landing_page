@@ -1,0 +1,89 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 22px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--soft {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+.btn--soft:hover {
+  background: var(--color-accent);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-accent-strong);
+  border: 1px solid var(--color-border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent-strong);
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+.btn--whatsapp {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn--whatsapp:hover {
+  border-color: var(--color-accent-strong);
+  background: var(--color-surface-alt);
+}
+
+.btn--whatsapp .btn__icon {
+  color: #25d366;
+  display: inline-flex;
+}
+
+.btn__arrow {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(-4px);
+}
+
+.btn--lg {
+  padding: 18px 30px;
+  font-size: 18px;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover .btn__arrow {
+    transform: none;
+  }
+}

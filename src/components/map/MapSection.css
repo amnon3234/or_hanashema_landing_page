@@ -1,0 +1,9 @@
+.msec {
+  position: relative;
+  padding: clamp(72px, 12vw, 120px) 0;
+}
+
+.msec--band {
+  background: var(--color-surface-alt);
+  border-block: 1px solid var(--color-border);
+}

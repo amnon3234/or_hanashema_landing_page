@@ -1,0 +1,37 @@
+.pains {
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.pains li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: clamp(16.5px, 2.4vw, 19px);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.pains__mark {
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-accent-strong);
+  width: 30px;
+  line-height: 1.6;
+}
+
+@media (min-width: 760px) {
+  .pains {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+}

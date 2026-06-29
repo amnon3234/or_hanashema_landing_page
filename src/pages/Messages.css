@@ -1,0 +1,360 @@
+/* Messages page — all classes prefixed msg- */
+
+/* ─── Hero ─────────────────────────────────────────────────────────────────── */
+.msg-hero {
+  padding-block: 56px 28px;
+  text-align: center;
+}
+
+.msg-hero__sparkles {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 6px 0 14px;
+  font-size: 14px;
+  color: var(--cz-gold);
+  opacity: 0.7;
+  letter-spacing: 0.3em;
+}
+
+.msg-hero__hint {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--cz-text-muted);
+  font-family: var(--cz-font-display);
+  letter-spacing: 0.2em;
+  animation: msg-hint-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes msg-hint-pulse {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(3px); }
+}
+
+/* ─── Cards arena ───────────────────────────────────────────────────────────── */
+.msg-arena {
+  padding-block: 16px 40px;
+  perspective: 1400px;
+}
+
+.msg-arena__inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: end;
+  justify-items: center;
+  max-width: 560px;
+  margin: 0 auto;
+  padding-inline: 14px;
+}
+
+/* ─── Card ─────────────────────────────────────────────────────────────────── */
+.msg-card {
+  position: relative;
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 5/8;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  /* animation applied via JS/motion; keep a fallback float for reduced-motion via CSS */
+}
+
+.msg-card:focus-visible {
+  outline: 3px solid var(--cz-gold);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.msg-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 22px 40px -16px rgba(0, 0, 0, 0.6),
+    0 4px 12px -4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(240, 201, 125, 0.18);
+}
+
+.msg-card__back {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.msg-card__front {
+  transform: rotateY(180deg);
+  background: var(--cz-bg1);
+  border: 1px solid var(--cz-glass-border-bright);
+}
+
+.msg-card__front-frame {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--cz-glass-border-bright);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  text-align: center;
+  background: radial-gradient(ellipse at top, rgba(240, 201, 125, 0.08), transparent 70%);
+}
+
+.msg-card__num {
+  font-family: var(--cz-font-display);
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--cz-gold);
+  margin-bottom: 10px;
+}
+
+.msg-card__name {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: clamp(18px, 4.5vw, 24px);
+  line-height: 1.05;
+  color: var(--cz-text);
+  margin: 0 0 10px;
+}
+
+.msg-card__divider {
+  width: 28px;
+  height: 1px;
+  background: var(--cz-gold);
+  margin: 0 auto 10px;
+  opacity: 0.5;
+}
+
+.msg-card__tagline {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--cz-text-soft);
+  margin: 0;
+}
+
+/* ─── Reset button ──────────────────────────────────────────────────────────── */
+.msg-reset {
+  display: block;
+  margin: 24px auto 0;
+  background: none;
+  border: 1px solid var(--cz-glass-border-bright);
+  border-radius: var(--cz-radius-btn);
+  color: var(--cz-text-muted);
+  font-family: var(--cz-font-body);
+  font-size: 0.82rem;
+  padding: 8px 20px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.msg-reset:hover {
+  color: var(--cz-text-soft);
+  border-color: var(--cz-gold);
+}
+
+.msg-reset:focus-visible {
+  outline: 2px solid var(--cz-gold);
+  outline-offset: 3px;
+}
+
+/* ─── Reveal panel ──────────────────────────────────────────────────────────── */
+.msg-reveal {
+  max-width: 580px;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+
+.msg-reveal__inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--cz-radius);
+  padding: 32px 24px 28px;
+}
+
+.msg-reveal__accent-bar {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  border-radius: 4px 4px 0 0;
+}
+
+.msg-reveal__kicker {
+  text-align: center;
+  font-family: var(--cz-font-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin: 0 0 10px;
+}
+
+.msg-reveal__num {
+  text-align: center;
+  font-family: var(--cz-font-display);
+  font-size: 13px;
+  letter-spacing: 0.5em;
+  color: var(--cz-text-muted);
+  margin: 0 0 4px;
+}
+
+.msg-reveal__name {
+  text-align: center;
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 8vw, 44px);
+  line-height: 1.05;
+  color: var(--cz-text);
+  margin: 0 0 14px;
+}
+
+.msg-reveal__divider {
+  width: 56px;
+  height: 1px;
+  background: var(--cz-gold);
+  margin: 0 auto 18px;
+  opacity: 0.5;
+}
+
+.msg-reveal__hl {
+  text-align: center;
+  font-family: var(--cz-font-display);
+  font-style: italic;
+  font-size: clamp(17px, 4.4vw, 21px);
+  line-height: 1.4;
+  color: var(--cz-gold);
+  margin: 0 0 18px;
+}
+
+.msg-reveal__body {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--cz-text-soft);
+  margin: 0 0 20px;
+}
+
+.msg-reveal__intention {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 16px 18px;
+  border-inline-end: 3px solid var(--cz-gold);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--cz-text-soft);
+  margin: 0 0 20px;
+}
+
+.msg-reveal__intention-label {
+  display: block;
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  color: var(--cz-gold);
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.msg-reveal__footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cz-text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.msg-reveal__footer strong {
+  color: var(--cz-text-soft);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ─── Bridge section ────────────────────────────────────────────────────────── */
+.msg-bridge {
+  text-align: center;
+  padding-block: 56px 48px;
+}
+
+.msg-bridge__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 18px;
+  border: 2px solid var(--cz-glass-border-bright);
+  box-shadow: var(--cz-shadow-card);
+}
+
+.msg-bridge__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.msg-bridge__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* ─── WhatsApp section ──────────────────────────────────────────────────────── */
+.msg-wa-section {
+  text-align: center;
+  padding-block: 56px 48px;
+}
+
+.msg-wa-section .cz-lede {
+  margin: 0 auto 24px;
+  max-width: 36ch;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (min-width: 720px) {
+  .msg-hero {
+    padding-block: 80px 32px;
+  }
+  .msg-arena__inner {
+    gap: 32px;
+    max-width: 760px;
+  }
+  .msg-card {
+    max-width: 200px;
+  }
+  .msg-reveal__inner {
+    padding: 44px 36px 36px;
+  }
+}
+
+@media (max-width: 420px) {
+  .msg-arena__inner {
+    gap: 8px;
+    padding-inline: 10px;
+  }
+  .msg-card {
+    max-width: 110px;
+  }
+  .msg-card__num {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  .msg-card__name {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .msg-card__front-frame {
+    padding: 10px 6px;
+    inset: 5px;
+  }
+  .msg-card__tagline {
+    font-size: 10px;
+  }
+}

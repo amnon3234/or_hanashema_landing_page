@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@300;400;500;600;700&display=swap");
+
+.dg {
+  min-height: 100dvh;
+  background: #14121c;
+  color: #f4efe4;
+  font-family: "Assistant", system-ui, sans-serif;
+  padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 64px) 96px;
+}
+
+.dg__head {
+  max-width: 760px;
+  margin: 0 auto clamp(36px, 6vw, 64px);
+  text-align: center;
+}
+
+.dg__eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: #d0a960;
+  text-transform: uppercase;
+}
+
+.dg__title {
+  margin: 0 0 16px;
+  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(34px, 7vw, 56px);
+  line-height: 1.1;
+}
+
+.dg__sub {
+  margin: 0;
+  font-size: clamp(16px, 2.4vw, 19px);
+  color: #aaa294;
+  line-height: 1.6;
+}
+
+.dg__grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(18px, 3vw, 28px);
+}
+
+.dg__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  background: #211f2d;
+  border: 1px solid rgba(244, 239, 228, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.dg__card:hover,
+.dg__card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(208, 169, 96, 0.55);
+  box-shadow: 0 28px 60px -28px rgba(0, 0, 0, 0.75);
+  outline: none;
+}
+
+.dg__card:focus-visible {
+  outline: 2px solid #d0a960;
+  outline-offset: 3px;
+}
+
+.dg__preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.dg__index {
+  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-size: clamp(40px, 9vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.92;
+}
+
+.dg__swatches {
+  display: flex;
+  gap: 6px;
+}
+
+.dg__swatches span {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dg__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  flex: 1;
+}
+
+.dg__name {
+  margin: 0;
+  font-family: "Frank Ruhl Libre", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dg__note {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #aaa294;
+  flex: 1;
+}
+
+.dg__open {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #d0a960;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg__card {
+    transition: none;
+  }
+  .dg__card:hover,
+  .dg__card:focus-visible {
+    transform: none;
+  }
+}

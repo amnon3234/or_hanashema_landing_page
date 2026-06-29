@@ -1,0 +1,12 @@
+.course-cards {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: 8px;
+}
+
+@media (min-width: 720px) {
+  .course-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+}

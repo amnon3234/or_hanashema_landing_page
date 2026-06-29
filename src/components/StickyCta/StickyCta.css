@@ -1,0 +1,65 @@
+.sticky-cta {
+  position: fixed;
+  inset-inline: 14px;
+  bottom: 14px;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 22px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 16.5px;
+  box-shadow: var(--shadow-cta);
+}
+
+.sticky-cta__main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sticky-cta__pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-on-primary);
+  position: relative;
+}
+
+.sticky-cta__pulse::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--color-on-primary) 60%, transparent);
+  animation: sticky-pulse 2s ease-out infinite;
+}
+
+@keyframes sticky-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .sticky-cta {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta__pulse::after {
+    animation: none;
+  }
+}

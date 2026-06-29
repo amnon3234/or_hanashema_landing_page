@@ -1,0 +1,139 @@
+.tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin: 40px auto 0;
+  max-width: 760px;
+}
+
+.tier {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tier--featured {
+  border-color: var(--color-accent-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.tier__ribbon {
+  position: absolute;
+  top: -13px;
+  inset-inline-end: 28px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+
+.tier__name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(26px, 6vw, 32px);
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.tier__sub {
+  font-size: 15px;
+  color: var(--color-muted);
+  margin: 0 0 20px;
+}
+
+.tier__price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tier__currency {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--color-accent-strong);
+}
+
+.tier__amount {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(42px, 10vw, 52px);
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.tier__terms {
+  margin-inline-start: auto;
+  font-size: 13px;
+  color: var(--color-muted);
+  letter-spacing: 0.03em;
+}
+
+.tier__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: grid;
+  gap: 12px;
+  flex: 1;
+}
+
+.tier__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.tier__list li::before {
+  content: "✓";
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50%;
+  color: var(--color-accent-strong);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  border: 1px solid var(--color-accent-strong);
+}
+
+.wa-inquire {
+  margin: 34px auto 0;
+  max-width: 560px;
+  text-align: center;
+  padding: 26px 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.wa-inquire__lede {
+  margin: 0 0 18px;
+  color: var(--color-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 760px) {
+  .tiers {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}

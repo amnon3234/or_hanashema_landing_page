@@ -1,0 +1,17 @@
+.origin {
+  max-width: 640px;
+  margin: 36px 0;
+  padding-inline-start: 26px;
+  border-inline-start: 2px solid var(--color-accent-strong);
+}
+
+.origin p {
+  margin: 0 0 18px;
+  color: var(--color-muted);
+  line-height: 1.85;
+  font-size: 17.5px;
+}
+
+.origin p:last-child {
+  margin: 0;
+}

@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Rubik:wght@300;400;500;600&family=Suez+One&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Cosmic Aurora — shared design system
+   Tokens are scoped to .cz-app so they never leak globally.
+   All reusable classes are prefixed cz-.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cz-app {
+  /* Backgrounds */
+  --cz-bg0: #0d0a1f;
+  --cz-bg1: #1a1140;
+  /* Aurora hues */
+  --cz-violet: #7c4dff;
+  --cz-magenta: #d946a8;
+  --cz-blue: #4d7cff;
+  /* Accents */
+  --cz-gold: #f0c97d;
+  --cz-gold-dim: #c8a45a;
+  /* Text */
+  --cz-text: #f3eefb;
+  --cz-text-soft: #b8aed6;
+  --cz-text-muted: #7a6fa0;
+  /* Glass surfaces */
+  --cz-glass: rgba(255, 255, 255, 0.06);
+  --cz-glass-strong: rgba(255, 255, 255, 0.10);
+  --cz-glass-border: rgba(255, 255, 255, 0.14);
+  --cz-glass-border-bright: rgba(255, 255, 255, 0.24);
+  /* Geometry */
+  --cz-radius: 24px;
+  --cz-radius-btn: 100px;
+  --cz-wrap: 1100px;
+  /* Shadows */
+  --cz-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --cz-glow-violet: 0 0 40px rgba(124, 77, 255, 0.35);
+  --cz-glow-gold: 0 0 32px rgba(240, 201, 125, 0.4);
+  /* Fonts */
+  --cz-font-display: 'Frank Ruhl Libre', 'Suez One', Georgia, serif;
+  --cz-font-body: 'Rubik', system-ui, sans-serif;
+  /* Easing */
+  --cz-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --cz-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--cz-font-body);
+  font-size: 16px;
+  color: var(--cz-text);
+  background: var(--cz-bg0);
+}
+
+.cz-app *,
+.cz-app *::before,
+.cz-app *::after {
+  box-sizing: border-box;
+}
+
+/* ─── Background layers (aurora + floating digits) ──────────────────────── */
+.cz-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 120% 80% at 50% 0%, #1a1140 0%, #0d0a1f 100%);
+}
+
+.cz-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.cz-blob--1 {
+  width: 70vw;
+  height: 60vw;
+  background: radial-gradient(circle, #7c4dff 0%, transparent 70%);
+  top: -20vw;
+  right: -15vw;
+}
+
+.cz-blob--2 {
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, #d946a8 0%, transparent 70%);
+  top: 10vw;
+  left: -10vw;
+}
+
+.cz-blob--3 {
+  width: 50vw;
+  height: 45vw;
+  background: radial-gradient(circle, #4d7cff 0%, transparent 70%);
+  top: 55vh;
+  right: 20vw;
+  opacity: 0.3;
+}
+
+.cz-blob--4 {
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, #7c4dff 0%, transparent 70%);
+  bottom: 10vh;
+  left: 5vw;
+  opacity: 0.25;
+}
+
+/* Fixed, viewport-sized, clipped wrapper so rotating digits never cause page overflow. */
+.cz-digits {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cz-digit {
+  position: absolute;
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  color: var(--cz-violet);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* ─── Scroll-progress bar ────────────────────────────────────────────────── */
+.cz-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  transform-origin: right center;
+  background: linear-gradient(90deg, var(--cz-magenta), var(--cz-violet), var(--cz-blue));
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* ─── Layout utilities ───────────────────────────────────────────────────── */
+.cz-wrap {
+  width: 100%;
+  max-width: var(--cz-wrap);
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.cz-section {
+  padding-block: 60px;
+}
+
+.cz-band {
+  background: linear-gradient(180deg, rgba(124, 77, 255, 0.05) 0%, transparent 100%);
+}
+
+/* Main content sits above the fixed background layers. */
+.cz-main {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Typography utilities ───────────────────────────────────────────────── */
+.cz-eyebrow {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  border: 1px solid rgba(240, 201, 125, 0.3);
+  border-radius: 100px;
+  background: rgba(240, 201, 125, 0.07);
+}
+
+.cz-kicker {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cz-violet);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cz-h2 {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: var(--cz-text);
+}
+
+.cz-h2-em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cz-gold) 0%, var(--cz-magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cz-lede {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--cz-text-soft);
+  max-width: 600px;
+}
+
+/* ─── Glass card ─────────────────────────────────────────────────────────── */
+.cz-glass {
+  background: var(--cz-glass);
+  border: 1px solid var(--cz-glass-border);
+  border-radius: var(--cz-radius);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: var(--cz-shadow-card);
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.cz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--cz-radius-btn);
+  font-family: var(--cz-font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  text-align: center;
+  transition: box-shadow 0.2s var(--cz-ease);
+  white-space: normal;
+}
+
+.cz-btn--primary {
+  background: linear-gradient(135deg, var(--cz-violet) 0%, var(--cz-magenta) 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(124, 77, 255, 0.4);
+}
+
+.cz-btn--gold {
+  background: linear-gradient(135deg, var(--cz-gold) 0%, var(--cz-gold-dim) 100%);
+  color: #1a0e30;
+  box-shadow: var(--cz-glow-gold);
+  font-weight: 700;
+}
+
+.cz-btn--ghost {
+  background: var(--cz-glass);
+  border: 1px solid var(--cz-glass-border-bright);
+  color: var(--cz-text);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cz-btn--wa {
+  background: linear-gradient(135deg, #25d366 0%, #128c5e 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.cz-btn--sm {
+  padding: 9px 20px;
+  font-size: 0.9rem;
+}
+
+.cz-btn--lg {
+  padding: 15px 38px;
+  font-size: 1.1rem;
+}
+
+.cz-btn--block {
+  width: 100%;
+}
+
+/* ─── Ribbon (featured badge) ────────────────────────────────────────────── */
+.cz-ribbon {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(135deg, var(--cz-violet), var(--cz-magenta));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(124, 77, 255, 0.4);
+}
+
+/* ─── Checklist row ──────────────────────────────────────────────────────── */
+.cz-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--cz-glass);
+  border: 1px solid var(--cz-glass-border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cz-check__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  color: var(--cz-violet);
+}
+
+.cz-check__text {
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--cz-text-soft);
+}
+
+/* ─── Announcement bar ───────────────────────────────────────────────────── */
+.cz-announce {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(124, 77, 255, 0.25) 0%, rgba(217, 70, 168, 0.2) 100%);
+  border-bottom: 1px solid var(--cz-glass-border);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--cz-text-soft);
+  letter-spacing: 0.01em;
+}
+
+.cz-announce strong {
+  color: var(--cz-gold);
+  font-weight: 600;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.cz-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: rgba(13, 10, 31, 0.72);
+  border-bottom: 1px solid var(--cz-glass-border);
+}
+
+.cz-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 12px;
+  gap: 16px;
+}
+
+.cz-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.cz-header__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--cz-glass-border-bright);
+}
+
+.cz-header__name {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cz-text);
+  line-height: 1.2;
+}
+
+.cz-header__name span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--cz-text-soft);
+  font-family: var(--cz-font-body);
+}
+
+.cz-header__nav {
+  display: none;
+  align-items: center;
+  gap: 22px;
+  margin-inline-start: auto;
+  margin-inline-end: 8px;
+}
+
+.cz-header__nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--cz-text-soft);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.cz-header__nav-link:hover {
+  color: var(--cz-text);
+}
+
+.cz-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.cz-footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--cz-glass-border);
+  padding-block: 36px;
+  background: rgba(13, 10, 31, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cz-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cz-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.cz-footer__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--cz-glass-border);
+}
+
+.cz-footer__name {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--cz-text);
+}
+
+.cz-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cz-footer__link {
+  font-size: 0.88rem;
+  color: var(--cz-text-soft);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.cz-footer__link:hover {
+  color: var(--cz-text);
+}
+
+.cz-footer__copy {
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--cz-text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ─── Sticky mobile CTA ──────────────────────────────────────────────────── */
+.cz-sticky {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 90;
+  padding: 12px 16px;
+  background: rgba(13, 10, 31, 0.88);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-top: 1px solid var(--cz-glass-border);
+  display: flex;
+  justify-content: center;
+}
+
+.cz-sticky__btn {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ─── Focus & reduced motion ─────────────────────────────────────────────── */
+.cz-app :focus-visible {
+  outline: 2px solid var(--cz-violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cz-blob,
+  .cz-digit {
+    animation: none !important;
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .cz-wrap {
+    padding-inline: 32px;
+  }
+
+  .cz-header__nav {
+    display: flex;
+  }
+
+  .cz-sticky {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cz-wrap {
+    padding-inline: 48px;
+  }
+}

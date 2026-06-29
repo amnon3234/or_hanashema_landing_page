@@ -1,0 +1,136 @@
+/* Privacy page — classes prefixed prv- */
+
+.prv-section {
+  padding-block: 60px 80px;
+}
+
+.prv-wrap {
+  max-width: 70ch;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.prv-panel {
+  padding: 36px 40px;
+}
+
+@media (max-width: 600px) {
+  .prv-panel {
+    padding: 24px 20px;
+  }
+}
+
+.prv-title {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 8px;
+  color: var(--cz-text);
+}
+
+.prv-updated {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--cz-text-muted);
+  margin: 0 0 32px;
+}
+
+.prv-intro {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--cz-text-soft);
+  margin: 0 0 36px;
+}
+
+.prv-h2 {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--cz-gold);
+  margin: 36px 0 12px;
+}
+
+.prv-panel .prv-h2:first-child {
+  margin-top: 0;
+}
+
+.prv-p {
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: var(--cz-text-soft);
+  margin: 0 0 14px;
+}
+
+.prv-ul {
+  padding-inline-start: 1.4em;
+  margin: 0 0 14px;
+  color: var(--cz-text-soft);
+}
+
+.prv-ul li {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+
+.prv-strong {
+  color: var(--cz-text);
+  font-weight: 600;
+}
+
+.prv-callout {
+  background: rgba(240, 201, 125, 0.07);
+  border: 1px solid rgba(240, 201, 125, 0.22);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin: 24px 0 8px;
+}
+
+.prv-callout-title {
+  font-family: var(--cz-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cz-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.prv-callout p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--cz-text-soft);
+  margin: 0;
+}
+
+.prv-link {
+  color: var(--cz-gold-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prv-link:hover {
+  color: var(--cz-gold);
+}
+
+.prv-link:focus-visible {
+  outline: 2px solid var(--cz-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.prv-footnote {
+  font-size: 0.87rem;
+  line-height: 1.7;
+  color: var(--cz-text-muted);
+  font-style: italic;
+  margin-top: 40px;
+}
+
+/* Divider between clauses */
+.prv-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}

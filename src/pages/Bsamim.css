@@ -1,0 +1,396 @@
+/* ================================================================
+   Bsamim.css — "הבושם של המספר שלך"
+   All classes prefixed bsm-. Uses var(--cz-*) tokens from cosmic.css.
+   ================================================================ */
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.bsm-hero {
+  padding: 48px 0 24px;
+  text-align: center;
+}
+.bsm-hero__bottle {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bsm-hero__bottle svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 12px 28px rgba(180, 140, 80, 0.28));
+}
+
+/* Center the lede paragraphs within their centered sections. */
+.bsm-hero .cz-lede,
+.bsm-bridge .cz-lede,
+.bsm-wa .cz-lede {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* ── Picker ──────────────────────────────────────────────────────── */
+.bsm-picker {
+  padding: 8px 0 40px;
+}
+.bsm-picker__lede {
+  text-align: center;
+  color: var(--cz-muted, #6b6059);
+  font-size: 14.5px;
+  margin: 0 0 20px;
+}
+.bsm-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.bsm-pick {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(120, 90, 40, 0.08);
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  overflow: hidden;
+  padding: 0;
+  /* touch target: handled by aspect-ratio + min-height */
+  min-height: 80px;
+}
+.bsm-pick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bsm-pick-tint, transparent);
+  opacity: 0.18;
+  transition: opacity 0.18s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.bsm-pick:hover,
+.bsm-pick:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(120, 90, 40, 0.18);
+}
+.bsm-pick:hover::before,
+.bsm-pick:focus-visible::before {
+  opacity: 0.34;
+}
+.bsm-pick:focus-visible {
+  outline: 2px solid var(--cz-gold, #b08542);
+  outline-offset: 2px;
+}
+.bsm-pick--active {
+  border-color: var(--bsm-pick-tint, #b08542);
+  box-shadow: 0 0 0 3px rgba(176, 133, 66, 0.25), 0 8px 24px rgba(120, 90, 40, 0.2);
+  background: rgba(255, 255, 255, 0.75);
+}
+.bsm-pick--active::before {
+  opacity: 0.4;
+}
+.bsm-pick__num {
+  position: relative;
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-size: 36px;
+  line-height: 1;
+  color: var(--cz-ink, #2a1f17);
+}
+.bsm-pick__lbl {
+  position: relative;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cz-muted, #6b6059);
+}
+
+/* ── Result card ──────────────────────────────────────────────────── */
+.bsm-result-wrap {
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+.bsm-result {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1.5px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  backdrop-filter: saturate(160%) blur(18px);
+  box-shadow: 0 4px 32px rgba(120, 90, 40, 0.1), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  padding: 32px 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.bsm-result::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: var(--bsm-accent, #b08542);
+  border-radius: 24px 24px 0 0;
+}
+
+.bsm-result__head {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.bsm-result__badge {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-size: 30px;
+  color: #fff;
+  background: var(--bsm-accent, #b08542);
+  box-shadow: 0 8px 20px -6px var(--bsm-accent, #b08542);
+}
+.bsm-result__meta {
+  flex: 1;
+  min-width: 0;
+}
+.bsm-result__kicker {
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bsm-accent, #b08542);
+  margin: 0 0 6px;
+  display: block;
+}
+.bsm-result__title {
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-weight: 400;
+  font-size: clamp(20px, 5vw, 26px);
+  line-height: 1.2;
+  color: var(--cz-ink, #2a1f17);
+  margin: 0;
+}
+
+.bsm-result__body {
+  font-size: 15.5px;
+  line-height: 1.72;
+  color: var(--cz-ink, #2a1f17);
+  margin: 0 0 14px;
+}
+
+.bsm-result__notes {
+  background: rgba(250, 246, 241, 0.7);
+  border-inline-end: 3px solid var(--bsm-accent, #b08542);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--cz-ink, #2a1f17);
+  margin: 0 0 20px;
+}
+.bsm-result__notes b {
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-weight: 400;
+  color: var(--bsm-accent, #b08542);
+  margin-inline-end: 4px;
+}
+
+/* ── Bottle examples ─────────────────────────────────────────────── */
+.bsm-ex-label {
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bsm-accent, #b08542);
+  margin: 0 0 12px;
+  display: block;
+}
+.bsm-bottles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.bsm-bottle {
+  background: rgba(250, 246, 241, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  padding: 14px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+.bsm-bottle:hover {
+  transform: translateY(-3px);
+}
+.bsm-bottle__art {
+  width: 52px;
+  height: 74px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.bsm-bottle__art svg {
+  width: 100%;
+  height: 100%;
+}
+.bsm-bottle__brand {
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--bsm-accent, #b08542);
+  line-height: 1.2;
+}
+.bsm-bottle__name {
+  font-size: 11.5px;
+  color: var(--cz-ink, #2a1f17);
+  line-height: 1.3;
+}
+
+/* ── Signature ───────────────────────────────────────────────────── */
+.bsm-result__sig {
+  margin: 18px 0 0;
+  font-family: var(--cz-serif, "Bellefair", serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--bsm-accent, #b08542);
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(176, 133, 66, 0.3);
+}
+
+/* ── Prompt state (no selection yet) ──────────────────────────────── */
+.bsm-prompt {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--cz-muted, #6b6059);
+}
+.bsm-prompt__icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+  filter: grayscale(0.2);
+}
+.bsm-prompt p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Bridge section ───────────────────────────────────────────────── */
+.bsm-bridge {
+  text-align: center;
+  padding: 56px 0 52px;
+}
+.bsm-bridge__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(120, 90, 40, 0.18);
+}
+.bsm-bridge__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+.bsm-bridge__more {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--cz-muted, #6b6059);
+}
+
+/* ── WhatsApp section ─────────────────────────────────────────────── */
+.bsm-wa {
+  text-align: center;
+  padding: 52px 0 48px;
+}
+.bsm-wa__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 16px 32px -10px rgba(37, 211, 102, 0.5);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.bsm-wa__btn:hover,
+.bsm-wa__btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 36px -10px rgba(37, 211, 102, 0.6);
+}
+.bsm-wa__btn:focus-visible {
+  outline: 2px solid #25d366;
+  outline-offset: 3px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (min-width: 480px) {
+  .bsm-picker__grid {
+    gap: 14px;
+  }
+  .bsm-pick__num {
+    font-size: 44px;
+  }
+  .bsm-bottles {
+    gap: 14px;
+  }
+}
+@media (min-width: 720px) {
+  .bsm-hero {
+    padding: 72px 0 32px;
+  }
+  .bsm-hero__bottle {
+    width: 200px;
+    height: 200px;
+  }
+  .bsm-result {
+    padding: 40px 36px 36px;
+  }
+  .bsm-result__badge {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+  .bsm-bottles {
+    gap: 16px;
+  }
+  .bsm-bottle {
+    padding: 18px 12px 14px;
+  }
+  .bsm-bottle__art {
+    width: 60px;
+    height: 84px;
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .bsm-pick,
+  .bsm-bottle,
+  .bsm-wa__btn {
+    transition: none;
+  }
+}

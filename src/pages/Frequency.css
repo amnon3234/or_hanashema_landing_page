@@ -1,0 +1,431 @@
+/* ─── Hero ─────────────────────────────────────────────────────────────────── */
+
+.frq-hero {
+  padding-block: 72px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.frq-hero__title {
+  font-family: var(--cz-font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cz-text);
+  margin-block: 16px 24px;
+}
+
+.frq-hero__title em {
+  font-style: normal;
+  display: block;
+  color: var(--cz-gold);
+}
+
+/* ─── Hero SVG decoration ───────────────────────────────────────────────────── */
+
+.frq-hero__deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.frq-hero__deco svg {
+  width: min(520px, 90vw);
+  height: auto;
+  opacity: 0.55;
+}
+
+.frq-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.frq-ring--glow {
+  animation: frq-glow 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.frq-ring--breathe {
+  animation: frq-breathe 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.frq-ring--wave {
+  animation: frq-wave 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.frq-star {
+  animation: frq-twinkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.frq-star:nth-child(2) { animation-delay: 0.7s; }
+.frq-star:nth-child(3) { animation-delay: 1.4s; }
+.frq-star:nth-child(4) { animation-delay: 2.1s; }
+
+@keyframes frq-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes frq-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+@keyframes frq-wave {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+  33% { transform: scale(1.03) rotate(3deg); opacity: 0.45; }
+  66% { transform: scale(0.97) rotate(-3deg); opacity: 0.35; }
+}
+
+@keyframes frq-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frq-ring--glow,
+  .frq-ring--breathe,
+  .frq-ring--wave,
+  .frq-star {
+    animation: none;
+  }
+}
+
+/* ─── How-to box ──────────────────────────────────────────────────────────── */
+
+.frq-howto {
+  max-width: 420px;
+  margin-inline: auto;
+  margin-block: 24px 32px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  text-align: start;
+}
+
+.frq-howto__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cz-gold);
+  margin-block-end: 12px;
+  letter-spacing: 0.03em;
+}
+
+.frq-howto__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--cz-text-muted);
+  flex-wrap: wrap;
+  margin-block-end: 6px;
+}
+
+.frq-howto__calc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  background: rgba(255 255 255 / 0.06);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 13px;
+}
+
+.frq-howto__result {
+  font-weight: 700;
+  color: var(--cz-gold);
+}
+
+.frq-howto__note {
+  font-size: 12px;
+  color: var(--cz-text-muted);
+  opacity: 0.7;
+  margin-block-start: 8px;
+}
+
+/* ─── Lede hint ──────────────────────────────────────────────────────────── */
+
+.frq-lede-hint {
+  font-size: 15px;
+  color: var(--cz-text-muted);
+  margin-block: 8px 0;
+}
+
+/* ─── Picker grid ─────────────────────────────────────────────────────────── */
+
+.frq-picker {
+  padding-block: 48px 64px;
+}
+
+.frq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+/* Each grid cell (the motion wrapper) must stretch so the tile button fills it. */
+.frq-grid > * {
+  display: flex;
+}
+
+.frq-tile {
+  width: 100%;
+}
+
+.frq-tile {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 18px;
+  border: 2px solid transparent;
+  background: var(--cz-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.18s ease, opacity 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 0.25);
+}
+
+.frq-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--frq-tint);
+  opacity: 0.12;
+  border-radius: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.frq-tile:hover:not(.frq-tile--dim) {
+  border-color: var(--cz-gold, #d8b06a);
+  transform: translateY(-2px);
+}
+
+.frq-tile:hover:not(.frq-tile--dim)::before {
+  opacity: 0.2;
+}
+
+.frq-tile:focus-visible {
+  outline: 2px solid var(--cz-gold, #d8b06a);
+  outline-offset: 2px;
+}
+
+.frq-tile--active {
+  border-color: var(--cz-gold, #d8b06a) !important;
+  box-shadow: 0 4px 20px rgba(216 176 106 / 0.35);
+}
+
+.frq-tile--active::before {
+  opacity: 0.22;
+}
+
+.frq-tile--dim {
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.frq-tile__num {
+  font-family: var(--cz-font-display);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cz-text);
+}
+
+.frq-tile__lbl {
+  font-size: 12px;
+  color: var(--cz-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Profile reveal ─────────────────────────────────────────────────────── */
+
+/* Collapse the live region when no profile is shown so it leaves no gap. */
+.frq-profile-wrap {
+  padding-block: 0;
+}
+
+.frq-profile-wrap:has(.frq-profile) {
+  padding-block: 8px 56px;
+}
+
+.frq-profile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 28px;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.frq-profile__bar {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: var(--frq-accent);
+  border-radius: 24px 24px 0 0;
+}
+
+.frq-profile__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-block-end: 24px;
+  margin-block-start: 8px;
+}
+
+.frq-profile__num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--frq-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cz-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.frq-profile__kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cz-text-muted);
+  margin-block-end: 4px;
+}
+
+.frq-profile__title {
+  font-family: var(--cz-font-display);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: var(--cz-text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.frq-profile__body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.frq-profile__body p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--cz-text-muted);
+  margin: 0;
+}
+
+.frq-profile__cta {
+  margin-block-start: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── Nuance section ─────────────────────────────────────────────────────── */
+
+.frq-nuance {
+  text-align: center;
+  /* Symmetric padding so the text wrapper is balanced top and bottom. */
+  padding-block: 40px;
+}
+
+.frq-nuance__body {
+  max-width: 600px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.frq-nuance__body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--cz-text-muted);
+  margin: 0;
+}
+
+/* ─── Anna bridge ─────────────────────────────────────────────────────────── */
+
+.frq-bridge {
+  text-align: center;
+  /* Symmetric band padding: top matches bottom so content sits centered in the band. */
+  padding-block: 48px;
+}
+
+.frq-bridge__avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-block-end: 20px;
+}
+
+.frq-bridge__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--cz-gold, #d8b06a);
+  box-shadow: 0 0 24px rgba(216 176 106 / 0.3);
+}
+
+.frq-bridge__body {
+  max-width: 580px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-block-end: 24px;
+}
+
+.frq-bridge__body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--cz-text-muted);
+  margin: 0;
+}
+
+/* ─── WhatsApp section ───────────────────────────────────────────────────── */
+
+.frq-wa {
+  text-align: center;
+  padding-block: 40px 56px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (min-width: 768px) {
+  .frq-tile__num {
+    font-size: 46px;
+  }
+
+  .frq-profile {
+    padding: 36px 40px;
+  }
+
+  .frq-grid {
+    gap: 14px;
+  }
+}

@@ -1,0 +1,658 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zug.css — התדר הזוגי שלכם page styles
+   All classes prefixed zug-. Tokens from var(--cz-*).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Hero ──────────────────────────────────────────────────────────────── */
+.zug-hero {
+  padding: 48px 0 24px;
+  text-align: center;
+}
+
+.zug-hero__eyebrow {
+  margin-bottom: 12px;
+}
+
+.zug-hero__title {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--cz-text);
+  margin: 0 0 16px;
+}
+
+.zug-hero__title-em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cz-gold) 0%, var(--cz-magenta) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zug-hero__deco {
+  width: 180px;
+  height: 144px;
+  margin: 8px auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zug-hero__deco svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── How-to section ────────────────────────────────────────────────────── */
+.zug-how {
+  padding: 12px 0 28px;
+}
+
+.zug-how__kicker {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cz-violet);
+  margin-bottom: 10px;
+}
+
+.zug-how__title {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4.5vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--cz-text);
+  margin: 0 0 12px;
+}
+
+.zug-how__lede {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--cz-text-soft);
+  max-width: 38ch;
+  margin: 0 auto 20px;
+}
+
+.zug-how__example {
+  background: var(--cz-glass-strong);
+  border: 1px solid var(--cz-glass-border);
+  border-radius: var(--cz-radius);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: var(--cz-shadow-card);
+  padding: 22px 20px 20px;
+  max-width: 380px;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.zug-how__example-lbl {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin: 0 0 14px;
+  text-align: center;
+  display: block;
+}
+
+.zug-how__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+  font-size: 0.88rem;
+}
+
+.zug-how__row-lbl {
+  color: var(--cz-text-muted);
+  font-size: 0.8rem;
+}
+
+.zug-how__row-date {
+  font-family: ui-monospace, monospace;
+  color: var(--cz-text-soft);
+  direction: ltr;
+  font-size: 0.82rem;
+}
+
+.zug-how__row-day {
+  font-family: var(--cz-font-display);
+  font-size: 1.2rem;
+  color: var(--cz-gold);
+  min-width: 36px;
+  text-align: center;
+}
+
+.zug-how__calc {
+  text-align: center;
+  padding: 14px 0 6px;
+}
+
+.zug-how__calc-line {
+  display: block;
+  font-family: var(--cz-font-display);
+  font-size: 1.2rem;
+  color: var(--cz-text);
+  margin: 4px 0;
+  letter-spacing: 0.05em;
+}
+
+.zug-how__calc-arrow {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--cz-violet);
+  opacity: 0.7;
+  margin: 2px 0;
+}
+
+.zug-how__result {
+  text-align: center;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--cz-text-soft);
+}
+
+.zug-how__result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cz-violet), var(--cz-magenta));
+  color: #fff;
+  font-family: var(--cz-font-display);
+  font-size: 1.4rem;
+  margin-inline-start: 8px;
+  vertical-align: middle;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(124, 77, 255, 0.4);
+}
+
+/* ─── Number ribbon ─────────────────────────────────────────────────────── */
+.zug-ribbon {
+  position: sticky;
+  top: 57px; /* below cz-header */
+  z-index: 50;
+  background: rgba(13, 10, 31, 0.88);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid var(--cz-glass-border);
+  padding: 10px 0;
+}
+
+.zug-ribbon__inner {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding: 0 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.zug-ribbon__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.zug-ribbon__lbl {
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cz-text-muted);
+  margin-inline-end: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.zug-ribbon__btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--cz-glass);
+  border: 1px solid var(--cz-glass-border);
+  color: var(--cz-text-soft);
+  font-family: var(--cz-font-display);
+  font-size: 1.05rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s var(--cz-ease), background 0.15s var(--cz-ease), color 0.15s var(--cz-ease), border-color 0.15s var(--cz-ease);
+  /* ensure min 44px touch target */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.zug-ribbon__btn:hover {
+  background: var(--cz-glass-strong);
+  border-color: var(--cz-glass-border-bright);
+  color: var(--cz-text);
+  transform: translateY(-1px);
+}
+
+.zug-ribbon__btn:focus-visible {
+  outline: 2px solid var(--cz-violet);
+  outline-offset: 2px;
+}
+
+.zug-ribbon__btn--active {
+  background: linear-gradient(135deg, var(--cz-violet), var(--cz-magenta));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(124, 77, 255, 0.5);
+}
+
+/* ─── Big picker ────────────────────────────────────────────────────────── */
+.zug-picker {
+  padding: 20px 0 40px;
+}
+
+.zug-picker__lede {
+  text-align: center;
+  color: var(--cz-text-soft);
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+}
+
+.zug-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.zug-pick {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--cz-glass);
+  border: 1px solid var(--cz-glass-border);
+  border-radius: 18px;
+  box-shadow: var(--cz-shadow-card);
+  cursor: pointer;
+  transition: transform 0.15s var(--cz-ease), border-color 0.15s var(--cz-ease), opacity 0.2s var(--cz-ease), box-shadow 0.15s var(--cz-ease);
+  overflow: hidden;
+  /* touch target ≥44px ensured by aspect-ratio at 3-col with max-width 480px */
+  min-height: 44px;
+}
+
+.zug-pick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--zug-tint, transparent);
+  opacity: 0.18;
+  transition: opacity 0.15s var(--cz-ease);
+  border-radius: inherit;
+}
+
+.zug-pick:hover {
+  transform: translateY(-3px);
+  border-color: var(--cz-glass-border-bright);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.zug-pick:hover::before {
+  opacity: 0.35;
+}
+
+.zug-pick:focus-visible {
+  outline: 2px solid var(--cz-violet);
+  outline-offset: 2px;
+}
+
+.zug-pick__num {
+  position: relative;
+  font-family: var(--cz-font-display);
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1;
+  color: var(--cz-text);
+}
+
+.zug-pick__lbl {
+  position: relative;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--cz-text-soft);
+}
+
+/* Dimmed state when another number is picked */
+.zug-pick--dimmed {
+  opacity: 0.22;
+  pointer-events: none;
+  filter: grayscale(0.6);
+}
+
+.zug-pick--active {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.zug-pick--active::before {
+  opacity: 0.45;
+}
+
+/* ─── Profiles ──────────────────────────────────────────────────────────── */
+.zug-profiles {
+  padding: 8px 0 12px;
+}
+
+.zug-profile {
+  background: var(--cz-glass-strong);
+  border: 1px solid var(--cz-glass-border);
+  border-radius: var(--cz-radius);
+  padding: 28px 22px 26px;
+  box-shadow: var(--cz-shadow-card);
+  max-width: 720px;
+  margin: 0 auto 24px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+/* top accent bar uses CSS variable set inline */
+.zug-profile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: var(--zug-accent, linear-gradient(90deg, var(--cz-violet), var(--cz-magenta)));
+}
+
+.zug-profile__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.zug-profile__num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cz-font-display);
+  font-size: 1.8rem;
+  color: #fff;
+  background: var(--zug-accent, linear-gradient(135deg, var(--cz-violet), var(--cz-magenta)));
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.zug-profile__kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin: 0 0 5px;
+  display: block;
+}
+
+.zug-profile__title {
+  font-family: var(--cz-font-display);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--cz-text);
+}
+
+.zug-profile__body p {
+  color: var(--cz-text-soft);
+  font-size: 0.97rem;
+  line-height: 1.78;
+  margin: 0 0 12px;
+}
+
+.zug-profile__body p:last-child {
+  margin-bottom: 18px;
+}
+
+/* ─── Pillars ───────────────────────────────────────────────────────────── */
+.zug-pillars {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 20px;
+}
+
+.zug-pillar {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 14px 16px;
+  border-inline-end: 3px solid var(--zug-accent, var(--cz-violet));
+}
+
+.zug-pillar--challenges {
+  border-inline-end-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.zug-pillar__lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin: 0 0 6px;
+  display: block;
+}
+
+.zug-pillar--challenges .zug-pillar__lbl {
+  color: var(--cz-text-muted);
+}
+
+.zug-pillar__text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--cz-text-soft);
+  margin: 0;
+}
+
+/* ─── Key question ──────────────────────────────────────────────────────── */
+.zug-question {
+  text-align: center;
+  padding: 18px 12px;
+  margin: 0 0 18px;
+  border-top: 1px dashed var(--cz-glass-border);
+  border-bottom: 1px dashed var(--cz-glass-border);
+}
+
+.zug-question__lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cz-text-muted);
+  margin: 0 0 6px;
+  display: block;
+}
+
+.zug-question__text {
+  font-family: var(--cz-font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 3.5vw, 1.3rem);
+  line-height: 1.4;
+  color: var(--cz-text);
+  margin: 0;
+}
+
+/* ─── Romance tip ───────────────────────────────────────────────────────── */
+.zug-romance {
+  background: rgba(240, 201, 125, 0.07);
+  border: 1px solid rgba(240, 201, 125, 0.2);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.zug-romance__lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cz-gold);
+  margin: 0 0 6px;
+  display: block;
+}
+
+.zug-romance__text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--cz-text-soft);
+  margin: 0;
+}
+
+/* ─── Nuance section ────────────────────────────────────────────────────── */
+.zug-nuance {
+  padding: 56px 0 52px;
+  text-align: center;
+}
+
+.zug-nuance__title {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--cz-text);
+  margin: 0 0 20px;
+}
+
+.zug-nuance__body {
+  color: var(--cz-text-soft);
+  line-height: 1.78;
+  margin: 0 auto 14px;
+  max-width: 50ch;
+  font-size: 0.97rem;
+}
+
+.zug-nuance__body:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Anna bridge ───────────────────────────────────────────────────────── */
+.zug-bridge {
+  padding: 56px 0 52px;
+  text-align: center;
+}
+
+.zug-bridge__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 2px solid var(--cz-glass-border-bright);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
+.zug-bridge__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.zug-bridge__title {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--cz-text);
+  margin: 0 0 16px;
+}
+
+.zug-bridge__body {
+  color: var(--cz-text-soft);
+  line-height: 1.78;
+  margin: 0 auto 14px;
+  max-width: 46ch;
+  font-size: 0.97rem;
+}
+
+.zug-bridge__body:last-of-type {
+  margin-bottom: 28px;
+}
+
+/* ─── WhatsApp section ──────────────────────────────────────────────────── */
+.zug-wa {
+  padding: 56px 0 52px;
+  text-align: center;
+}
+
+.zug-wa__title {
+  font-family: var(--cz-font-display);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: var(--cz-text);
+  margin: 0 0 12px;
+}
+
+.zug-wa__body {
+  color: var(--cz-text-soft);
+  max-width: 34ch;
+  margin: 0 auto 26px;
+  line-height: 1.7;
+  font-size: 0.97rem;
+}
+
+/* ─── Tablet+ ───────────────────────────────────────────────────────────── */
+@media (min-width: 720px) {
+  .zug-hero {
+    padding: 72px 0 32px;
+  }
+
+  .zug-profile {
+    padding: 36px 32px 30px;
+  }
+
+  .zug-profile__num {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+
+  .zug-pillars {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .zug-picker__grid {
+    gap: 14px;
+  }
+
+  .zug-ribbon {
+    top: 65px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zug-pick,
+  .zug-ribbon__btn {
+    transition: none;
+  }
+}

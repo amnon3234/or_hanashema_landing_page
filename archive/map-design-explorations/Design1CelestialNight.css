@@ -1,0 +1,1145 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap');
+
+/* ── Design 1: Celestial Night – CSS tokens & layout ── */
+
+.d1-root {
+  --ink:       #14121c;
+  --ink-2:     #1b1925;
+  --ink-3:     #211f2d;
+  --ink-4:     #2a2738;
+  --bone:      #f4efe4;
+  --muted:     #aaa294;
+  --muted-2:   #837c70;
+  --line:      rgba(244,239,228,0.12);
+  --line-soft: rgba(244,239,228,0.07);
+  --gold:      #d0a960;
+  --gold-soft: #e6c98c;
+  --gold-deep: #b88f47;
+  --gold-glow: rgba(208,169,96,0.18);
+
+  font-family: 'Assistant', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--bone);
+  background-color: var(--ink);
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+}
+
+/* ── Starfield ── */
+.d1-starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.d1-star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--bone);
+  opacity: 0;
+}
+
+/* ── Scroll progress bar ── */
+.d1-progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  transform-origin: right center;
+  z-index: 200;
+}
+
+/* ── Announcement bar ── */
+.d1-announcement {
+  background: var(--ink-4);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  position: relative;
+  z-index: 100;
+  letter-spacing: 0.01em;
+}
+
+.d1-announcement strong {
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+/* ── Sticky header ── */
+.d1-header {
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  background: rgba(20, 18, 28, 0.88);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d1-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.d1-header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.d1-header-name {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--bone);
+  letter-spacing: 0.01em;
+}
+
+.d1-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Assistant', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  min-height: 44px;
+}
+
+.d1-btn-pill:hover {
+  background: var(--gold-soft);
+  box-shadow: 0 0 24px var(--gold-glow);
+}
+
+.d1-btn-pill:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.d1-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Assistant', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid var(--gold);
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+  min-height: 44px;
+}
+
+.d1-btn-ghost:hover {
+  background: var(--gold-glow);
+}
+
+.d1-btn-ghost:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ── Hero section ── */
+.d1-hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 80px;
+}
+
+.d1-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(208,169,96,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.d1-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.d1-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.d1-hero-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--bone);
+  margin: 0;
+}
+
+.d1-hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+  line-height: 1.15;
+  padding-bottom: 4px;
+}
+
+.d1-hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 44ch;
+  line-height: 1.65;
+}
+
+.d1-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.d1-hero-photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d1-hero-photo-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.d1-hero-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  display: block;
+}
+
+/* ── Section wrapper utility ── */
+.d1-section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+}
+
+.d1-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.d1-section-alt {
+  background: var(--ink-2);
+}
+
+.d1-section-dark {
+  background: var(--ink-3);
+}
+
+.d1-section-band {
+  background: var(--ink-4);
+}
+
+.d1-section-divider {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ── Section headings ── */
+.d1-heading {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--bone);
+  margin: 0 0 24px;
+}
+
+.d1-heading em {
+  font-style: italic;
+  color: var(--gold);
+  padding-bottom: 3px;
+  display: inline;
+}
+
+.d1-lede {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ── Trust strip ── */
+.d1-trust {
+  padding: 40px 40px;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.d1-trust-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.d1-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 24px;
+  border-left: 1px solid var(--line);
+}
+
+.d1-trust-item:last-child {
+  border-left: none;
+}
+
+.d1-trust-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.d1-trust-num-small {
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+.d1-trust-label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ── Why section / Recognition checklist ── */
+.d1-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.d1-why-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.d1-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.d1-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  color: var(--bone);
+  line-height: 1.55;
+}
+
+.d1-check-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  color: var(--gold);
+}
+
+/* ── Story section ── */
+.d1-story-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.d1-story-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.d1-story-para {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.d1-story-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Pricing ── */
+.d1-pricing-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.d1-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.d1-tier-card {
+  position: relative;
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.d1-tier-card-featured {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px var(--gold-glow);
+}
+
+.d1-tier-ribbon {
+  position: absolute;
+  top: -13px;
+  right: 24px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.d1-tier-name {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--bone);
+}
+
+.d1-tier-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.d1-tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.d1-tier-amount {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.d1-tier-currency {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.d1-tier-terms {
+  font-size: 13px;
+  color: var(--muted-2);
+  margin-bottom: 16px;
+}
+
+.d1-tier-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.d1-tier-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--bone);
+}
+
+.d1-tier-feature-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--gold);
+}
+
+.d1-wa-note {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.d1-wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-soft);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 8px;
+  transition: color 0.15s ease;
+}
+
+.d1-wa-link:hover {
+  color: var(--gold);
+}
+
+.d1-wa-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── MidCta band ── */
+.d1-midcta-content {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.d1-midcta-body {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+/* ── Benefits ── */
+.d1-benefits-header {
+  margin-bottom: 48px;
+}
+
+.d1-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.d1-benefit-card {
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.d1-benefit-num {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.d1-benefit-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--bone);
+}
+
+.d1-benefit-body {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.d1-benefits-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── About Anna ── */
+.d1-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.d1-about-photo-wrap {
+  position: relative;
+}
+
+.d1-about-photo {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  display: block;
+}
+
+.d1-about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.d1-about-paras {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.d1-about-para {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.d1-signature {
+  margin-top: 12px;
+  padding: 20px 24px;
+  border-right: 3px solid var(--gold);
+  background: var(--gold-glow);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--bone);
+  line-height: 1.6;
+}
+
+/* ── FAQ ── */
+.d1-faq-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.d1-faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.d1-faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.d1-faq-item:last-child {
+  border-bottom: none;
+}
+
+.d1-faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  text-align: right;
+  font-family: 'Assistant', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bone);
+  transition: background 0.2s ease, color 0.2s ease;
+  min-height: 64px;
+}
+
+.d1-faq-trigger:hover {
+  background: var(--line-soft);
+}
+
+.d1-faq-trigger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.d1-faq-trigger[aria-expanded="true"] {
+  color: var(--gold-soft);
+}
+
+.d1-faq-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.d1-faq-chevron-open {
+  transform: rotate(180deg);
+}
+
+.d1-faq-panel {
+  overflow: hidden;
+}
+
+.d1-faq-panel-inner {
+  padding: 0 28px 22px;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── Lead CTA section ── */
+.d1-lead-content {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.d1-lead-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--bone);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.d1-lead-title em {
+  font-style: italic;
+  color: var(--gold);
+  padding-bottom: 3px;
+  display: inline;
+}
+
+.d1-lead-lede {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+.d1-lead-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.d1-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone);
+  font-family: 'Assistant', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid var(--line);
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  min-height: 44px;
+}
+
+.d1-btn-wa:hover {
+  border-color: var(--gold);
+  background: var(--gold-glow);
+}
+
+.d1-btn-wa:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.d1-btn-wa svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Footer ── */
+.d1-footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line-soft);
+  padding: 40px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.d1-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.d1-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.d1-footer-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.d1-footer-name {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bone);
+}
+
+.d1-footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.d1-footer-link {
+  font-size: 14px;
+  color: var(--muted-2);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.d1-footer-link:hover {
+  color: var(--gold);
+}
+
+/* ── Sticky mobile CTA ── */
+.d1-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 180;
+  background: rgba(20, 18, 28, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line);
+  padding: 14px 20px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 767px) {
+  .d1-sticky-cta {
+    display: flex;
+  }
+}
+
+.d1-sticky-cta-text {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+  .d1-why-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .d1-about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .d1-about-photo {
+    max-width: 280px;
+  }
+
+  .d1-tiers {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .d1-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .d1-hero {
+    grid-template-columns: 1fr;
+    padding: 60px 20px 80px;
+    gap: 36px;
+    min-height: auto;
+  }
+
+  .d1-hero-photo {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .d1-hero-photo-wrap {
+    order: -1;
+  }
+
+  .d1-hero-cta {
+    flex-direction: column;
+  }
+
+  .d1-section {
+    padding: 60px 20px;
+  }
+
+  .d1-trust {
+    padding: 32px 20px;
+  }
+
+  .d1-trust-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .d1-trust-item {
+    border-left: none;
+    border-bottom: 1px solid var(--line);
+    padding: 16px;
+  }
+
+  .d1-trust-item:last-child {
+    border-bottom: none;
+  }
+
+  .d1-footer-inner {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .d1-header {
+    padding: 0 16px;
+  }
+
+  .d1-footer {
+    padding: 32px 20px;
+  }
+
+  .d1-tiers {
+    max-width: 100%;
+  }
+
+  .d1-tier-card {
+    padding: 28px 20px;
+  }
+
+  .d1-faq-trigger {
+    padding: 18px 20px;
+  }
+
+  .d1-faq-panel-inner {
+    padding: 0 20px 18px;
+  }
+}
+
+/* ── Celestial ambient background ── */
+.d1-celestial-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Drifting nebula blobs */
+.d1-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.d1-nebula-1 {
+  width: 55vw;
+  height: 55vw;
+  top: -15vw;
+  left: -10vw;
+  background: radial-gradient(circle, rgba(72,52,120,0.28) 0%, rgba(20,18,28,0) 70%);
+  opacity: 0.55;
+}
+
+.d1-nebula-2 {
+  width: 60vw;
+  height: 60vw;
+  top: 40vh;
+  right: -20vw;
+  background: radial-gradient(circle, rgba(45,35,90,0.25) 0%, rgba(208,169,96,0.04) 50%, rgba(20,18,28,0) 70%);
+  opacity: 0.5;
+}
+
+.d1-nebula-3 {
+  width: 45vw;
+  height: 45vw;
+  bottom: -10vw;
+  left: 25vw;
+  background: radial-gradient(circle, rgba(60,40,100,0.22) 0%, rgba(208,169,96,0.05) 55%, rgba(20,18,28,0) 70%);
+  opacity: 0.45;
+}
+
+/* Shooting stars / meteors */
+.d1-meteor {
+  position: absolute;
+  width: 120px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(208,169,96,0) 0%, rgba(208,169,96,0.9) 60%, rgba(230,201,140,1) 100%);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.d1-meteor-1 {
+  top: 18%;
+  right: 62%;
+  transform: rotate(30deg);
+}
+
+.d1-meteor-2 {
+  top: 8%;
+  right: 35%;
+  transform: rotate(25deg);
+}
+
+/* Constellation SVG — fills viewport */
+.d1-constellation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Moon orb in top-right corner */
+.d1-moon-wrap {
+  position: absolute;
+  top: 56px;
+  left: 40px;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+}
+
+.d1-moon-halo {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(208,169,96,0.22) 0%, transparent 70%);
+}
+
+.d1-moon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset -10px -4px 0 0 rgba(208,169,96,0.55),
+    0 0 18px rgba(208,169,96,0.12);
+  border: 1px solid rgba(208,169,96,0.2);
+}
+
+/* ── Reduced motion overrides ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

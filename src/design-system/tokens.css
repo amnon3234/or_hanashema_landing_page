@@ -1,0 +1,71 @@
+/*
+ * Design tokens — placeholder neutral palette.
+ * Colors are intentionally neutral defaults; the brand palette is applied later.
+ * Swap the values under "Color" without touching component CSS.
+ */
+:root {
+  /* Color — neutral defaults */
+  --color-bg: #f4f4f3;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fafafa;
+  --color-text: #1f2225;
+  --color-muted: #5f6368;
+  --color-border: #e3e3e1;
+
+  --color-primary: #2a2d31;
+  --color-primary-hover: #3c4045;
+  --color-on-primary: #fafafa;
+
+  --color-accent: #8c8c8c;
+  --color-accent-strong: #6f6f6f;
+  --color-accent-soft: #c9c9c4;
+
+  --color-invert-bg: #2a2d31;
+  --color-invert-text: #fafafa;
+
+  --color-error-border: #c0584a;
+  --color-error-text: #7a3520;
+
+  /* Typography */
+  --font-serif: "Bellefair", "Frank Ruhl Libre", serif;
+  --font-sans: "Assistant", system-ui, sans-serif;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 17px;
+  --text-md: 19px;
+  --text-lg: 22px;
+  --text-xl: clamp(30px, 8vw, 42px);
+  --text-2xl: clamp(40px, 11vw, 60px);
+
+  --tracking-wide: 0.32em;
+  --leading-body: 1.6;
+
+  /* Spacing scale */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 22px;
+  --space-6: 28px;
+  --space-7: 36px;
+  --space-8: 48px;
+  --space-9: 60px;
+  --space-10: 80px;
+
+  /* Radius */
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-card: 28px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-soft: 0 24px 48px -28px rgba(31, 34, 37, 0.18),
+    0 6px 16px -8px rgba(31, 34, 37, 0.08);
+  --shadow-cta: 0 18px 36px -10px rgba(31, 34, 37, 0.35);
+
+  /* Layout */
+  --wrap-narrow: 560px;
+  --wrap-wide: 880px;
+  --wrap-page: 1120px;
+}

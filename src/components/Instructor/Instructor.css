@@ -1,0 +1,64 @@
+.about {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.about + .about {
+  margin-top: var(--space-7);
+}
+
+.about__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-card);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about__kicker {
+  font-family: var(--font-serif);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  text-align: right;
+  margin: 0 0 var(--space-1);
+}
+
+.about__copy p {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-3);
+  line-height: 1.7;
+}
+
+.signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-accent-strong);
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.about__link {
+  font-size: 14px;
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 720px) {
+  .about {
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-7);
+  }
+}
