@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a45a"/>
+      <stop offset="50%" stop-color="#f0c97d"/>
+      <stop offset="100%" stop-color="#f7dda0"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="32%" r="85%">
+      <stop offset="0%" stop-color="#1a1140"/>
+      <stop offset="100%" stop-color="#0d0a1f"/>
+    </radialGradient>
+  </defs>
+  <rect width="48" height="48" rx="11" fill="url(#bg)"/>
+  <circle cx="24" cy="24" r="18" fill="none" stroke="url(#gold)" stroke-width="1.6"/>
+  <g font-family="'Frank Ruhl Libre','Suez One',Georgia,serif" font-weight="900" font-size="18" text-anchor="middle" dominant-baseline="central">
+    <text x="18.5" y="25" fill="#f3eefb">א</text>
+    <text x="29.5" y="25" fill="url(#gold)">א</text>
+  </g>
+</svg>

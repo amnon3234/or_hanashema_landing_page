@@ -13,7 +13,7 @@ import {
 
 // ─── Brand mark ──────────────────────────────────────────────────────────────
 
-/** Anna Ashkenazi brand mark — a celestial gold sparkle on a violet disc. Font-independent, scales cleanly. */
+/** Anna Ashkenazi brand mark — two alephs (her initials, both names start with Aleph) framed in a thin gold ring: one cream, one gold. Scales cleanly to any size. */
 export function LogoMark({ size = 40, className }: { size?: number; className?: string }): JSX.Element {
   const id = useId();
   return (
@@ -27,23 +27,23 @@ export function LogoMark({ size = 40, className }: { size?: number; className?: 
       aria-label="אנה אשכנזי"
     >
       <defs>
-        <radialGradient id={`${id}-disc`} cx="50%" cy="36%" r="72%">
-          <stop offset="0%" stopColor="#2a1f5e" />
-          <stop offset="100%" stopColor="#130c30" />
-        </radialGradient>
-        <linearGradient id={`${id}-gold`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#f7ddA0" />
-          <stop offset="55%" stopColor="#f0c97d" />
-          <stop offset="100%" stopColor="#c8a45a" />
+        <linearGradient id={`${id}-gold`} x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="#c8a45a" />
+          <stop offset="50%" stopColor="#f0c97d" />
+          <stop offset="100%" stopColor="#f7ddA0" />
         </linearGradient>
       </defs>
-      <circle cx="24" cy="24" r="23" fill={`url(#${id}-disc)`} stroke={`url(#${id}-gold)`} strokeWidth="1.4" />
-      <path
-        d="M24 8 C25.4 18.6 29.4 22.6 40 24 C29.4 25.4 25.4 29.4 24 40 C22.6 29.4 18.6 25.4 8 24 C18.6 22.6 22.6 18.6 24 8 Z"
-        fill={`url(#${id}-gold)`}
-      />
-      <circle cx="13" cy="13" r="1.4" fill="#f0c97d" />
-      <circle cx="35.5" cy="34" r="1.1" fill="#e3c485" />
+      <circle cx="24" cy="24" r="22" stroke={`url(#${id}-gold)`} strokeWidth="1.4" />
+      <g
+        fontFamily="'Frank Ruhl Libre', 'Suez One', Georgia, serif"
+        fontWeight={900}
+        fontSize="20"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        <text x="18" y="25" fill="#f3eefb">א</text>
+        <text x="30" y="25" fill={`url(#${id}-gold)`}>א</text>
+      </g>
     </svg>
   );
 }
