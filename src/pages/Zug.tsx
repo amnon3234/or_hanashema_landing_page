@@ -427,39 +427,6 @@ export default function Zug(): JSX.Element {
         </div>
       </section>
 
-      {/* ── Sticky number ribbon ─────────────────────────────────────────────── */}
-      <nav className="zug-ribbon" aria-label="ניווט מהיר לתדר הזוגי">
-        <div className="zug-ribbon__inner">
-          <span className="zug-ribbon__lbl" aria-hidden="true">התדר שלנו ←</span>
-          {PROFILES.map((p) => {
-            const isActive = picked === p.number;
-            return (
-              <button
-                key={p.number}
-                className={["zug-ribbon__btn", isActive ? "zug-ribbon__btn--active" : ""].filter(Boolean).join(" ")}
-                onClick={() => {
-                  if (picked === null) {
-                    handlePick(p.number);
-                  } else if (isActive) {
-                    profileRef.current?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-                  }
-                }}
-                aria-label={`תדר ${p.number} – ${p.pickerLabel}`}
-                aria-current={isActive ? "true" : undefined}
-                type="button"
-                style={
-                  isActive
-                    ? ({ background: p.accent, borderColor: p.accent } as React.CSSProperties)
-                    : undefined
-                }
-              >
-                {p.number}
-              </button>
-            );
-          })}
-        </div>
-      </nav>
-
       {/* ── Profile reveal ────────────────────────────────────────────────────── */}
       <section className="cz-section zug-profiles" ref={profileRef} aria-live="polite" aria-atomic="true">
         <div className="cz-wrap">

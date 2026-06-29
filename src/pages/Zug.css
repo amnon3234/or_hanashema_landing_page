@@ -178,83 +178,6 @@
   box-shadow: 0 4px 16px rgba(124, 77, 255, 0.4);
 }
 
-/* ─── Number ribbon ─────────────────────────────────────────────────────── */
-.zug-ribbon {
-  position: sticky;
-  top: 57px; /* below cz-header */
-  z-index: 50;
-  background: rgba(13, 10, 31, 0.88);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid var(--cz-glass-border);
-  padding: 10px 0;
-}
-
-.zug-ribbon__inner {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  overflow-x: auto;
-  padding: 0 14px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.zug-ribbon__inner::-webkit-scrollbar {
-  display: none;
-}
-
-.zug-ribbon__lbl {
-  font-size: 0.76rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cz-text-muted);
-  margin-inline-end: 4px;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-.zug-ribbon__btn {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--cz-glass);
-  border: 1px solid var(--cz-glass-border);
-  color: var(--cz-text-soft);
-  font-family: var(--cz-font-display);
-  font-size: 1.05rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.15s var(--cz-ease), background 0.15s var(--cz-ease), color 0.15s var(--cz-ease), border-color 0.15s var(--cz-ease);
-  /* ensure min 44px touch target */
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.zug-ribbon__btn:hover {
-  background: var(--cz-glass-strong);
-  border-color: var(--cz-glass-border-bright);
-  color: var(--cz-text);
-  transform: translateY(-1px);
-}
-
-.zug-ribbon__btn:focus-visible {
-  outline: 2px solid var(--cz-violet);
-  outline-offset: 2px;
-}
-
-.zug-ribbon__btn--active {
-  background: linear-gradient(135deg, var(--cz-violet), var(--cz-magenta));
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(124, 77, 255, 0.5);
-}
-
 /* ─── Big picker ────────────────────────────────────────────────────────── */
 .zug-picker {
   padding: 20px 0 40px;
@@ -644,15 +567,10 @@
   .zug-picker__grid {
     gap: 14px;
   }
-
-  .zug-ribbon {
-    top: 65px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .zug-pick,
-  .zug-ribbon__btn {
+  .zug-pick {
     transition: none;
   }
 }
