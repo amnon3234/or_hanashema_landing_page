@@ -437,10 +437,11 @@
 
 .cz-footer__inner {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
 }
 
 .cz-footer__brand {
@@ -465,32 +466,11 @@
   color: var(--cz-text);
 }
 
-.cz-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.cz-footer__link {
-  font-size: 0.88rem;
-  color: var(--cz-text-soft);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.cz-footer__link:hover {
-  color: var(--cz-text);
-}
-
 .cz-footer__copy {
-  width: 100%;
   font-size: 0.78rem;
   color: var(--cz-text-muted);
   text-align: center;
-  margin-top: 8px;
+  margin: 0;
 }
 
 /* ─── Sticky mobile CTA ──────────────────────────────────────────────────── */

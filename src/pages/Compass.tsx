@@ -17,13 +17,6 @@ const WA_WAITLIST =
 const WA_NEXT_COHORT =
   "https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%91%D7%90.";
 
-const FOOTER_LINKS = [
-  { label: "דף הבית", href: "/" },
-  { label: "קורס מצפן הנשמה", href: "/compass" },
-  { label: "מפה נומרולוגית", href: "/map" },
-  { label: "מדיניות פרטיות", href: "/privacy" },
-];
-
 // ─── Modules data ─────────────────────────────────────────────────────────────
 
 const MODULES = [
@@ -307,7 +300,6 @@ export default function Compass() {
   return (
     <CosmicShell
       header={{ ctaLabel: "רשימת המתנה", ctaHref: WA_WAITLIST }}
-      footerLinks={FOOTER_LINKS}
       sticky={{ label: "הצטרפי לרשימת ההמתנה", href: WA_WAITLIST }}
     >
       {/* ── Ongoing modal ─────────────────────────────────────────────── */}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><title>אנה אשכנזי · לוגו — 60 אפשרויות</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Suez+One&family=Rubik:wght@300;400;500&display=swap');
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse 120% 80% at 50% 0%, #1a1140 0%, #0d0a1f 100%);min-height:100vh;font-family:'Frank Ruhl Libre',serif;color:#f3eefb;padding:48px 24px}
+h1{text-align:center;font-weight:700;font-size:32px;margin:0 0 6px}
+.sub{text-align:center;color:#b8aed6;font-family:'Rubik',sans-serif;font-size:14px;margin:0 0 36px}
+h2{max-width:1280px;margin:48px auto 4px;font-weight:700;font-size:22px;color:#f0c97d;border-bottom:1px solid rgba(240,201,125,.25);padding-bottom:10px}
+h2 span{font-family:'Rubik',sans-serif;font-size:13px;color:#b8aed6;font-weight:400;margin-inline-start:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1280px;margin:18px auto 0}
+.cell{display:flex;flex-direction:column;align-items:center;gap:16px;padding:26px 18px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.035)}
+.cell:hover{border-color:rgba(240,201,125,.45);background:rgba(240,201,125,.05)}
+.big{display:flex;align-items:center;gap:16px;min-height:104px}
+.nm{font-size:18px;font-weight:700;white-space:nowrap}
+.foot{display:flex;align-items:center;gap:14px}
+.small-on-light{background:#ece9e3;border-radius:8px;padding:6px;display:flex}
+.tag{font-family:'Rubik',sans-serif;font-size:12.5px;color:#b8aed6;letter-spacing:.02em;text-align:center}
+.num{font-family:'Rubik',sans-serif;font-weight:600;color:#f0c97d;font-size:13px}
+</style></head>
+<body>
+<h1>אנה אשכנזי — 60 כיווני לוגו</h1>
+<p class="sub">כל אפשרות מוצגת בגדול, בגודל header (40px), ועל רקע בהיר. בחרי לפי קטגוריה ומספר (למשל: "2-7" = קטגוריה 2, מספר 7).</p>
+
+<h2>① אות אחת — א <span>lettermark / framed / accented</span></h2>
+<div class="grid" id="g1"></div>
+
+<h2>② א&nbsp;א — שתי אל"פים <span>two-aleph compositions</span></h2>
+<div class="grid" id="g2"></div>
+
+<h2>③ כיוון אחר לגמרי — סמלים <span>celestial · numerology · sacred geometry</span></h2>
+<div class="grid" id="g3"></div>
+
+<script>
+const GOLD = id => `<linearGradient id="${id}" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#c8a45a"/><stop offset="50%" stop-color="#f0c97d"/><stop offset="100%" stop-color="#f7ddA0"/></linearGradient>`;
+const GOLDV = id => `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7ddA0"/><stop offset="100%" stop-color="#c8a45a"/></linearGradient>`;
+const CREAM='#f3eefb', DARK='#171033';
+// aleph text; t = optional transform
+const A = (fill, fs=30, cx=24, cy=25, t='') => `<text x="${cx}" y="${cy}" font-family="'Frank Ruhl Libre','Suez One',serif" font-weight="900" font-size="${fs}" fill="${fill}" text-anchor="middle" dominant-baseline="central" ${t?`transform="${t}"`:''}>א</text>`;
+const mir = (cx) => `matrix(-1,0,0,1,${2*cx},0)`; // mirror in place about cx
+const rot = (cx,cy) => `rotate(180 ${cx} ${cy})`;
+
+function render(containerId, designs){
+  document.getElementById(containerId).innerHTML = designs.map(([num,tag,fn,lightFill])=>{
+    const gid='g'+containerId+num;
+    const big = `<svg width="100" height="100" viewBox="0 0 48 48" fill="none">${fn(gid+'a')}</svg>`;
+    const small = `<svg width="40" height="40" viewBox="0 0 48 48" fill="none">${fn(gid+'b')}</svg>`;
+    let lightInner = fn(gid+'c');
+    if(lightFill){ lightInner = lightInner.replaceAll(CREAM, lightFill); }
+    const onLight = `<svg width="34" height="34" viewBox="0 0 48 48" fill="none">${lightInner}</svg>`;
+    return `<div class="cell">
+      <div class="big">${big}<div class="nm">אנה אשכנזי</div></div>
+      <div class="foot">${small}<div class="small-on-light">${onLight}</div></div>
+      <div class="tag"><span class="num">${num}</span> · ${tag}</div>
+    </div>`;
+  }).join('');
+}
+
+// ───────── SECTION 1 — single aleph ─────────
+const G = g => `url(#${g})`;
+render('g1',[
+ ['1','אות בלבד · זהב', g=>GOLD(g)+A(G(g),34)],
+ ['2','אות בלבד · מילוי אנכי', g=>GOLDV(g)+A(G(g),34)],
+ ['3','חותם · טבעת זהב דקה', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),28)],
+ ['4','טבעת כפולה · אות שמנת', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" stroke="${G(g)}" stroke-width="1.2"/><circle cx="24" cy="24" r="18.5" stroke="${G(g)}" stroke-width="0.8"/>`+A(CREAM,24)],
+ ['5','דיסק זהב · אות כהה', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" fill="${G(g)}"/>`+A(DARK,30)],
+ ['6','דיסק זהב · אות שמנת', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" fill="${G(g)}"/>`+A('#fbf6ec',30)],
+ ['7','משושה · אות זהב', g=>GOLD(g)+`<path d="M24 2 L43 13 L43 35 L24 46 L5 35 L5 13 Z" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),26)],
+ ['8','משושה מלא · אות כהה', g=>GOLD(g)+`<path d="M24 2 L43 13 L43 35 L24 46 L5 35 L5 13 Z" fill="${G(g)}"/>`+A(DARK,26)],
+ ['9','מעוין · אות זהב', g=>GOLD(g)+`<rect x="9" y="9" width="30" height="30" rx="4" transform="rotate(45 24 24)" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),24)],
+ ['10','תג מרובע מעוגל · אות זהב', g=>GOLD(g)+`<rect x="3" y="3" width="42" height="42" rx="12" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),28)],
+ ['11','מגן · אות זהב', g=>GOLD(g)+`<path d="M24 3 L42 9 V24 C42 35 34 42 24 46 C14 42 6 35 6 24 V9 Z" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),24)],
+ ['12','משולש · אות זהב', g=>GOLD(g)+`<path d="M24 5 L43 41 L5 41 Z" stroke="${G(g)}" stroke-width="1.4"/>`+A(G(g),20,24,29)],
+ ['13','מינימלי · קו זהב תחתון', g=>GOLD(g)+A(CREAM,32,24,21)+`<line x1="13" y1="42" x2="35" y2="42" stroke="${G(g)}" stroke-width="2.2" stroke-linecap="round"/>`, '#20242a'],
+ ['14','בין שני קווים', g=>GOLD(g)+`<line x1="14" y1="7" x2="34" y2="7" stroke="${G(g)}" stroke-width="1.6" stroke-linecap="round"/>`+A(CREAM,28)+`<line x1="14" y1="42" x2="34" y2="42" stroke="${G(g)}" stroke-width="1.6" stroke-linecap="round"/>`, '#20242a'],
+ ['15','נקודת זהב מעל', g=>GOLD(g)+`<circle cx="24" cy="8" r="2.4" fill="${G(g)}"/>`+A(CREAM,32,24,27), '#20242a'],
+ ['16','כוכבים מלווים', g=>GOLD(g)+A(CREAM,30)+`<path d="M9 16 l1 3 3 1 -3 1 -1 3 -1 -3 -3 -1 3 -1 z" fill="${G(g)}"/><path d="M39 33 l.8 2.2 2.2 .8 -2.2 .8 -.8 2.2 -.8 -2.2 -2.2 -.8 2.2 -.8 z" fill="${G(g)}"/>`, '#20242a'],
+ ['17','סהר זהב מתחת', g=>GOLD(g)+A(CREAM,28,24,22)+`<path d="M13 38 A 11 11 0 0 0 35 38" stroke="${G(g)}" stroke-width="2" fill="none" stroke-linecap="round"/>`, '#20242a'],
+ ['18','טבעת פתוחה · אות שמנת', g=>GOLD(g)+`<path d="M24 2 A 22 22 0 1 1 6 13" stroke="${G(g)}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`+A(CREAM,28)],
+ ['19','אות עם לוכסן עדין מאחור', g=>GOLD(g)+`<line x1="33" y1="40" x2="40" y2="14" stroke="${G(g)}" stroke-width="2" stroke-linecap="round" opacity="0.9"/>`+A(CREAM,34), '#20242a'],
+ ['20','עיגול קו זהב עבה · אות שמנת', g=>GOLD(g)+`<circle cx="24" cy="24" r="21" stroke="${G(g)}" stroke-width="3"/>`+A(CREAM,28)],
+]);
+
+// ───────── SECTION 2 — two alephs ─────────
+render('g2',[
+ ['1','זו לצד זו · שתי גוונים', g=>GOLD(g)+A(CREAM,26,30)+A(G(g),26,18)],
+ ['2','חופפות · שקופות', g=>GOLD(g)+A(CREAM,30,27)+A(G(g),30,21)],
+ ['3','פנים אל פנים · ראי', g=>GOLD(g)+A(CREAM,28,18)+A(G(g),28,30,mir(30))],
+ ['4','גב אל גב', g=>GOLD(g)+A(G(g),28,18,mir(18))+A(CREAM,28,30)],
+ ['5','מוערמות אנכית', g=>GOLD(g)+A(G(g),20,24,15)+A(CREAM,20,24,33)],
+ ['6','לוכסן זהב מפריד', g=>GOLD(g)+A(CREAM,28,18,rot(18,24))+A(CREAM,28,30)+`<line x1="14" y1="40" x2="34" y2="8" stroke="${G(g)}" stroke-width="2" stroke-linecap="round"/>`, '#20242a'],
+ ['7','בתוך טבעת', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" stroke="${G(g)}" stroke-width="1.4"/>`+A(CREAM,20,18)+A(G(g),20,30)],
+ ['8','השתקפות (מים)', g=>GOLD(g)+A(CREAM,22,24,16)+A(G(g),22,24,33,'matrix(1,0,0,-1,0,66)')],
+ ['9','שזורות באלכסון', g=>GOLD(g)+A(CREAM,26,18,'translate(0,-6)')+A(G(g),26,30,'translate(0,6)')],
+ ['10','קו זהב מפריד', g=>GOLD(g)+A(CREAM,26,17)+A(CREAM,26,31)+`<line x1="24" y1="9" x2="24" y2="39" stroke="${G(g)}" stroke-width="1.8" stroke-linecap="round"/>`, '#20242a'],
+ ['11','נקודת זהב מפרידה', g=>GOLD(g)+A(CREAM,26,16)+A(CREAM,26,32)+`<circle cx="24" cy="24" r="2.6" fill="${G(g)}"/>`, '#20242a'],
+ ['12','במשושה', g=>GOLD(g)+`<path d="M24 2 L43 13 L43 35 L24 46 L5 35 L5 13 Z" stroke="${G(g)}" stroke-width="1.4"/>`+A(CREAM,18,18)+A(G(g),18,30)],
+ ['13','במעוין', g=>GOLD(g)+`<rect x="9" y="9" width="30" height="30" rx="4" transform="rotate(45 24 24)" stroke="${G(g)}" stroke-width="1.4"/>`+A(CREAM,16,18)+A(G(g),16,30)],
+ ['14','צללית כפולה · גדול', g=>GOLD(g)+A('#7a6fa0',36,21)+A(G(g),36,28)],
+ ['15','חיבור בקשת זהב', g=>GOLD(g)+A(CREAM,26,17)+A(CREAM,26,31)+`<path d="M16 40 C20 45 28 45 32 40" stroke="${G(g)}" stroke-width="2" fill="none" stroke-linecap="round"/>`, '#20242a'],
+ ['16','זו מעל זו · קו מפריד', g=>GOLD(g)+A(CREAM,18,24,14)+`<line x1="13" y1="24" x2="35" y2="24" stroke="${G(g)}" stroke-width="1.4" stroke-linecap="round"/>`+A(CREAM,18,24,35), '#20242a'],
+ ['17','קטנות בתוך טבעת · אנכי', g=>GOLD(g)+`<circle cx="24" cy="24" r="22" stroke="${G(g)}" stroke-width="1.4"/>`+A(CREAM,16,24,15,rot(24,15))+A(G(g),16,24,33)],
+ ['18','משולבות סימטרי · זהב', g=>GOLD(g)+A(G(g),30,20,mir(20))+A(G(g),30,28)],
+ ['19','גדולה וקטנה', g=>GOLD(g)+A(CREAM,34,21)+A(G(g),16,34,32)],
+ ['20','שתיהן זהב · זו לצד זו', g=>GOLD(g)+A(G(g),26,17)+A(G(g),26,31)],
+]);
+
+// ───────── SECTION 3 — something else ─────────
+render('g3',[
+ ['1','מצפן · כוכב ארבע', g=>GOLD(g)+`<circle cx="24" cy="24" r="21" stroke="${G(g)}" stroke-width="1.2"/><path d="M24 6 L27 24 L24 42 L21 24 Z" fill="${G(g)}"/><path d="M6 24 L24 21 L42 24 L24 27 Z" fill="${G(g)}"/><circle cx="24" cy="24" r="2.2" fill="${DARK}"/>`],
+ ['2','ניצוץ שמונה קצוות', g=>GOLD(g)+`<path d="M24 5 C25.6 18.4 29.6 22.4 43 24 C29.6 25.6 25.6 29.6 24 43 C22.4 29.6 18.4 25.6 5 24 C18.4 22.4 22.4 18.4 24 5 Z" fill="${G(g)}"/>`],
+ ['3','מגן דוד · ששת הקודקודים', g=>GOLD(g)+`<path d="M24 5 L39 31 L9 31 Z" stroke="${G(g)}" stroke-width="1.6" fill="none"/><path d="M24 43 L9 17 L39 17 Z" stroke="${G(g)}" stroke-width="1.6" fill="none"/>`],
+ ['4','סהר וכוכב', g=>GOLD(g)+`<path d="M31 7 A 17 17 0 1 0 31 41 A 13.5 13.5 0 1 1 31 7 Z" fill="${G(g)}"/><path d="M34 19 l1 3 3 1 -3 1 -1 3 -1 -3 -3 -1 3 -1 z" fill="${CREAM}"/>`, '#20242a'],
+ ['5','שמש קורנת', g=>GOLD(g)+`<circle cx="24" cy="24" r="8" fill="${G(g)}"/>`+Array.from({length:12},(_,i)=>{const a=i*30*Math.PI/180,r1=12,r2=20;return `<line x1="${(24+r1*Math.cos(a)).toFixed(1)}" y1="${(24+r1*Math.sin(a)).toFixed(1)}" x2="${(24+r2*Math.cos(a)).toFixed(1)}" y2="${(24+r2*Math.sin(a)).toFixed(1)}" stroke="${G(g)}" stroke-width="1.6" stroke-linecap="round"/>`}).join('')],
+ ['6','מסלולים · אורביטות', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1.3" fill="none"><ellipse cx="24" cy="24" rx="20" ry="8"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)"/></g><circle cx="24" cy="24" r="3" fill="${G(g)}"/>`],
+ ['7','לוטוס', g=>GOLD(g)+`<g fill="none" stroke="${G(g)}" stroke-width="1.5" stroke-linejoin="round"><path d="M24 10 C20 20 20 30 24 38 C28 30 28 20 24 10 Z"/><path d="M24 16 C16 22 13 30 14 38 C22 37 27 32 27 24"/><path d="M24 16 C32 22 35 30 34 38 C26 37 21 32 21 24"/></g>`],
+ ['8','פרח החיים', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1.1" fill="none"><circle cx="24" cy="24" r="8"/>`+Array.from({length:6},(_,i)=>{const a=i*60*Math.PI/180;return `<circle cx="${(24+8*Math.cos(a)).toFixed(1)}" cy="${(24+8*Math.sin(a)).toFixed(1)}" r="8"/>`}).join('')+`</g>`],
+ ['9','הר ושמש · מסע', g=>GOLD(g)+`<circle cx="24" cy="16" r="6" fill="${G(g)}"/><path d="M6 40 L19 24 L27 33 L34 24 L42 40 Z" stroke="${G(g)}" stroke-width="1.5" fill="none" stroke-linejoin="round"/>`],
+ ['10','ספירלה', g=>GOLD(g)+`<path d="M24 24 m0 0 a 3 3 0 1 1 3 -3 a 7 7 0 1 1 -7 7 a 11 11 0 1 1 11 -11 a 15 15 0 1 1 -15 15" stroke="${G(g)}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`],
+ ['11','עץ החיים', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1" fill="none"><line x1="24" y1="6" x2="24" y2="42"/><line x1="24" y1="16" x2="14" y2="11"/><line x1="24" y1="16" x2="34" y2="11"/><line x1="14" y1="11" x2="34" y2="11"/><line x1="24" y1="24" x2="14" y2="11"/><line x1="24" y1="24" x2="34" y2="11"/><line x1="14" y1="32" x2="34" y2="32"/></g><g fill="${G(g)}"><circle cx="24" cy="6" r="2.4"/><circle cx="14" cy="11" r="2.4"/><circle cx="34" cy="11" r="2.4"/><circle cx="24" cy="24" r="2.4"/><circle cx="14" cy="32" r="2.4"/><circle cx="34" cy="32" r="2.4"/><circle cx="24" cy="42" r="2.4"/></g>`],
+ ['12','חמסה', g=>GOLD(g)+`<path d="M18 14 V10 a2.4 2.4 0 0 1 4.8 0 V20 a1 1 0 0 0 2.4 0 V8 a2.4 2.4 0 0 1 4.8 0 V20 a1 1 0 0 0 2.4 0 V12 a2.4 2.4 0 0 1 4.8 0 V30 C36 38 30 42 24 42 C18 42 12 38 12 30 V16 a2.4 2.4 0 0 1 4.8 0 V20 a1 1 0 0 0 1.2 0 Z" stroke="${G(g)}" stroke-width="1.3" fill="none" stroke-linejoin="round"/><circle cx="24" cy="28" r="3" stroke="${G(g)}" stroke-width="1.2" fill="none"/>`],
+ ['13','גל', g=>GOLD(g)+`<path d="M5 28 C11 18 17 18 24 28 C31 38 37 38 43 28" stroke="${G(g)}" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M5 20 C11 10 17 10 24 20 C31 30 37 30 43 20" stroke="${G(g)}" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.6"/>`],
+ ['14','נוצה', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1.3" fill="none" stroke-linecap="round"><path d="M16 40 C16 24 24 10 34 8 C34 24 26 36 16 40 Z"/><line x1="18" y1="36" x2="31" y2="14"/><line x1="20" y1="30" x2="29" y2="20"/><line x1="18" y1="24" x2="26" y2="16"/></g>`],
+ ['15','עין · נשמה', g=>GOLD(g)+`<path d="M6 24 C14 14 34 14 42 24 C34 34 14 34 6 24 Z" stroke="${G(g)}" stroke-width="1.5" fill="none"/><circle cx="24" cy="24" r="6" fill="${G(g)}"/><circle cx="24" cy="24" r="2.4" fill="${DARK}"/>`],
+ ['16','יהלום', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1.4" fill="none" stroke-linejoin="round"><path d="M14 12 H34 L42 22 L24 42 L6 22 Z"/><path d="M6 22 H42"/><path d="M14 12 L20 22 L24 42"/><path d="M34 12 L28 22 L24 42"/><path d="M20 22 H28"/></g>`],
+ ['17','קונסטלציה', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1" opacity="0.8"><line x1="9" y1="14" x2="20" y2="22"/><line x1="20" y1="22" x2="32" y2="12"/><line x1="20" y1="22" x2="28" y2="36"/><line x1="28" y1="36" x2="39" y2="30"/></g><g fill="${G(g)}"><circle cx="9" cy="14" r="2"/><circle cx="20" cy="22" r="2.6"/><circle cx="32" cy="12" r="2"/><circle cx="28" cy="36" r="2.3"/><circle cx="39" cy="30" r="1.8"/></g>`],
+ ['18','אינסוף', g=>GOLD(g)+`<path d="M24 24 C24 16 12 16 12 24 C12 32 24 32 24 24 C24 16 36 16 36 24 C36 32 24 32 24 24 Z" stroke="${G(g)}" stroke-width="2" fill="none"/>`],
+ ['19','מנדלה', g=>GOLD(g)+`<g stroke="${G(g)}" stroke-width="1.1" fill="none"><circle cx="24" cy="24" r="5"/>`+Array.from({length:8},(_,i)=>{const a=i*45*Math.PI/180;const x=24+11*Math.cos(a),y=24+11*Math.sin(a);return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5"/>`}).join('')+`<circle cx="24" cy="24" r="20"/></g>`],
+ ['20','שביל · מסע הנשמה', g=>GOLD(g)+`<path d="M12 40 C30 36 14 24 30 18 C40 14 34 9 38 7" stroke="${G(g)}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-dasharray="1 5"/><circle cx="12" cy="40" r="2.6" fill="${G(g)}"/><circle cx="38" cy="7" r="2.6" fill="${G(g)}"/>`],
+]);
+</script>
+</body></html>

@@ -121,13 +121,6 @@ function FaqItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boo
 
 // ─── Page ────────────────────────────────────────────────────────────────
 
-const FOOTER_LINKS = [
-  { label: "דף הבית", href: "/" },
-  { label: "קורס מצפן הנשמה", href: "/compass" },
-  { label: "מפה נומרולוגית", href: "/map" },
-  { label: "מדיניות פרטיות", href: "/privacy" },
-];
-
 export default function Map() {
   const shouldReduce = useReducedMotion() ?? false;
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -143,7 +136,6 @@ export default function Map() {
   return (
     <CosmicShell
       header={{ ctaLabel: "לרכישה", ctaHref: "#pricing" }}
-      footerLinks={FOOTER_LINKS}
       sticky={{ label: CTA_LABEL, href: "#pricing" }}
     >
       {/* 1. Announcement bar */}

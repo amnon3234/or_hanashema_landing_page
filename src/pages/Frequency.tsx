@@ -126,13 +126,6 @@ const PROFILES: FrequencyProfile[] = [
   },
 ];
 
-const FOOTER = [
-  { label: "דף הבית", href: "/" },
-  { label: "קורס מצפן הנשמה", href: "/compass" },
-  { label: "מפה נומרולוגית", href: "/map" },
-  { label: "מדיניות פרטיות", href: "/privacy" },
-];
-
 const WA_FREQ_HREF =
   "https://wa.me/972585577021?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%93%D7%A8%20%D7%A9%D7%9C%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93.";
 
@@ -274,7 +267,6 @@ export default function Frequency() {
   return (
     <CosmicShell
       header={{ ctaLabel: "על המפה הכתובה", ctaHref: "#anna-bridge" }}
-      footerLinks={FOOTER}
       sticky={{ label: "כתבי לי בוואטסאפ", href: "https://wa.me/972585577021" }}
     >
       {/* 1. Hero */}

@@ -213,7 +213,7 @@ export function CosmicHeader({
 // ─── Footer ──────────────────────────────────────────────────────────────
 
 /** Glass footer with logo, brand, links and a small copyright line. */
-export function CosmicFooter({ links }: { links: { label: string; href: string }[] }): JSX.Element {
+export function CosmicFooter(): JSX.Element {
   const year = new Date().getFullYear();
   return (
     <footer className="cz-footer">
@@ -223,17 +223,6 @@ export function CosmicFooter({ links }: { links: { label: string; href: string }
             <LogoMark size={36} className="cz-footer__logo" />
             <span className="cz-footer__name">אנה אשכנזי</span>
           </CzLink>
-          <nav aria-label="קישורי ניווט">
-            <ul className="cz-footer__links">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <CzLink href={l.href} className="cz-footer__link">
-                    {l.label}
-                  </CzLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
           <p className="cz-footer__copy">© {year} אנה אשכנזי · כל הזכויות שמורות</p>
         </div>
       </div>
@@ -321,12 +310,10 @@ export function Reveal({
 export function CosmicShell({
   children,
   header,
-  footerLinks,
   sticky,
 }: {
   children: React.ReactNode;
   header?: CosmicHeaderProps;
-  footerLinks: { label: string; href: string }[];
   sticky?: { label: string; href: string };
 }): JSX.Element {
   return (
@@ -335,7 +322,7 @@ export function CosmicShell({
       <ScrollProgress />
       <CosmicHeader {...header} />
       <main className="cz-main">{children}</main>
-      <CosmicFooter links={footerLinks} />
+      <CosmicFooter />
       {sticky && <CosmicStickyCta {...sticky} />}
     </div>
   );

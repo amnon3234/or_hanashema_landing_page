@@ -12,16 +12,6 @@ import {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const FOOTER_LINKS = [
-  { label: "קורס מצפן הנשמה", href: "/compass" },
-  { label: "מפה נומרולוגית", href: "/map" },
-  { label: "התדר שלך", href: "/frequency" },
-  { label: "התדר הזוגי", href: "/zug" },
-  { label: "הבושם של המספר", href: "/bsamim" },
-  { label: "מסר השבוע", href: "/messages" },
-  { label: "מדיניות פרטיות", href: "/privacy" },
-];
-
 const NAV = [
   { label: "הקורס", href: "/compass" },
   { label: "מפה נומרולוגית", href: "/map" },
@@ -147,7 +137,6 @@ export default function IndexHub(): JSX.Element {
   return (
     <CosmicShell
       header={{ nav: NAV }}
-      footerLinks={FOOTER_LINKS}
     >
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}

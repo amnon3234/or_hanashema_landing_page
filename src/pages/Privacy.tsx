@@ -1,16 +1,9 @@
 import "./Privacy.css";
 import { CosmicShell, CzLink } from "../design3/Cosmic";
 
-const FOOTER = [
-  { label: "דף הבית", href: "/" },
-  { label: "קורס מצפן הנשמה", href: "/compass" },
-  { label: "מפה נומרולוגית", href: "/map" },
-  { label: "מדיניות פרטיות", href: "/privacy" },
-];
-
 export default function Privacy(): JSX.Element {
   return (
-    <CosmicShell footerLinks={FOOTER}>
+    <CosmicShell>
       <section className="cz-section prv-section">
         <div className="prv-wrap">
           <h1 className="prv-title">מדיניות פרטיות</h1>
