@@ -548,3 +548,11 @@
     padding-inline: 48px;
   }
 }
+
+/* ─── Mobile: center all page text ───────────────────────────────────────── */
+@media (max-width: 639.98px) {
+  .cz-main,
+  .cz-main * {
+    text-align: center;
+  }
+}
